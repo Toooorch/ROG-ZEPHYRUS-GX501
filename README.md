@@ -1,8 +1,6 @@
 # Asus ROG Zephyrus GX501 (8th Gen CPUs)
 Files for ROG Zephyrus GX501 hack
 
-Progress > awaiting package on Friday
-
 Used Hardware:
 - i7 8750H
 - NVIDIA GTX 1080 8GB - No nVidia Optimus - WEB drivers
