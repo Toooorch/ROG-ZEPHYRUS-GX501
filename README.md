@@ -1,14 +1,21 @@
 # Asus ROG Zephyrus GX501 (8th Gen CPUs)
 Files for ROG Zephyrus GX501 hack
 
-Used Hardware:
-- i7 8750H
-- NVIDIA GTX 1080 8GB - No nVidia Optimus - WEB drivers
-- Intel Wireless-AC 9560 - won't ever work probably
-- HCI 9.256 / LMP 9.256 - should work
-- USB2.0 HD UVC WebCam - should work
-- Realtek ALC668 - should work
-- Trackpad - ELAN/SA473I-12A4 - should work
-- macOS 10.13.3
+Current Clover: Clover_v2.4k_r4558
 
-- Fn Keys, working after A﻿susNBFnKeys.kex﻿t﻿
+Hardware:
+- i7 8750H
+- NVIDIA GTX 1080 8GB - WEB drivers
+- Intel Wireless-AC 9560 - won't work fixed with dongle for now
+- BT - work
+- USB2.0 HD UVC WebCam - works
+- Realtek ALC668 - works
+- Trackpad - ELAN/SA473I-12A4 - need patch
+- 144Hz display - works
+- macOS 10.13.5
+
+What does not work now:
+- sleep
+- shutdown
+- brightness
+- thunderbolt is not recognized as Thunderbolt
