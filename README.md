@@ -14,8 +14,14 @@ Hardware:
 - 144Hz display - works
 - macOS 10.13.5
 
-What does not work now:
-- sleep
+What does not work now and it is possible to fix:
+- sleep (I don't care about this)
 - shutdown
 - brightness
 - thunderbolt is not recognized as Thunderbolt
+- battery status
+
+todo:
+- DSDT
+- A﻿susNBFnKeys.kex﻿t﻿
+- battery status
