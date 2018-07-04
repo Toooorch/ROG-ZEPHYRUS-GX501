@@ -2,28 +2,35 @@
 Files for ROG Zephyrus GX501 hack
 
 Current Clover: Clover_v2.4k_r4586
+Current macOS: macOS 10.13.5
 
 Hardware:
 - i7 8750H
-- NVIDIA GTX 1080 8GB - WEB drivers
-- Intel Wireless-AC 9560 - won't work fixed with dongle for now
-- BT - work
-- USB2.0 HD UVC WebCam - works
-- Realtek ALC668 - works
-- Trackpad - ELAN/SA473I-12A4 - need patch
-- 144Hz display - works
-- macOS 10.13.5
+- NVIDIA GTX 1080 8GB
+- Intel Wireless-AC 9560
+- BT
+- USB2.0 HD UVC WebCam
+- Realtek ALC295
+- Trackpad - ELAN/SA473I-12A4
+- 144Hz display
 
 DSDT:
-- Battery status
+- Battery Status
+- Audio Layout 3
+
+Clover DSDT:
+- Fix shutdown (needs all RC scripts)
+- Fix HPET
+
+Audio
+- AppleALC
+- Codec is ALC295
+- DSDT layout 3
 
 What does not work now and it is possible to fix:
-- shutdown
 - brightness
 - thunderbolt is not recognized as Thunderbolt
 
-todo:
-- DSDT
+Need to check/TODO:
 - A﻿susNBFnKeys.kex﻿t﻿
-- Shutdown
 - ELAN trackpad

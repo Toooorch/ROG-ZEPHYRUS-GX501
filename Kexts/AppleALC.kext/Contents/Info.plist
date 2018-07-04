@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>BuildMachineOSBuild</key>
-	<string>17G39b</string>
+	<string>17F77</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>KEXT</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.2.8</string>
+	<string>1.2.7</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleSupportedPlatforms</key>
@@ -25,11 +25,11 @@
 		<string>MacOSX</string>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1.2.8</string>
+	<string>1.2.7</string>
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
-	<string>9F2000</string>
+	<string>9F1027a</string>
 	<key>DTPlatformVersion</key>
 	<string>GM</string>
 	<key>DTSDKBuild</key>
@@ -37,9 +37,9 @@
 	<key>DTSDKName</key>
 	<string>macosx10.13</string>
 	<key>DTXcode</key>
-	<string>0941</string>
+	<string>0940</string>
 	<key>DTXcodeBuild</key>
-	<string>9F2000</string>
+	<string>9F1027a</string>
 	<key>IOKitPersonalities</key>
 	<dict>
 		<key>HDA Hardware Config Resource</key>
@@ -3548,32 +3548,6 @@
 					AwAAAA==
 					</data>
 					<key>Codec</key>
-					<string>lgs3137 - Realtek ALC298 MECHREVO S1</string>
-					<key>CodecID</key>
-					<integer>283902616</integer>
-					<key>ConfigData</key>
-					<data>
-					ASccMAEnHQEBJx6mAScfkAFHHEABRx0BAUce
-					FwFHH5ABhxwQAYcdEAGHHqsBhx8CAhccIAIX
-					HRACFx4rAhcfAgFHDAICFwwC
-					</data>
-					<key>FuncGroup</key>
-					<integer>1</integer>
-					<key>LayoutID</key>
-					<integer>66</integer>
-					<key>WakeConfigData</key>
-					<data>
-					AUcMAg==
-					</data>
-					<key>WakeVerbReinit</key>
-					<true/>
-				</dict>
-				<dict>
-					<key>AFGLowPowerState</key>
-					<data>
-					AwAAAA==
-					</data>
-					<key>Codec</key>
 					<string>Custom - Realtek ALC298 for Dell XPS 9560 by KNNSpeed</string>
 					<key>CodecID</key>
 					<integer>283902616</integer>
@@ -4942,30 +4916,6 @@
 					<integer>1</integer>
 					<key>LayoutID</key>
 					<integer>7</integer>
-				</dict>
-				<dict>
-					<key>AFGLowPowerState</key>
-					<data>
-					AwAAAA==
-					</data>
-					<key>CodecID</key>
-					<integer>283904146</integer>
-					<key>Comment</key>
-					<string>MSI GP70/CR70 by Slava77</string>
-					<key>ConfigData</key>
-					<data>
-					AbceEQGXHqABlx+RAYcegQFHDAI=
-					</data>
-					<key>FuncGroup</key>
-					<integer>1</integer>
-					<key>LayoutID</key>
-					<integer>12</integer>
-					<key>WakeConfigData</key>
-					<data>
-					AUcMAg==
-					</data>
-					<key>WakeVerbReinit</key>
-					<true/>
 				</dict>
 				<dict>
 					<key>AFGLowPowerState</key>
