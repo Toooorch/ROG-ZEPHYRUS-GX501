@@ -1,7 +1,7 @@
 # Asus ROG Zephyrus GX501 (8th Gen CPUs)
 Files for ROG Zephyrus GX501 hack
 
-Current Clover: Clover_v2.4k_r4558
+Current Clover: Clover_v2.4k_r4586
 
 Hardware:
 - i7 8750H
