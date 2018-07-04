@@ -11,7 +11,7 @@ Hardware:
 - BT
 - USB2.0 HD UVC WebCam
 - Realtek ALC295
-- Trackpad - ELAN/SA473I-12A4
+- Trackpad - ELAN 1404 / pci8086,a368 & pci8086,a369 (I also saw ELAN/SA473I-12A4)
 - 144Hz display
 
 DSDT:
