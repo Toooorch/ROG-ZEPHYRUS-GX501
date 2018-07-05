@@ -7,7 +7,7 @@ Current macOS: macOS 10.13.5
 Hardware:
 - i7 8750H
 - NVIDIA GTX 1080 8GB
-- Intel Wireless-AC 9560
+- Intel Wireless-AC 9560 > will be replaced with BCM943602BAED, now dongle
 - BT
 - USB2.0 HD UVC WebCam
 - Realtek ALC295
