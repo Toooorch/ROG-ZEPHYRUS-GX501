@@ -1,0 +1,128 @@
+7:153  3:860  Found UEFI Acpi 2.0 RSDP at 7EBE1000
+7:153  0:000  Saving ACPI tables from RSDP 7EBE1000 to EFI\CLOVER\ACPI\origin ...
+7:153  0:000   7EBE1000: 'RSD PTR ', Rev: 2 (Acpi 2.0 or newer), Len: 36 -> RSDP.aml
+7:165  0:011    (Xsdt: 7EBE10B8, Rsdt: 7EBE1028)
+7:165  0:000    7EBE10B8: 'XSDT', 'Notebook', Rev: 1, Len: 236 -> XSDT.aml
+7:177  0:011    7EBE1028: 'RSDT', 'Notebook', Rev: 1, Len: 136 -> RSDT.aml
+7:188  0:011    Tables in Xsdt: 25
+7:188  0:000    0. 7EC24AF0: 'FACP', 'Notebook', Rev: 6, Len: 276 -> FACP.aml
+7:200  0:011        (Dsdt: 7EBE1230, Facs: 7ED58080, XDsdt: 7EBE1230, XFacs: 0)
+7:200  0:000        7EBE1230: 'DSDT', 'Notebook', Rev: 2, Len: 276666 -> DSDT.aml
+7:212  0:012        7ED58080: 'FACS', Ver: 2, Len: 64 -> FACS.aml
+7:224  0:011    1. 7EC24C08: 'APIC', 'Notebook', Rev: 4, Len: 244 -> APIC.aml
+7:236  0:011    2. 7EC24D00: 'FPDT', 'Notebook', Rev: 1, Len: 68 -> FPDT.aml
+7:247  0:011    3. 7EC24D48: 'FIDT', 'Notebook', Rev: 1, Len: 156 -> FIDT.aml
+7:258  0:011    4. 7EC24DE8: 'MCFG', 'Notebook', Rev: 1, Len: 60 -> MCFG.aml
+7:270  0:011    5. 7EC24E28: 'ECDT', 'Notebook', Rev: 1, Len: 193 -> ECDT.aml
+7:282  0:011    6. 7EC24EF0: 'SSDT', 'SataTabl', Rev: 1, Len: 820 -> SSDT-0.aml
+7:293  0:011    7. 7EC25228: 'SSDT', 'DptfTabl', Rev: 2, Len: 19595 -> SSDT-1.aml
+7:305  0:011    8. 7EC29EB8: 'SSDT', 'CpuSsdt', Rev: 2, Len: 6101 -> SSDT-2.aml
+7:316  0:011    9. 7EC2B690: 'MSDM', 'Notebook', Rev: 3, Len: 85 -> MSDM.aml
+7:328  0:011    10. 7EC2B6E8: 'SSDT', 'UsbCTabl', Rev: 1, Len: 267 -> SSDT-3.aml
+7:340  0:011    11. 7EC2B7F8: 'SSDT', 'SaSsdt', Rev: 2, Len: 12743 -> SSDT-4.aml
+7:352  0:011    12. 7EC2E9C0: 'SSDT', 'PegSsdt', Rev: 2, Len: 8203 -> SSDT-5.aml
+7:364  0:011    13. 7EC309D0: 'HPET', 'Notebook', Rev: 1, Len: 56 -> HPET.aml
+7:376  0:012    14. 7EC30A08: 'UEFI', 'Notebook', Rev: 1, Len: 72 -> UEFI.aml
+7:387  0:011    15. 7EC30A50: 'LPIT', 'Notebook', Rev: 1, Len: 92 -> LPIT.aml
+7:399  0:011    16. 7EC30AB0: 'SSDT', 'PtidDevc', Rev: 2, Len: 10206 -> SSDT-6.aml
+7:411  0:012    17. 7EC33290: 'SSDT', 'TbtTypeC', Rev: 2, Len: 4094 -> SSDT-7.aml
+7:424  0:012    18. 7EC34290: 'DBGP', 'Notebook', Rev: 1, Len: 52 -> DBGP.aml
+7:436  0:011    19. 7EC342C8: 'DBG2', 'Notebook', Rev: 0, Len: 84 -> DBG2.aml
+7:448  0:011    20. 7EC34320: 'DMAR', 'EDK2', Rev: 1, Len: 112 -> DMAR.aml
+7:459  0:011    21. 7EC34390: 'BGRT', 'Notebook', Rev: 1, Len: 56 -> BGRT.aml
+7:472  0:012    22. 7EC343C8: 'TPM2', 'Notebook', Rev: 4, Len: 52 -> TPM2.aml
+7:484  0:012    23. 7EC34400: 'SSDT', 'OemNvT', Rev: 1, Len: 9211 -> SSDT-8.aml
+7:496  0:012    24. 7EC36800: 'WSMT', 'Notebook', Rev: 1, Len: 40 -> WSMT.aml
+7:508  0:011    Tables in Rsdt: 25
+7:508  0:000    0. 7EBE11A8: 'FACP', 'Notebook', Rev: 2, Len: 132 -> RSDT-FACP.aml
+7:520  0:011        (Dsdt: 7EBE1230, Facs: 7ED58040)
+7:520  0:000        7EBE1230: 'DSDT', 'Notebook', Rev: 2, Len: 276666
+7:520  0:000        7ED58040: 'FACS', Ver: 0, Len: 64 -> RSDT-FACS.aml
+7:532  0:012    1. 7EC24C08: 'APIC', 'Notebook', Rev: 4, Len: 244
+7:532  0:000    2. 7EC24D00: 'FPDT', 'Notebook', Rev: 1, Len: 68
+7:532  0:000    3. 7EC24D48: 'FIDT', 'Notebook', Rev: 1, Len: 156
+7:532  0:000    4. 7EC24DE8: 'MCFG', 'Notebook', Rev: 1, Len: 60
+7:532  0:000    5. 7EC24E28: 'ECDT', 'Notebook', Rev: 1, Len: 193
+7:532  0:000    6. 7EC24EF0: 'SSDT', 'SataTabl', Rev: 1, Len: 820
+7:532  0:000    7. 7EC25228: 'SSDT', 'DptfTabl', Rev: 2, Len: 19595
+7:532  0:000    8. 7EC29EB8: 'SSDT', 'CpuSsdt', Rev: 2, Len: 6101
+7:532  0:000    9. 7EC2B690: 'MSDM', 'Notebook', Rev: 3, Len: 85
+7:532  0:000    10. 7EC2B6E8: 'SSDT', 'UsbCTabl', Rev: 1, Len: 267
+7:532  0:000    11. 7EC2B7F8: 'SSDT', 'SaSsdt', Rev: 2, Len: 12743
+7:532  0:000    12. 7EC2E9C0: 'SSDT', 'PegSsdt', Rev: 2, Len: 8203
+7:532  0:000    13. 7EC309D0: 'HPET', 'Notebook', Rev: 1, Len: 56
+7:532  0:000    14. 7EC30A08: 'UEFI', 'Notebook', Rev: 1, Len: 72
+7:532  0:000    15. 7EC30A50: 'LPIT', 'Notebook', Rev: 1, Len: 92
+7:532  0:000    16. 7EC30AB0: 'SSDT', 'PtidDevc', Rev: 2, Len: 10206
+7:532  0:000    17. 7EC33290: 'SSDT', 'TbtTypeC', Rev: 2, Len: 4094
+7:532  0:000    18. 7EC34290: 'DBGP', 'Notebook', Rev: 1, Len: 52
+7:532  0:000    19. 7EC342C8: 'DBG2', 'Notebook', Rev: 0, Len: 84
+7:532  0:000    20. 7EC34320: 'DMAR', 'EDK2', Rev: 1, Len: 112
+7:532  0:000    21. 7EC34390: 'BGRT', 'Notebook', Rev: 1, Len: 56
+7:532  0:000    22. 7EC343C8: 'TPM2', 'Notebook', Rev: 4, Len: 52
+7:532  0:000    23. 7EC34400: 'SSDT', 'OemNvT', Rev: 1, Len: 9211
+7:532  0:000    24. 7EC36800: 'WSMT', 'Notebook', Rev: 1, Len: 40
+7:532  0:000  Found UEFI Acpi 1.0 RSDP at 7EBE1000
+7:532  0:000  Printing ACPI tables from RSDP 7EBE1000 ...
+7:532  0:000   7EBE1000: 'RSD PTR ', Rev: 2 (Acpi 2.0 or newer), Len: 36
+7:532  0:000    (Xsdt: 7EBE10B8, Rsdt: 7EBE1028)
+7:532  0:000    7EBE10B8: 'XSDT', 'Notebook', Rev: 1, Len: 236
+7:532  0:000    7EBE1028: 'RSDT', 'Notebook', Rev: 1, Len: 136
+7:532  0:000    Tables in Xsdt: 25
+7:532  0:000    0. 7EC24AF0: 'FACP', 'Notebook', Rev: 6, Len: 276
+7:532  0:000        (Dsdt: 7EBE1230, Facs: 7ED58080, XDsdt: 7EBE1230, XFacs: 0)
+7:532  0:000        7EBE1230: 'DSDT', 'Notebook', Rev: 2, Len: 276666
+7:532  0:000        7ED58080: 'FACS', Ver: 2, Len: 64
+7:532  0:000    1. 7EC24C08: 'APIC', 'Notebook', Rev: 4, Len: 244
+7:532  0:000    2. 7EC24D00: 'FPDT', 'Notebook', Rev: 1, Len: 68
+7:532  0:000    3. 7EC24D48: 'FIDT', 'Notebook', Rev: 1, Len: 156
+7:532  0:000    4. 7EC24DE8: 'MCFG', 'Notebook', Rev: 1, Len: 60
+7:532  0:000    5. 7EC24E28: 'ECDT', 'Notebook', Rev: 1, Len: 193
+7:532  0:000    6. 7EC24EF0: 'SSDT', 'SataTabl', Rev: 1, Len: 820
+7:532  0:000    7. 7EC25228: 'SSDT', 'DptfTabl', Rev: 2, Len: 19595
+7:532  0:000    8. 7EC29EB8: 'SSDT', 'CpuSsdt', Rev: 2, Len: 6101
+7:532  0:000    9. 7EC2B690: 'MSDM', 'Notebook', Rev: 3, Len: 85
+7:532  0:000    10. 7EC2B6E8: 'SSDT', 'UsbCTabl', Rev: 1, Len: 267
+7:532  0:000    11. 7EC2B7F8: 'SSDT', 'SaSsdt', Rev: 2, Len: 12743
+7:532  0:000    12. 7EC2E9C0: 'SSDT', 'PegSsdt', Rev: 2, Len: 8203
+7:532  0:000    13. 7EC309D0: 'HPET', 'Notebook', Rev: 1, Len: 56
+7:532  0:000    14. 7EC30A08: 'UEFI', 'Notebook', Rev: 1, Len: 72
+7:532  0:000    15. 7EC30A50: 'LPIT', 'Notebook', Rev: 1, Len: 92
+7:532  0:000    16. 7EC30AB0: 'SSDT', 'PtidDevc', Rev: 2, Len: 10206
+7:532  0:000    17. 7EC33290: 'SSDT', 'TbtTypeC', Rev: 2, Len: 4094
+7:532  0:000    18. 7EC34290: 'DBGP', 'Notebook', Rev: 1, Len: 52
+7:532  0:000    19. 7EC342C8: 'DBG2', 'Notebook', Rev: 0, Len: 84
+7:532  0:000    20. 7EC34320: 'DMAR', 'EDK2', Rev: 1, Len: 112
+7:532  0:000    21. 7EC34390: 'BGRT', 'Notebook', Rev: 1, Len: 56
+7:532  0:000    22. 7EC343C8: 'TPM2', 'Notebook', Rev: 4, Len: 52
+7:532  0:000    23. 7EC34400: 'SSDT', 'OemNvT', Rev: 1, Len: 9211
+7:532  0:000    24. 7EC36800: 'WSMT', 'Notebook', Rev: 1, Len: 40
+7:532  0:000    Tables in Rsdt: 25
+7:532  0:000    0. 7EBE11A8: 'FACP', 'Notebook', Rev: 2, Len: 132
+7:532  0:000        (Dsdt: 7EBE1230, Facs: 7ED58040)
+7:532  0:000        7EBE1230: 'DSDT', 'Notebook', Rev: 2, Len: 276666
+7:532  0:000        7ED58040: 'FACS', Ver: 0, Len: 64
+7:532  0:000    1. 7EC24C08: 'APIC', 'Notebook', Rev: 4, Len: 244
+7:532  0:000    2. 7EC24D00: 'FPDT', 'Notebook', Rev: 1, Len: 68
+7:532  0:000    3. 7EC24D48: 'FIDT', 'Notebook', Rev: 1, Len: 156
+7:532  0:000    4. 7EC24DE8: 'MCFG', 'Notebook', Rev: 1, Len: 60
+7:532  0:000    5. 7EC24E28: 'ECDT', 'Notebook', Rev: 1, Len: 193
+7:532  0:000    6. 7EC24EF0: 'SSDT', 'SataTabl', Rev: 1, Len: 820
+7:532  0:000    7. 7EC25228: 'SSDT', 'DptfTabl', Rev: 2, Len: 19595
+7:532  0:000    8. 7EC29EB8: 'SSDT', 'CpuSsdt', Rev: 2, Len: 6101
+7:532  0:000    9. 7EC2B690: 'MSDM', 'Notebook', Rev: 3, Len: 85
+7:532  0:000    10. 7EC2B6E8: 'SSDT', 'UsbCTabl', Rev: 1, Len: 267
+7:532  0:000    11. 7EC2B7F8: 'SSDT', 'SaSsdt', Rev: 2, Len: 12743
+7:532  0:000    12. 7EC2E9C0: 'SSDT', 'PegSsdt', Rev: 2, Len: 8203
+7:532  0:000    13. 7EC309D0: 'HPET', 'Notebook', Rev: 1, Len: 56
+7:532  0:000    14. 7EC30A08: 'UEFI', 'Notebook', Rev: 1, Len: 72
+7:532  0:000    15. 7EC30A50: 'LPIT', 'Notebook', Rev: 1, Len: 92
+7:532  0:000    16. 7EC30AB0: 'SSDT', 'PtidDevc', Rev: 2, Len: 10206
+7:532  0:000    17. 7EC33290: 'SSDT', 'TbtTypeC', Rev: 2, Len: 4094
+7:532  0:000    18. 7EC34290: 'DBGP', 'Notebook', Rev: 1, Len: 52
+7:532  0:000    19. 7EC342C8: 'DBG2', 'Notebook', Rev: 0, Len: 84
+7:532  0:000    20. 7EC34320: 'DMAR', 'EDK2', Rev: 1, Len: 112
+7:532  0:000    21. 7EC34390: 'BGRT', 'Notebook', Rev: 1, Len: 56
+7:532  0:000    22. 7EC343C8: 'TPM2', 'Notebook', Rev: 4, Len: 52
+7:532  0:000    23. 7EC34400: 'SSDT', 'OemNvT', Rev: 1, Len: 9211
+7:532  0:000    24. 7EC36800: 'WSMT', 'Notebook', Rev: 1, Len: 40

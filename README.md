@@ -26,6 +26,7 @@ Audio
 - AppleALC
 - Codec is ALC295
 - DSDT layout 3
+- -alcbeta
 
 What does not work now and it is possible to fix:
 - brightness
