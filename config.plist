@@ -75,7 +75,7 @@
 				<key>AddPNLF</key>
 				<false/>
 				<key>DeleteUnused</key>
-				<true/>
+				<false/>
 				<key>FakeLPC</key>
 				<false/>
 				<key>FixACST</key>
@@ -95,21 +95,21 @@
 				<key>FixHDA</key>
 				<false/>
 				<key>FixHPET</key>
-				<true/>
+				<false/>
 				<key>FixIDE</key>
 				<false/>
 				<key>FixIPIC</key>
-				<true/>
+				<false/>
 				<key>FixIntelGfx</key>
 				<false/>
 				<key>FixLAN</key>
 				<false/>
 				<key>FixMutex</key>
-				<true/>
+				<false/>
 				<key>FixRTC</key>
-				<true/>
+				<false/>
 				<key>FixRegions</key>
-				<true/>
+				<false/>
 				<key>FixS3D</key>
 				<false/>
 				<key>FixSATA</key>
@@ -117,9 +117,9 @@
 				<key>FixSBUS</key>
 				<false/>
 				<key>FixShutdown</key>
-				<true/>
+				<false/>
 				<key>FixTMR</key>
-				<true/>
+				<false/>
 				<key>FixUSB</key>
 				<false/>
 				<key>FixWAK</key>
@@ -131,12 +131,12 @@
 			<array>
 				<dict>
 					<key>Comment</key>
-					<string>change GFX0 to IGPU</string>
+					<string>change PEG0 to IGPU</string>
 					<key>Disabled</key>
 					<false/>
 					<key>Find</key>
 					<data>
-					R0ZYMA==
+					UEVHMA==
 					</data>
 					<key>Replace</key>
 					<data>
@@ -183,6 +183,20 @@
 					<key>Replace</key>
 					<data>
 					U0FUQQ==
+					</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>change EC0 to EC</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>
+					RUMwXw==
+					</data>
+					<key>Replace</key>
+					<data>
+					RUNfXw==
 					</data>
 				</dict>
 			</array>
@@ -253,9 +267,11 @@
 				<false/>
 				<key>PStates</key>
 				<false/>
+				<key>PluginType</key>
+				<true/>
 			</dict>
 			<key>NoDynamicExtract</key>
-			<true/>
+			<false/>
 			<key>NoOemTableId</key>
 			<true/>
 		</dict>
@@ -271,7 +287,7 @@
 		<key>#XMPDetection</key>
 		<string>-1</string>
 		<key>Arguments</key>
-		<string>keepsyms=1 dart=0 npci=0x3000 -disablegfxfirmware -v -alcbeta</string>
+		<string>dart=0 npci=0x3000 -alcbeta -v nvda_drv=1 keepsyms=1 -disablegfxfirmware</string>
 		<key>CustomLogo</key>
 		<false/>
 		<key>Debug</key>
@@ -931,6 +947,51 @@
 		<false/>
 		<key>KernelPm</key>
 		<true/>
+		<key>KernelToPatch</key>
+		<array>
+			<dict>
+				<key>Comment</key>
+				<string>Disable panic kext logging on 10.13 debug kernel (credit Vandroiy)</string>
+				<key>Disabled</key>
+				<false/>
+				<key>Find</key>
+				<data>
+				sABMi1Xw
+				</data>
+				<key>Replace</key>
+				<data>
+				SIPEQF3D
+				</data>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>Disable panic kext logging on 10.13 release kernel (credit Vandroiy)</string>
+				<key>Disabled</key>
+				<false/>
+				<key>Find</key>
+				<data>
+				igKEwHRE
+				</data>
+				<key>Replace</key>
+				<data>
+				igKEwOtE
+				</data>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>MSR 0xE2 _xcpm_idle instant reboot(c) Pike R. Alpha</string>
+				<key>Disabled</key>
+				<false/>
+				<key>Find</key>
+				<data>
+				ILniAAAADzA=
+				</data>
+				<key>Replace</key>
+				<data>
+				ILniAAAAkJA=
+				</data>
+			</dict>
+		</array>
 		<key>KernelXCPM</key>
 		<false/>
 		<key>KextsToPatch</key>
@@ -997,26 +1058,6 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>Prevent AGDP from loading</string>
-				<key>Disabled</key>
-				<false/>
-				<key>Find</key>
-				<data>
-				ugUAAAA=
-				</data>
-				<key>InfoPlistPatch</key>
-				<false/>
-				<key>MatchOS</key>
-				<string>10.13</string>
-				<key>Name</key>
-				<string>com.apple.driver.AppleGraphicsDevicePolicy</string>
-				<key>Replace</key>
-				<data>
-				ugAAAAA=
-				</data>
-			</dict>
-			<dict>
-				<key>Comment</key>
 				<string>Patch Assertions</string>
 				<key>Disabled</key>
 				<false/>
@@ -1057,7 +1098,7 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>Fix log error High Sierra</string>
+				<string>Fix log error 10.13</string>
 				<key>Disabled</key>
 				<false/>
 				<key>Find</key>
@@ -1097,42 +1138,62 @@
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>External icons patch</string>
+				<string>Prevent Apple I2C kexts from attaching to I2C controllers, credit CoolStar</string>
 				<key>Disabled</key>
 				<false/>
 				<key>Find</key>
 				<data>
-				RXh0ZXJuYWw=
+				SU9LaXQ=
 				</data>
 				<key>InfoPlistPatch</key>
-				<false/>
+				<true/>
 				<key>MatchOS</key>
 				<string>10.13</string>
 				<key>Name</key>
-				<string>com.apple.driver.AppleAHCIPort</string>
+				<string>com.apple.driver.AppleIntelLpssI2C</string>
 				<key>Replace</key>
 				<data>
-				SW50ZXJuYWw=
+				SU9LaXM=
 				</data>
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>10.13-Coffee_Audio_Controller</string>
+				<string>Prevent Apple I2C kexts from attaching to I2C controllers, credit CoolStar</string>
 				<key>Disabled</key>
-				<true/>
+				<false/>
 				<key>Find</key>
 				<data>
-				PXCh
+				SU9LaXQ=
+				</data>
+				<key>InfoPlistPatch</key>
+				<true/>
+				<key>MatchOS</key>
+				<string>10.13</string>
+				<key>Name</key>
+				<string>com.apple.driver.AppleIntelLpssI2CController</string>
+				<key>Replace</key>
+				<data>
+				SU9LaXM=
+				</data>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>change F%uT%04x to F%uTxxxx in AppleBacklightInjector.kext (credit RehabMan)</string>
+				<key>Disabled</key>
+				<false/>
+				<key>Find</key>
+				<data>
+				RiV1VCUwNHgA
 				</data>
 				<key>InfoPlistPatch</key>
 				<false/>
 				<key>MatchOS</key>
 				<string>10.13</string>
 				<key>Name</key>
-				<string>com.apple.driver.AppleHDAController</string>
+				<string>com.apple.driver.AppleBacklight</string>
 				<key>Replace</key>
 				<data>
-				PUij
+				RiV1VHh4eHgA
 				</data>
 			</dict>
 		</array>
@@ -1143,10 +1204,8 @@
 		<string>0x28</string>
 		<key>CsrActiveConfig</key>
 		<string>0x3E7</string>
-		<key>MLB</key>
-		<string>C02546600REGDQP11</string>
 		<key>ROM</key>
-		<string>JB7rWWrG</string>
+		<string>UseMacAddr0</string>
 	</dict>
 	<key>SMBIOS</key>
 	<dict>
@@ -1275,6 +1334,8 @@
 		<key>InjectKexts</key>
 		<string>Yes</string>
 		<key>InjectSystemID</key>
+		<true/>
+		<key>NvidiaWeb</key>
 		<true/>
 	</dict>
 </dict>
