@@ -17,13 +17,13 @@ Firmware Error (ACPI): Failure looking up [^^PEG0.PEGP.THEP], AE_NOT_FOUND (2018
  * 
  * Disassembling to non-symbolic legacy ASL operators
  *
- * Disassembly of DSDT.aml, Wed Jul  4 22:01:19 2018
+ * Disassembly of DSDT.aml, Wed Jul 11 00:35:36 2018
  *
  * Original Table Header:
  *     Signature        "DSDT"
  *     Length           0x00043882 (276610)
  *     Revision         0x02
- *     Checksum         0x66
+ *     Checksum         0xD1
  *     OEM ID           "_ASUS_"
  *     OEM Table ID     "Notebook"
  *     OEM Revision     0x01072009 (17244169)
@@ -314,7 +314,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
     Name (TPMC, 0xFFFFFFFF)
     Name (TPMM, 0xFED40000)
     Name (FTPM, 0xFED40040)
-    Name (PPIM, 0x7ED44F98)
+    Name (PPIM, 0x7ED59F98)
     Name (PPIL, 0x1C)
     Name (AMDT, Zero)
     Name (TPMF, One)
@@ -329,7 +329,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
     Name (TOPM, 0x00000000)
     Name (ROMS, 0xFFE00000)
     Name (VGAF, One)
-    OperationRegion (GNVS, SystemMemory, 0x7ECAA000, 0x0866)
+    OperationRegion (GNVS, SystemMemory, 0x7ECBF000, 0x0866)
     Field (GNVS, AnyAcc, Lock, Preserve)
     {
         OSYS,   16, 
@@ -12107,7 +12107,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
         }
     }
 
-    Name (PNVB, 0x7ED44B98)
+    Name (PNVB, 0x7ED59B98)
     Name (PNVL, 0x028F)
     OperationRegion (PNVA, SystemMemory, PNVB, PNVL)
     Field (PNVA, AnyAcc, Lock, Preserve)
@@ -19195,7 +19195,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
     Name (LDLY, 0x012C)
     Name (TNVB, 0xFFFF0000)
     Name (TNVL, 0xAA55)
-    OperationRegion (BNVS, SystemMemory, 0x7ED45000, 0x0043)
+    OperationRegion (BNVS, SystemMemory, 0x7ED5A000, 0x0043)
     Field (BNVS, AnyAcc, Lock, Preserve)
     {
         TBSF,   8, 
@@ -55454,7 +55454,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
     Scope (_SB)
     {
-        OperationRegion (RAMW, SystemMemory, 0x7ED46000, 0x0100)
+        OperationRegion (RAMW, SystemMemory, 0x7ED5B000, 0x0100)
         Field (RAMW, AnyAcc, NoLock, Preserve)
         {
             AMLS,   32, 
