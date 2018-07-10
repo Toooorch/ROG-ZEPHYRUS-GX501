@@ -1204,8 +1204,10 @@
 		<string>0x28</string>
 		<key>CsrActiveConfig</key>
 		<string>0x3E7</string>
+		<key>MLB</key>
+		<string>C02546600REGDQP11</string>
 		<key>ROM</key>
-		<string>UseMacAddr0</string>
+		<string>JB7rWWrG</string>
 	</dict>
 	<key>SMBIOS</key>
 	<dict>
@@ -1320,6 +1322,10 @@
 		<string>1.0</string>
 		<key>Manufacturer</key>
 		<string>Apple Inc.</string>
+		<key>SerialNumber</key>
+		<string>C02QRFD9G8WN</string>
+		<key>SmUUID</key>
+		<string>37C3BFC7-B6BA-105D-8C70-B91CA7784A8F</string>
 	</dict>
 	<key>SystemParameters</key>
 	<dict>
