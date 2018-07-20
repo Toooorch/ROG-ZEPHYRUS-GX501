@@ -4745,6 +4745,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
+                    Return(Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -4979,6 +4980,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
+                    Return(Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -5213,6 +5215,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
+                    Return(Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -5447,6 +5450,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
+                    Return(Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -5681,6 +5685,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
+                    Return(Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -5915,6 +5920,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
+                    Return(Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -6149,6 +6155,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
+                    Return(Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -6383,6 +6390,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
+                    Return(Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -6617,6 +6625,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
+                    Return(Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -6851,6 +6860,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
+                    Return(Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -7085,6 +7095,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
+                    Return(Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -7319,6 +7330,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
+                    Return(Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -7553,6 +7565,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
+                    Return(Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -7787,6 +7800,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
+                    Return(Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -8021,6 +8035,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
+                    Return(Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -8255,6 +8270,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
+                    Return(Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -8494,6 +8510,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
+                    Return(Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -8728,6 +8745,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
+                    Return(Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -8962,6 +8980,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
+                    Return(Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -9196,6 +9215,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
+                    Return(Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -9430,6 +9450,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
+                    Return(Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -9664,6 +9685,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
+                    Return(Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -9898,6 +9920,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
+                    Return(Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -10132,6 +10155,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
+                    Return(Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -14537,6 +14561,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 {
                     PS0X ()
                 }
+                Return(Zero)
             }
 
             Method (_PS3, 0, Serialized)  // _PS3: Power State 3
@@ -14550,6 +14575,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 {
                     PS3X ()
                 }
+                Return(Zero)
             }
 
             Method (CUID, 1, Serialized)
@@ -14577,6 +14603,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         CSD0 (0x16)
                         PS0X ()
                     }
+                    Return(Zero)
                 }
 
                 Method (_PS2, 0, Serialized)  // _PS2: Power State 2
@@ -14591,6 +14618,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         PS2X ()
                         CSD3 (0x16)
                     }
+                    Return(Zero)
                 }
 
                 Method (_PS3, 0, Serialized)  // _PS3: Power State 3
@@ -14605,6 +14633,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         PS3X ()
                         CSD3 (0x16)
                     }
+                    Return(Zero)
                 }
 
                 Device (HS01)
@@ -15017,6 +15046,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     PS3X ()
                     CSD3 (0x17)
                 }
+                Return(Zero)
             }
 
             Method (_PS0, 0, Serialized)  // _PS0: Power State 0
@@ -15051,6 +15081,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     PS0X ()
                     CSD0 (0x17)
                 }
+                Return(Zero)
             }
 
             Method (_RMV, 0, NotSerialized)  // _RMV: Removal Status
@@ -15560,6 +15591,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                          0x00                                           
                     })
                 }
+                Return(Zero)
             }
 
             Method (_PS0, 0, Serialized)  // _PS0: Power State 0
@@ -16552,6 +16584,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                     ADBG (Concatenate ("CNRSe ", ToDecimalString (Timer)))
                 }
+                Return(Zero)
             }
 
             Method (RDCA, 5, Serialized)
@@ -37606,6 +37639,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 {
                     Return (PDAT)
                 }
+                Return(Zero)
             }
 
             Method (_WED, 1, NotSerialized)  // _Wxx: Wake Event
@@ -37779,6 +37813,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     Notify (WFDE, 0xD0)
                     Return (PDAT)
                 }
+                Return(Zero)
             }
 
             Name (WQCC, Buffer (0x02F1)
@@ -54003,6 +54038,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Store (0x1C, CADR)
                         Return (Zero)
                     }
+                    Return(Zero)
                 }
 
                 Method (_CRS, 0, NotSerialized)  // _CRS: Current Resource Settings
@@ -54058,6 +54094,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Store (0x1C, CADR)
                         Return (Zero)
                     }
+                    Return(Zero)
                 }
 
                 Method (_CRS, 0, NotSerialized)  // _CRS: Current Resource Settings
@@ -54113,6 +54150,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Store (0x1C, CADR)
                         Return (Zero)
                     }
+                    Return(Zero)
                 }
 
                 Method (_CRS, 0, NotSerialized)  // _CRS: Current Resource Settings
@@ -54168,6 +54206,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Store (0x1C, CADR)
                         Return (Zero)
                     }
+                    Return(Zero)
                 }
 
                 Method (_CRS, 0, NotSerialized)  // _CRS: Current Resource Settings
@@ -54223,6 +54262,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Store (0x1C, CADR)
                         Return (Zero)
                     }
+                    Return(Zero)
                 }
 
                 Method (_CRS, 0, NotSerialized)  // _CRS: Current Resource Settings
@@ -54278,6 +54318,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Store (0x1C, CADR)
                         Return (Zero)
                     }
+                    Return(Zero)
                 }
 
                 Method (_CRS, 0, NotSerialized)  // _CRS: Current Resource Settings
@@ -62398,6 +62439,7 @@ Else
                     Notify (PEGP, DSTA)
                 }
             }
+            Return(Zero)
         }
 
         Method (NVPW, 1, Serialized)
