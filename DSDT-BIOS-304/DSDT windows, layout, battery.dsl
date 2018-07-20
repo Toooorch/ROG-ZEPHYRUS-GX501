@@ -13799,6 +13799,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             }
 
             Store (Zero, DO30)
+            Return (Zero) 
         }
 
         Method (THDH, 1, Serialized)
@@ -15709,6 +15710,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     }
 
                     NVD3 ()
+                    Return (Zero) 
                 }
 
                 Method (_PS0, 0, Serialized)  // _PS0: Power State 0
@@ -15720,6 +15722,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     }
 
                     NVD0 ()
+                    Return (Zero) 
                 }
 
                 Method (RL23, 0, NotSerialized)
@@ -15788,6 +15791,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     Sleep (0x64)
                     Store (Zero, ID3C)
                     ADBG (Concatenate ("RPONe: ", ToHexString (_ADR)))
+                    Return (Zero) 
                 }
 
                 Method (RPOF, 0, Serialized)
@@ -15808,6 +15812,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     RL23 ()
                     RSOF (NRPN)
                     Store (One, ID3C)
+                    Return (Zero) 
                 }
 
                 Method (SAVC, 0, Serialized)
@@ -15959,6 +15964,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     }
 
                     ADBG (Concatenate ("CNRSe ", ToDecimalString (Timer)))
+                    Return (Zero) 
                 }
             }
 
@@ -16021,6 +16027,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     }
 
                     NVD3 ()
+                    Return (Zero)
                 }
 
                 Method (_PS0, 0, Serialized)  // _PS0: Power State 0
@@ -16032,6 +16039,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     }
 
                     NVD0 ()
+                    Return (Zero)
                 }
 
                 Method (RL23, 0, NotSerialized)
@@ -16100,6 +16108,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     Sleep (0x64)
                     Store (Zero, ID3C)
                     ADBG (Concatenate ("RPONe: ", ToHexString (_ADR)))
+                    Return (Zero)
                 }
 
                 Method (RPOF, 0, Serialized)
@@ -16120,6 +16129,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     RL23 ()
                     RSOF (NRPN)
                     Store (One, ID3C)
+                    Return (Zero)
                 }
 
                 Method (SAVC, 0, Serialized)
@@ -16271,6 +16281,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     }
 
                     ADBG (Concatenate ("CNRSe ", ToDecimalString (Timer)))
+                    Return (Zero)
                 }
             }
 
@@ -16333,6 +16344,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     }
 
                     NVD3 ()
+                    Return (Zero)
                 }
 
                 Method (_PS0, 0, Serialized)  // _PS0: Power State 0
@@ -16344,6 +16356,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     }
 
                     NVD0 ()
+                    Return (Zero)
                 }
 
                 Method (RL23, 0, NotSerialized)
@@ -16412,6 +16425,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     Sleep (0x64)
                     Store (Zero, ID3C)
                     ADBG (Concatenate ("RPONe: ", ToHexString (_ADR)))
+                    Return (Zero)
                 }
 
                 Method (RPOF, 0, Serialized)
@@ -16432,6 +16446,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     RL23 ()
                     RSOF (NRPN)
                     Store (One, ID3C)
+                    Return (Zero)
                 }
 
                 Method (SAVC, 0, Serialized)
@@ -16583,6 +16598,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     }
 
                     ADBG (Concatenate ("CNRSe ", ToDecimalString (Timer)))
+                    Return (Zero)
                 }
                 Return(Zero)
             }
