@@ -12393,7 +12393,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (CLKC, 2, Serialized)
         {
-            Switch (Arg0)
+            Switch (ToInteger (Arg0))
             {
                 Case (Zero)
                 {
@@ -12411,7 +12411,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (CLKF, 2, Serialized)
         {
-            Switch (Arg0)
+            Switch (ToInteger (Arg0))
             {
                 Case (Zero)
                 {
@@ -16653,7 +16653,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
             Method (D3CS, 1, Serialized)
             {
-                Switch (Arg0)
+                Switch (ToInteger (Arg0))
                 {
                     Case (0x04)
                     {
@@ -16733,7 +16733,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
             Method (RSON, 1, Serialized)
             {
-                Switch (Arg0)
+                Switch (ToInteger (Arg0))
                 {
                     Case (0x04)
                     {
@@ -16811,7 +16811,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
             Method (RSOF, 1, Serialized)
             {
-                Switch (Arg0)
+                Switch (ToInteger (Arg0))
                 {
                     Case (0x04)
                     {
@@ -17072,7 +17072,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
             Method (D3AS, 3, Serialized)
             {
-                Switch (Arg1)
+                Switch (ToInteger (Arg1))
                 {
                     Case (Zero)
                     {
@@ -18470,7 +18470,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                             }
                             Case (0x09)
                             {
-                                Switch (EMDS)
+                                Switch (ToInteger (EMDS))
                                 {
                                     Case (Zero)
                                     {
@@ -20098,6 +20098,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             Else
             {
                 Store (Zero, Local0)
+                And (Local0, Ones, Local0)
                 Return (Zero)
             }
 
@@ -21398,6 +21399,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
         {
             Store (One, TBPE)
             Store (0x03E8, OSYS)
+            And (Local0, Ones, Local0)
             If (CondRefOf (\_OSI, Local0))
             {
                 If (_OSI ("Windows 2001"))
@@ -56677,6 +56679,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         }
                         Else
                         {
+                            And (Local2, Ones, Local2)
                             And (Local1, 0xFD, Local1)
                             And (Local1, 0x0F, Local2)
                             ^^PCI0.LPCB.EC0.STA9 (Zero, Local1)
@@ -59031,7 +59034,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
         {
             If (ECAV ())
             {
-                Switch (Arg0)
+                Switch (ToInteger (Arg0))
                 {
                     Case (Zero)
                     {
@@ -59184,6 +59187,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 ShiftLeft (Local0, 0x08, Local0)
                 Add (Local0, Local1, Local0)
                 Multiply (Local0, 0x03E8, Local1)
+                And (Local2, Ones, Local2)
                 Divide (Local1, ALSA, Local2, Local3)
                 Return (Local3)
             }
@@ -59927,6 +59931,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (_QD9, 0, NotSerialized)  // _Qxx: EC Query
         {
+            And (Local1, Ones, Local1)
             Store (STCC (Zero, 0x14), Local0)
             Store (STCC (Zero, 0x27), Local1)
             If (LIDF)
