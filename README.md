@@ -1,8 +1,8 @@
 # Asus ROG Zephyrus GX501 (8th Gen CPUs)
 Files for ROG Zephyrus GX501 hack
 
-Current Clover: Clover_v2.4k_r4586
-Current macOS: macOS 10.13.6
+Current Clover: **Clover_v2.4k_r4617**
+Current macOS: **macOS 10.13.6**
 
 Hardware:
 - i7 8750H
