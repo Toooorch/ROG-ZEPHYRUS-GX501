@@ -199,26 +199,12 @@
 					RUNfXw==
 					</data>
 				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>change MEI to IMEI</string>
-					<key>Disabled</key>
-					<false/>
-					<key>Find</key>
-					<data>
-					TUVJXw==
-					</data>
-					<key>Replace</key>
-					<data>
-					SU1FSQ==
-					</data>
-				</dict>
 			</array>
 			<key>ReuseFFFF</key>
 			<false/>
 		</dict>
 		<key>DisableASPM</key>
-		<false/>
+		<true/>
 		<key>DropTables</key>
 		<array>
 			<dict>
@@ -229,9 +215,14 @@
 		<key>FixHeaders</key>
 		<true/>
 		<key>FixMCFG</key>
-		<false/>
+		<true/>
 		<key>HaltEnabler</key>
-		<false/>
+		<true/>
+		<key>RenameDevices</key>
+		<dict>
+			<key>#_SB.PCI0.RP01.PXSX</key>
+			<string>ARPT</string>
+		</dict>
 		<key>SSDT</key>
 		<dict>
 			<key>#C3Latency</key>
@@ -1327,48 +1318,8 @@
 		<true/>
 		<key>#Version</key>
 		<string>1.0</string>
-		<key>BiosReleaseDate</key>
-		<string>06/26/2018</string>
-		<key>BiosVendor</key>
-		<string>Apple Inc.</string>
-		<key>BiosVersion</key>
-		<string>MBP152.88Z.0178.B00.1806260902</string>
-		<key>Board-ID</key>
-		<string>Mac-827FB448E656EC26</string>
-		<key>BoardManufacturer</key>
-		<string>Apple Inc.</string>
-		<key>BoardSerialNumber</key>
-		<string>C028101004NF503A8</string>
-		<key>BoardType</key>
-		<integer>10</integer>
-		<key>BoardVersion</key>
-		<string>1.0</string>
-		<key>ChassisAssetTag</key>
-		<string>MacBook-Aluminum</string>
-		<key>ChassisManufacturer</key>
-		<string>Apple Inc.</string>
-		<key>ChassisType</key>
-		<string>0x09</string>
-		<key>Family</key>
-		<string>MacBook Pro</string>
-		<key>FirmwareFeatures</key>
-		<string>0xFC0FE137</string>
-		<key>FirmwareFeaturesMask</key>
-		<string>0xFF1FFF3F</string>
-		<key>LocationInChassis</key>
-		<string>Part Component</string>
 		<key>Manufacturer</key>
 		<string>Apple Inc.</string>
-		<key>Mobile</key>
-		<true/>
-		<key>PlatformFeature</key>
-		<string>0x1A</string>
-		<key>ProductName</key>
-		<string>MacBookPro15,2</string>
-		<key>SerialNumber</key>
-		<string>C02WDS59KGYG</string>
-		<key>Version</key>
-		<string>1.0</string>
 	</dict>
 	<key>SystemParameters</key>
 	<dict>
