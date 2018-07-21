@@ -1,17 +1,17 @@
 /*
  * Intel ACPI Component Architecture
- * AML/ASL+ Disassembler version 20180427 (64-bit version)(RM)
- * Copyright (c) 2000 - 2018 Intel Corporation
+ * AML/ASL+ Disassembler version 20161210-64(RM)
+ * Copyright (c) 2000 - 2016 Intel Corporation
  * 
  * Disassembling to non-symbolic legacy ASL operators
  *
- * Disassembly of SSDT-2.aml, Sat Jul 21 02:40:31 2018
+ * Disassembly of SSDT-2.aml, Sat Jul 21 18:24:46 2018
  *
  * Original Table Header:
  *     Signature        "SSDT"
  *     Length           0x000017D5 (6101)
  *     Revision         0x02
- *     Checksum         0x9D
+ *     Checksum         0x0D
  *     OEM ID           "CpuRef"
  *     OEM Table ID     "CpuSsdt"
  *     OEM Revision     0x00003000 (12288)
@@ -44,25 +44,25 @@ DefinitionBlock ("", "SSDT", 2, "CpuRef", "CpuSsdt", 0x00003000)
         Name (SSDT, Package (0x15)
         {
             "CPU0IST ", 
-            0x7EB96298, 
+            0x7EB95298, 
             0x000005BE, 
             "APIST   ", 
-            0x7EB8E018, 
+            0x7EB8D018, 
             0x00000EF1, 
             "CPU0CST ", 
-            0x7EB8D018, 
+            0x7EB8C018, 
             0x00000400, 
             "APCST   ", 
-            0x7EB8FA98, 
+            0x7EB8EA98, 
             0x0000030A, 
             "CPU0HWP ", 
-            0x7EB96918, 
+            0x7EB95918, 
             0x0000010A, 
             "APHWP   ", 
-            0x7EB8D698, 
+            0x7EB8C698, 
             0x00000317, 
             "HWPLVT  ", 
-            0x7EB8F018, 
+            0x7EB8E018, 
             0x00000724
         })
         Name (\PC00, 0x80000000)

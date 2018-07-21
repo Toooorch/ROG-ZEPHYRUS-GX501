@@ -1,11 +1,11 @@
 /*
  * Intel ACPI Component Architecture
- * AML/ASL+ Disassembler version 20180427 (64-bit version)(RM)
- * Copyright (c) 2000 - 2018 Intel Corporation
+ * AML/ASL+ Disassembler version 20161210-64(RM)
+ * Copyright (c) 2000 - 2016 Intel Corporation
  * 
  * Disassembling to non-symbolic legacy ASL operators
  *
- * Disassembly of SSDT-0.aml, Sat Jul 21 02:40:31 2018
+ * Disassembly of SSDT-0.aml, Sat Jul 21 18:24:46 2018
  *
  * Original Table Header:
  *     Signature        "SSDT"
@@ -46,7 +46,7 @@ DefinitionBlock ("", "SSDT", 1, "SataRe", "SataTabl", 0x00001000)
         {
              0xC1, 0x00, 0x00, 0x00, 0x00, 0x00, 0xB1       
         })
-        Name (SCBF, Buffer (0x15){})
+        Name (SCBF, Buffer (0x15) {})
         Name (CMDC, Zero)
         Method (GTFB, 2, Serialized)
         {
@@ -62,7 +62,7 @@ DefinitionBlock ("", "SSDT", 1, "SataRe", "SataTabl", 0x00001000)
 
     Scope (\_SB.PCI0.SAT0)
     {
-        Name (TMD0, Buffer (0x14){})
+        Name (TMD0, Buffer (0x14) {})
         CreateDWordField (TMD0, Zero, PIO0)
         CreateDWordField (TMD0, 0x04, DMA0)
         CreateDWordField (TMD0, 0x08, PIO1)

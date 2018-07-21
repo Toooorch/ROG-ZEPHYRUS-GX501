@@ -1,11 +1,11 @@
 /*
  * Intel ACPI Component Architecture
- * AML/ASL+ Disassembler version 20180427 (64-bit version)(RM)
- * Copyright (c) 2000 - 2018 Intel Corporation
+ * AML/ASL+ Disassembler version 20161210-64(RM)
+ * Copyright (c) 2000 - 2016 Intel Corporation
  * 
  * Disassembling to non-symbolic legacy ASL operators
  *
- * Disassembly of SSDT-5.aml, Sat Jul 21 02:40:31 2018
+ * Disassembly of SSDT-5.aml, Sat Jul 21 18:24:46 2018
  *
  * Original Table Header:
  *     Signature        "SSDT"
@@ -168,11 +168,13 @@ DefinitionBlock ("", "SSDT", 2, "PegSsd", "PegSsdt", 0x00001000)
         })
         Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (LEqual (Arg0, ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
             {
-                Switch (ToInteger (Arg2))
+                While (One)
                 {
-                    Case (Zero)
+                    Store (ToInteger (Arg2), _T_0)
+                    If (LEqual (_T_0, Zero))
                     {
                         Store (Zero, Local0)
                         If (LGreaterEqual (Arg1, 0x02))
@@ -208,7 +210,7 @@ DefinitionBlock ("", "SSDT", 2, "PegSsd", "PegSsdt", 0x00001000)
 
                         Return (Local0)
                     }
-                    Case (0x04)
+                    ElseIf (LEqual (_T_0, 0x04))
                     {
                         If (LGreaterEqual (Arg1, 0x02))
                         {
@@ -230,7 +232,7 @@ DefinitionBlock ("", "SSDT", 2, "PegSsd", "PegSsdt", 0x00001000)
                             }
                         }
                     }
-                    Case (0x06)
+                    ElseIf (LEqual (_T_0, 0x06))
                     {
                         If (LGreaterEqual (Arg1, 0x02))
                         {
@@ -248,7 +250,7 @@ DefinitionBlock ("", "SSDT", 2, "PegSsd", "PegSsdt", 0x00001000)
                             }
                         }
                     }
-                    Case (0x08)
+                    ElseIf (LEqual (_T_0, 0x08))
                     {
                         If (LEqual (ECR1, One))
                         {
@@ -258,7 +260,7 @@ DefinitionBlock ("", "SSDT", 2, "PegSsd", "PegSsdt", 0x00001000)
                             }
                         }
                     }
-                    Case (0x09)
+                    ElseIf (LEqual (_T_0, 0x09))
                     {
                         If (LEqual (ECR1, One))
                         {
@@ -276,6 +278,7 @@ DefinitionBlock ("", "SSDT", 2, "PegSsd", "PegSsdt", 0x00001000)
                         }
                     }
 
+                    Break
                 }
             }
 
@@ -377,11 +380,13 @@ DefinitionBlock ("", "SSDT", 2, "PegSsd", "PegSsdt", 0x00001000)
         })
         Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (LEqual (Arg0, ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
             {
-                Switch (ToInteger (Arg2))
+                While (One)
                 {
-                    Case (Zero)
+                    Store (ToInteger (Arg2), _T_0)
+                    If (LEqual (_T_0, Zero))
                     {
                         Store (Zero, Local0)
                         If (LGreaterEqual (Arg1, 0x02))
@@ -417,7 +422,7 @@ DefinitionBlock ("", "SSDT", 2, "PegSsd", "PegSsdt", 0x00001000)
 
                         Return (Local0)
                     }
-                    Case (0x04)
+                    ElseIf (LEqual (_T_0, 0x04))
                     {
                         If (LGreaterEqual (Arg1, 0x02))
                         {
@@ -439,7 +444,7 @@ DefinitionBlock ("", "SSDT", 2, "PegSsd", "PegSsdt", 0x00001000)
                             }
                         }
                     }
-                    Case (0x06)
+                    ElseIf (LEqual (_T_0, 0x06))
                     {
                         If (LGreaterEqual (Arg1, 0x02))
                         {
@@ -457,7 +462,7 @@ DefinitionBlock ("", "SSDT", 2, "PegSsd", "PegSsdt", 0x00001000)
                             }
                         }
                     }
-                    Case (0x08)
+                    ElseIf (LEqual (_T_0, 0x08))
                     {
                         If (LEqual (ECR1, One))
                         {
@@ -467,7 +472,7 @@ DefinitionBlock ("", "SSDT", 2, "PegSsd", "PegSsdt", 0x00001000)
                             }
                         }
                     }
-                    Case (0x09)
+                    ElseIf (LEqual (_T_0, 0x09))
                     {
                         If (LEqual (ECR1, One))
                         {
@@ -485,6 +490,7 @@ DefinitionBlock ("", "SSDT", 2, "PegSsd", "PegSsdt", 0x00001000)
                         }
                     }
 
+                    Break
                 }
             }
 
@@ -585,11 +591,13 @@ DefinitionBlock ("", "SSDT", 2, "PegSsd", "PegSsdt", 0x00001000)
         })
         Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (LEqual (Arg0, ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
             {
-                Switch (ToInteger (Arg2))
+                While (One)
                 {
-                    Case (Zero)
+                    Store (ToInteger (Arg2), _T_0)
+                    If (LEqual (_T_0, Zero))
                     {
                         Store (Zero, Local0)
                         If (LGreaterEqual (Arg1, 0x02))
@@ -625,7 +633,7 @@ DefinitionBlock ("", "SSDT", 2, "PegSsd", "PegSsdt", 0x00001000)
 
                         Return (Local0)
                     }
-                    Case (0x04)
+                    ElseIf (LEqual (_T_0, 0x04))
                     {
                         If (LGreaterEqual (Arg1, 0x02))
                         {
@@ -647,7 +655,7 @@ DefinitionBlock ("", "SSDT", 2, "PegSsd", "PegSsdt", 0x00001000)
                             }
                         }
                     }
-                    Case (0x06)
+                    ElseIf (LEqual (_T_0, 0x06))
                     {
                         If (LGreaterEqual (Arg1, 0x02))
                         {
@@ -665,7 +673,7 @@ DefinitionBlock ("", "SSDT", 2, "PegSsd", "PegSsdt", 0x00001000)
                             }
                         }
                     }
-                    Case (0x08)
+                    ElseIf (LEqual (_T_0, 0x08))
                     {
                         If (LEqual (ECR1, One))
                         {
@@ -675,7 +683,7 @@ DefinitionBlock ("", "SSDT", 2, "PegSsd", "PegSsdt", 0x00001000)
                             }
                         }
                     }
-                    Case (0x09)
+                    ElseIf (LEqual (_T_0, 0x09))
                     {
                         If (LEqual (ECR1, One))
                         {
@@ -693,6 +701,7 @@ DefinitionBlock ("", "SSDT", 2, "PegSsd", "PegSsdt", 0x00001000)
                         }
                     }
 
+                    Break
                 }
             }
 
@@ -1364,7 +1373,7 @@ DefinitionBlock ("", "SSDT", 2, "PegSsd", "PegSsdt", 0x00001000)
             {
                 While (LLessEqual (INDX, CBDL))
                 {
-                    If (LEqual (P0VI, IVID)){}
+                    If (LEqual (P0VI, IVID)) {}
                     ElseIf (LNotEqual (P0VI, IVID))
                     {
                         If (LEqual (FBDL, Zero))
@@ -1519,7 +1528,7 @@ DefinitionBlock ("", "SSDT", 2, "PegSsd", "PegSsdt", 0x00001000)
             Store (One, INDX)
             While (LLessEqual (INDX, CBDL))
             {
-                If (LEqual (P0VI, IVID)){}
+                If (LEqual (P0VI, IVID)) {}
                 ElseIf (LNotEqual (P0VI, IVID))
                 {
                     If (LEqual (FBDL, Zero))

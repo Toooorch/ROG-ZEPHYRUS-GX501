@@ -1,11 +1,11 @@
 /*
  * Intel ACPI Component Architecture
- * AML/ASL+ Disassembler version 20180427 (64-bit version)(RM)
- * Copyright (c) 2000 - 2018 Intel Corporation
+ * AML/ASL+ Disassembler version 20161210-64(RM)
+ * Copyright (c) 2000 - 2016 Intel Corporation
  * 
  * Disassembling to non-symbolic legacy ASL operators
  *
- * Disassembly of SSDT-x2_2.aml, Sat Jul 21 02:40:32 2018
+ * Disassembly of SSDT-x2_2.aml, Sat Jul 21 18:24:47 2018
  *
  * Original Table Header:
  *     Signature        "SSDT"
@@ -30,7 +30,7 @@ DefinitionBlock ("", "SSDT", 2, "PmRef", "Cpu0Cst", 0x00003001)
     External (_SB_.CDLV, FieldUnitObj)
     External (_SB_.CDMW, FieldUnitObj)
     External (_SB_.CDPW, FieldUnitObj)
-    External (_SB_.CFGD, UnknownObj)    // Warning: Unknown object
+    External (_SB_.CFGD, FieldUnitObj)
     External (_SB_.PR00, DeviceObj)    // (from opcode)
     External (C3LT, UnknownObj)    // (from opcode)
     External (C3MW, UnknownObj)    // (from opcode)
@@ -140,20 +140,20 @@ DefinitionBlock ("", "SSDT", 2, "PmRef", "Cpu0Cst", 0x00003001)
         Name (C3ST, Package (0x04)
         {
             0x03, 
-            Package (0x00){}, 
-            Package (0x00){}, 
-            Package (0x00){}
+            Package (0x00) {}, 
+            Package (0x00) {}, 
+            Package (0x00) {}
         })
         Name (C2ST, Package (0x03)
         {
             0x02, 
-            Package (0x00){}, 
-            Package (0x00){}
+            Package (0x00) {}, 
+            Package (0x00) {}
         })
         Name (C1ST, Package (0x02)
         {
             One, 
-            Package (0x00){}
+            Package (0x00) {}
         })
         Name (CSTF, Zero)
         Method (_CST, 0, Serialized)  // _CST: C-States

@@ -1,11 +1,11 @@
 /*
  * Intel ACPI Component Architecture
- * AML/ASL+ Disassembler version 20180427 (64-bit version)(RM)
- * Copyright (c) 2000 - 2018 Intel Corporation
+ * AML/ASL+ Disassembler version 20161210-64(RM)
+ * Copyright (c) 2000 - 2016 Intel Corporation
  * 
  * Disassembling to non-symbolic legacy ASL operators
  *
- * Disassembly of SSDT-x2_6.aml, Sat Jul 21 02:40:32 2018
+ * Disassembly of SSDT-x2_6.aml, Sat Jul 21 18:24:47 2018
  *
  * Original Table Header:
  *     Signature        "SSDT"
@@ -44,15 +44,17 @@ DefinitionBlock ("", "SSDT", 2, "PmRef", "HwpLvt", 0x00003000)
     {
         Method (HLVT, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             Name (NTVL, 0x83)
             If (LAnd (And (\_SB.CFGD, 0x02000000), And (\_SB.OSCP, 0x1000)))
             {
                 Store (0x85, NTVL)
             }
 
-            Switch (ToInteger (TCNT))
+            While (One)
             {
-                Case (0x10)
+                Store (ToInteger (TCNT), _T_0)
+                If (LEqual (_T_0, 0x10))
                 {
                     Notify (\_SB.PR00, NTVL)
                     Notify (\_SB.PR01, NTVL)
@@ -71,7 +73,7 @@ DefinitionBlock ("", "SSDT", 2, "PmRef", "HwpLvt", 0x00003000)
                     Notify (\_SB.PR14, NTVL)
                     Notify (\_SB.PR15, NTVL)
                 }
-                Case (0x0E)
+                ElseIf (LEqual (_T_0, 0x0E))
                 {
                     Notify (\_SB.PR00, NTVL)
                     Notify (\_SB.PR01, NTVL)
@@ -88,7 +90,7 @@ DefinitionBlock ("", "SSDT", 2, "PmRef", "HwpLvt", 0x00003000)
                     Notify (\_SB.PR12, NTVL)
                     Notify (\_SB.PR13, NTVL)
                 }
-                Case (0x0C)
+                ElseIf (LEqual (_T_0, 0x0C))
                 {
                     Notify (\_SB.PR00, NTVL)
                     Notify (\_SB.PR01, NTVL)
@@ -103,7 +105,7 @@ DefinitionBlock ("", "SSDT", 2, "PmRef", "HwpLvt", 0x00003000)
                     Notify (\_SB.PR10, NTVL)
                     Notify (\_SB.PR11, NTVL)
                 }
-                Case (0x0A)
+                ElseIf (LEqual (_T_0, 0x0A))
                 {
                     Notify (\_SB.PR00, NTVL)
                     Notify (\_SB.PR01, NTVL)
@@ -116,7 +118,7 @@ DefinitionBlock ("", "SSDT", 2, "PmRef", "HwpLvt", 0x00003000)
                     Notify (\_SB.PR08, NTVL)
                     Notify (\_SB.PR09, NTVL)
                 }
-                Case (0x08)
+                ElseIf (LEqual (_T_0, 0x08))
                 {
                     Notify (\_SB.PR00, NTVL)
                     Notify (\_SB.PR01, NTVL)
@@ -127,7 +129,7 @@ DefinitionBlock ("", "SSDT", 2, "PmRef", "HwpLvt", 0x00003000)
                     Notify (\_SB.PR06, NTVL)
                     Notify (\_SB.PR07, NTVL)
                 }
-                Case (0x07)
+                ElseIf (LEqual (_T_0, 0x07))
                 {
                     Notify (\_SB.PR00, NTVL)
                     Notify (\_SB.PR01, NTVL)
@@ -137,7 +139,7 @@ DefinitionBlock ("", "SSDT", 2, "PmRef", "HwpLvt", 0x00003000)
                     Notify (\_SB.PR05, NTVL)
                     Notify (\_SB.PR06, NTVL)
                 }
-                Case (0x06)
+                ElseIf (LEqual (_T_0, 0x06))
                 {
                     Notify (\_SB.PR00, NTVL)
                     Notify (\_SB.PR01, NTVL)
@@ -146,7 +148,7 @@ DefinitionBlock ("", "SSDT", 2, "PmRef", "HwpLvt", 0x00003000)
                     Notify (\_SB.PR04, NTVL)
                     Notify (\_SB.PR05, NTVL)
                 }
-                Case (0x05)
+                ElseIf (LEqual (_T_0, 0x05))
                 {
                     Notify (\_SB.PR00, NTVL)
                     Notify (\_SB.PR01, NTVL)
@@ -154,29 +156,30 @@ DefinitionBlock ("", "SSDT", 2, "PmRef", "HwpLvt", 0x00003000)
                     Notify (\_SB.PR03, NTVL)
                     Notify (\_SB.PR04, NTVL)
                 }
-                Case (0x04)
+                ElseIf (LEqual (_T_0, 0x04))
                 {
                     Notify (\_SB.PR00, NTVL)
                     Notify (\_SB.PR01, NTVL)
                     Notify (\_SB.PR02, NTVL)
                     Notify (\_SB.PR03, NTVL)
                 }
-                Case (0x03)
+                ElseIf (LEqual (_T_0, 0x03))
                 {
                     Notify (\_SB.PR00, NTVL)
                     Notify (\_SB.PR01, NTVL)
                     Notify (\_SB.PR02, NTVL)
                 }
-                Case (0x02)
+                ElseIf (LEqual (_T_0, 0x02))
                 {
                     Notify (\_SB.PR00, NTVL)
                     Notify (\_SB.PR01, NTVL)
                 }
-                Default
+                Else
                 {
                     Notify (\_SB.PR00, NTVL)
                 }
 
+                Break
             }
         }
     }

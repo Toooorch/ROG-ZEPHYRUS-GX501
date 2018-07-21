@@ -1,11 +1,11 @@
 /*
  * Intel ACPI Component Architecture
- * AML/ASL+ Disassembler version 20180427 (64-bit version)(RM)
- * Copyright (c) 2000 - 2018 Intel Corporation
+ * AML/ASL+ Disassembler version 20161210-64(RM)
+ * Copyright (c) 2000 - 2016 Intel Corporation
  * 
  * Disassembling to non-symbolic legacy ASL operators
  *
- * Disassembly of SSDT-6.aml, Sat Jul 21 02:40:31 2018
+ * Disassembly of SSDT-6.aml, Sat Jul 21 18:24:46 2018
  *
  * Original Table Header:
  *     Signature        "SSDT"
@@ -495,7 +495,7 @@ DefinitionBlock ("", "SSDT", 2, "INTEL ", "PtidDevc", 0x00001000)
                     Return (OSD1)
                 }
 
-                Return (Package (0x00){})
+                Return (Package (0x00) {})
             }
 
             Method (SDSP, 0, NotSerialized)
@@ -541,7 +541,7 @@ DefinitionBlock ("", "SSDT", 2, "INTEL ", "PtidDevc", 0x00001000)
 
             Method (RPMD, 0, Serialized)
             {
-                Name (MTMP, Buffer (0x1A){})
+                Name (MTMP, Buffer (0x1A) {})
                 If (LEqual (\_SB.PCI0.LPCB.H_EC.ECAV, One))
                 {
                     Store (\_SB.PCI0.LPCB.H_EC.ECRD (RefOf (\_SB.PCI0.LPCB.H_EC.PCAD)), Index (MTMP, 0x06))

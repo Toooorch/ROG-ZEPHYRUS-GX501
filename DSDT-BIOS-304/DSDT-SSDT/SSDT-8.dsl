@@ -1,11 +1,11 @@
 /*
  * Intel ACPI Component Architecture
- * AML/ASL+ Disassembler version 20180427 (64-bit version)(RM)
- * Copyright (c) 2000 - 2018 Intel Corporation
+ * AML/ASL+ Disassembler version 20161210-64(RM)
+ * Copyright (c) 2000 - 2016 Intel Corporation
  * 
  * Disassembling to non-symbolic legacy ASL operators
  *
- * Disassembly of SSDT-8.aml, Sat Jul 21 02:40:31 2018
+ * Disassembly of SSDT-8.aml, Sat Jul 21 18:24:47 2018
  *
  * Original Table Header:
  *     Signature        "SSDT"
@@ -253,21 +253,23 @@ DefinitionBlock ("", "SSDT", 1, "OemRef", "OemNvT", 0x00001000)
 
         Method (NVJT, 4, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (LLess (Arg1, 0x0100))
             {
                 Return (0x80000001)
             }
 
-            Switch (ToInteger (Arg2))
+            While (One)
             {
-                Case (Zero)
+                Store (ToInteger (Arg2), _T_0)
+                If (LEqual (_T_0, Zero))
                 {
                     Return (Buffer (0x04)
                     {
                          0x7F, 0x00, 0x00, 0x00                         
                     })
                 }
-                Case (One)
+                ElseIf (LEqual (_T_0, One))
                 {
                     Name (JTCA, Buffer (0x04)
                     {
@@ -305,11 +307,11 @@ DefinitionBlock ("", "SSDT", 1, "OemRef", "OemNvT", 0x00001000)
                     Store (0x0103, JTRV)
                     Return (JTCA)
                 }
-                Case (0x02)
+                ElseIf (LEqual (_T_0, 0x02))
                 {
                     Return (0x80000002)
                 }
-                Case (0x03)
+                ElseIf (LEqual (_T_0, 0x03))
                 {
                     CreateField (Arg3, Zero, 0x03, GUPC)
                     CreateField (Arg3, 0x04, One, PLPC)
@@ -429,7 +431,7 @@ DefinitionBlock ("", "SSDT", 1, "OemRef", "OemNvT", 0x00001000)
 
                     Return (JTPC)
                 }
-                Case (0x04)
+                ElseIf (LEqual (_T_0, 0x04))
                 {
                     Name (JTB4, Buffer (0x04)
                     {
@@ -453,7 +455,7 @@ DefinitionBlock ("", "SSDT", 1, "OemRef", "OemNvT", 0x00001000)
                     ShiftLeft (\_SB.PCI0.PEG0.PEGP.NHDA, 0x02, Local0)
                     Return (Local0)
                 }
-                Case (0x05)
+                ElseIf (LEqual (_T_0, 0x05))
                 {
                     Store ("JT fun5 JT_FUNC_DISPLAYSTATUS", Debug)
                     Store (Zero, Local0)
@@ -461,6 +463,7 @@ DefinitionBlock ("", "SSDT", 1, "OemRef", "OemNvT", 0x00001000)
                     Return (Local0)
                 }
 
+                Break
             }
 
             Return (0x80000002)
@@ -565,7 +568,7 @@ DefinitionBlock ("", "SSDT", 1, "OemRef", "OemNvT", 0x00001000)
     Scope (\_SB.PCI0.PEG0.PEGP)
     {
         Name (PSAP, Zero)
-        Name (GPSP, Buffer (0x24){})
+        Name (GPSP, Buffer (0x24) {})
         CreateDWordField (GPSP, Zero, RETN)
         CreateDWordField (GPSP, 0x04, VRV1)
         CreateDWordField (GPSP, 0x08, TGPU)
@@ -578,6 +581,8 @@ DefinitionBlock ("", "SSDT", 1, "OemRef", "OemNvT", 0x00001000)
         Name (NLIM, Zero)
         Method (GPS, 4, Serialized)
         {
+            Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             Store ("<<< GPS >>>", Debug)
             If (LEqual (\_SB.PCI0.PEG0.PEGP.INIA, Zero))
             {
@@ -589,9 +594,10 @@ DefinitionBlock ("", "SSDT", 1, "OemRef", "OemNvT", 0x00001000)
                 Return (0x80000002)
             }
 
-            Switch (ToInteger (Arg2))
+            While (One)
             {
-                Case (Zero)
+                Store (ToInteger (Arg2), _T_0)
+                If (LEqual (_T_0, Zero))
                 {
                     Store ("GPS fun 0", Debug)
                     Return (Buffer (0x08)
@@ -599,12 +605,12 @@ DefinitionBlock ("", "SSDT", 1, "OemRef", "OemNvT", 0x00001000)
                          0x01, 0x00, 0x08, 0x00, 0x0F, 0x04, 0x00, 0x00 
                     })
                 }
-                Case (0x13)
+                ElseIf (LEqual (_T_0, 0x13))
                 {
                     Store ("GPS fun 19", Debug)
                     Return (Arg3)
                 }
-                Case (0x20)
+                ElseIf (LEqual (_T_0, 0x20))
                 {
                     Store ("GPS fun 32", Debug)
                     Name (RET1, Zero)
@@ -637,12 +643,12 @@ DefinitionBlock ("", "SSDT", 1, "OemRef", "OemNvT", 0x00001000)
 
                     Return (RET1)
                 }
-                Case (0x21)
+                ElseIf (LEqual (_T_0, 0x21))
                 {
                     Store ("GPS fun 21", Debug)
                     Return (\_SB.PR00._PSS)
                 }
-                Case (0x22)
+                ElseIf (LEqual (_T_0, 0x22))
                 {
                     CreateByteField (Arg3, Zero, PCAP)
                     Store (PCAP, \_SB.CPPC)
@@ -650,12 +656,12 @@ DefinitionBlock ("", "SSDT", 1, "OemRef", "OemNvT", 0x00001000)
                     Store (PCAP, PSAP)
                     Return (PCAP)
                 }
-                Case (0x23)
+                ElseIf (LEqual (_T_0, 0x23))
                 {
                     Store ("GPS fun 23", Debug)
                     Return (PSAP)
                 }
-                Case (0x2A)
+                ElseIf (LEqual (_T_0, 0x2A))
                 {
                     Store ("GPS fun 42", Debug)
                     CreateByteField (Arg3, Zero, PSH0)
@@ -668,9 +674,10 @@ DefinitionBlock ("", "SSDT", 1, "OemRef", "OemNvT", 0x00001000)
                     CreateBitField (Arg3, 0x0D, SEN1)
                     CreateBitField (Arg3, 0x0E, SEN2)
                     Store (0x00010000, VRV1)
-                    Switch (PSH0)
+                    While (One)
                     {
-                        Case (Zero)
+                        Store (PSH0, _T_1)
+                        If (LEqual (_T_1, Zero))
                         {
                             If (CPUT)
                             {
@@ -683,14 +690,14 @@ DefinitionBlock ("", "SSDT", 1, "OemRef", "OemNvT", 0x00001000)
 
                             Return (GPSP)
                         }
-                        Case (One)
+                        ElseIf (LEqual (_T_1, One))
                         {
                             Store (0x0300, RETN)
                             Or (RETN, PSH0, RETN)
                             Store (0x03E8, PDTS)
                             Return (GPSP)
                         }
-                        Case (0x02)
+                        ElseIf (LEqual (_T_1, 0x02))
                         {
                             Store (0x0102, RETN)
                             Store (\_SB.PCI0.LPCB.EC0.STCC (Zero, 0x27), TGPU)
@@ -703,11 +710,13 @@ DefinitionBlock ("", "SSDT", 1, "OemRef", "OemNvT", 0x00001000)
                             Return (GPSP)
                         }
 
+                        Break
                     }
 
                     Return (0x80000002)
                 }
 
+                Break
             }
 
             Return (0x80000002)
@@ -1295,8 +1304,8 @@ DefinitionBlock ("", "SSDT", 1, "OemRef", "OemNvT", 0x00001000)
 
         Method (MXDS, 1, Serialized)
         {
-            If (LEqual (Arg0, Zero)){}
-            If (LEqual (Arg0, One)){}
+            If (LEqual (Arg0, Zero)) {}
+            If (LEqual (Arg0, One)) {}
             Return (Zero)
         }
 
@@ -1438,65 +1447,68 @@ DefinitionBlock ("", "SSDT", 1, "OemRef", "OemNvT", 0x00001000)
 
         Method (CTOI, 1, Serialized)
         {
-            Switch (ToInteger (Arg0))
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+            While (One)
             {
-                Case (One)
+                Store (ToInteger (Arg0), _T_0)
+                If (LEqual (_T_0, One))
                 {
                     Return (One)
                 }
-                Case (0x02)
+                ElseIf (LEqual (_T_0, 0x02))
                 {
                     Return (0x02)
                 }
-                Case (0x04)
+                ElseIf (LEqual (_T_0, 0x04))
                 {
                     Return (0x03)
                 }
-                Case (0x08)
+                ElseIf (LEqual (_T_0, 0x08))
                 {
                     Return (0x04)
                 }
-                Case (0x10)
+                ElseIf (LEqual (_T_0, 0x10))
                 {
                     Return (0x05)
                 }
-                Case (0x20)
+                ElseIf (LEqual (_T_0, 0x20))
                 {
                     Return (0x06)
                 }
-                Case (0x40)
+                ElseIf (LEqual (_T_0, 0x40))
                 {
                     Return (0x07)
                 }
-                Case (0x03)
+                ElseIf (LEqual (_T_0, 0x03))
                 {
                     Return (0x08)
                 }
-                Case (0x06)
+                ElseIf (LEqual (_T_0, 0x06))
                 {
                     Return (0x09)
                 }
-                Case (0x0A)
+                ElseIf (LEqual (_T_0, 0x0A))
                 {
                     Return (0x0A)
                 }
-                Case (0x12)
+                ElseIf (LEqual (_T_0, 0x12))
                 {
                     Return (0x0B)
                 }
-                Case (0x22)
+                ElseIf (LEqual (_T_0, 0x22))
                 {
                     Return (0x0C)
                 }
-                Case (0x42)
+                ElseIf (LEqual (_T_0, 0x42))
                 {
                     Return (0x0D)
                 }
-                Default
+                Else
                 {
                     Return (One)
                 }
 
+                Break
             }
         }
     }

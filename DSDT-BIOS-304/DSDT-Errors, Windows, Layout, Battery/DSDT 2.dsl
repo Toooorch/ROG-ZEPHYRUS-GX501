@@ -1,17 +1,17 @@
 /*
  * Intel ACPI Component Architecture
- * AML/ASL+ Disassembler version 20180427 (64-bit version)(RM)
- * Copyright (c) 2000 - 2018 Intel Corporation
+ * AML/ASL+ Disassembler version 20161210-64(RM)
+ * Copyright (c) 2000 - 2016 Intel Corporation
  * 
  * Disassembling to non-symbolic legacy ASL operators
  *
- * Disassembly of DSDT.aml, Sat Jul 21 02:40:31 2018
+ * Disassembly of DSDT.aml, Sat Jul 21 18:24:46 2018
  *
  * Original Table Header:
  *     Signature        "DSDT"
  *     Length           0x000438BA (276666)
  *     Revision         0x02
- *     Checksum         0xA0
+ *     Checksum         0xF0
  *     OEM ID           "_ASUS_"
  *     OEM Table ID     "Notebook"
  *     OEM Revision     0x01072009 (17244169)
@@ -20,6 +20,26 @@
  */
 DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 {
+    /*
+     * iASL Warning: There were 98 external control methods found during
+     * disassembly, but only 92 were resolved (6 unresolved). Additional
+     * ACPI tables may be required to properly disassemble the code. This
+     * resulting disassembler output file may not compile because the
+     * disassembler did not know how many arguments to assign to the
+     * unresolved methods. Note: SSDTs can be dynamically loaded at
+     * runtime and may or may not be available via the host OS.
+     *
+     * In addition, the -fe option can be used to specify a file containing
+     * control method external declarations with the associated method
+     * argument counts. Each line of the file must be of the form:
+     *     External (<method pathname>, MethodObj, <argument count>)
+     * Invocation:
+     *     iasl -fe refs.txt -d dsdt.aml
+     *
+     * The following methods were unresolved and many not compile properly
+     * because the disassembler had to guess at the number of arguments
+     * required for each:
+     */
     External (_GPE.AL6F, MethodObj)    // 0 Arguments (from opcode)
     External (_GPE.HLVT, MethodObj)    // 0 Arguments (from opcode)
     External (_GPE.ITBH, MethodObj)    // 0 Arguments (from opcode)
@@ -142,6 +162,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
     External (_SB_.POWS, UnknownObj)    // (from opcode)
     External (_SB_.PR00, DeviceObj)    // (from opcode)
     External (_SB_.PR00._PPC, MethodObj)    // 0 Arguments
+    External (_SB_.PR00._PSS, MethodObj)    // 0 Arguments
     External (_SB_.PR00.LPSS, PkgObj)    // (from opcode)
     External (_SB_.PR00.TPSS, PkgObj)    // (from opcode)
     External (_SB_.SGOV, MethodObj)    // 2 Arguments (from opcode)
@@ -197,17 +218,14 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
     External (_SB_.VMON, MethodObj)    // 0 Arguments (from opcode)
     External (_TZ_.ETMD, IntObj)    // (from opcode)
     External (_TZ_.THRM, DeviceObj)    // (from opcode)
+    External (AL6F, MethodObj)    // Warning: Unknown method, guessing 0 arguments
     External (ALSE, UnknownObj)    // (from opcode)
-    // External (BGIA, IntObj)    // Warning: Unknown object
-    // External (BGMA, IntObj)    // Warning: Unknown object
-    // External (BGMS, IntObj)    // Warning: Unknown object
     External (BRTL, UnknownObj)    // (from opcode)
     External (CRBI, UnknownObj)    // (from opcode)
     External (DIDX, UnknownObj)    // (from opcode)
-    External (ELNG, IntObj)    // Warning: Unknown object
-    External (EMNA, IntObj)    // Warning: Unknown object
     External (GSMI, UnknownObj)    // (from opcode)
     External (IGDS, UnknownObj)    // (from opcode)
+    External (ITBH, MethodObj)    // Warning: Unknown method, guessing 0 arguments
     External (LHIH, UnknownObj)    // (from opcode)
     External (LIDS, UnknownObj)    // (from opcode)
     External (LLOW, UnknownObj)    // (from opcode)
@@ -220,9 +238,9 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
     External (MMTB, MethodObj)    // 2 Arguments (from opcode)
     External (MSOS, MethodObj)    // 0 Arguments (from opcode)
     External (NHDA, IntObj)    // (from opcode)
-    // External (NVAF, UnknownObj)    // (from opcode)    // Conflicts with a later declaration
+    // External (NVAF, UnknownObj)    // (from opcode)
     // External (ODV0, IntObj)    // (from opcode)
-    External (OSW7, UnknownObj)    // (from opcode)    // Conflicts with a later declaration
+    External (OSW7, UnknownObj)    // (from opcode)
     External (P0WK, UnknownObj)    // (from opcode)
     External (P1GP, UnknownObj)    // (from opcode)
     External (P1WK, UnknownObj)    // (from opcode)
@@ -244,10 +262,16 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
     External (PC13, UnknownObj)    // (from opcode)
     External (PC14, UnknownObj)    // (from opcode)
     External (PC15, UnknownObj)    // (from opcode)
+    External (PS0X, MethodObj)    // Warning: Unknown method, guessing 0 arguments
+    External (PS2X, MethodObj)    // Warning: Unknown method, guessing 1 arguments
+    External (PS3X, MethodObj)    // Warning: Unknown method, guessing 0 arguments
+    External (SATC, MethodObj)    // Warning: Unknown method, guessing 1 arguments
+    External (SATD, IntObj)    // Warning: Unknown object
     External (SGGP, UnknownObj)    // (from opcode)
     External (SGMD, UnknownObj)    // (from opcode)
     External (TBTD, MethodObj)    // 2 Arguments (from opcode)
     External (TBTF, MethodObj)    // 2 Arguments (from opcode)
+    External (UBTC, UnknownObj)    // Warning: Unknown object
 
     Name (PEBS, 0xE0000000)
     Name (PELN, 0x10000000)
@@ -304,7 +328,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
     Name (TPMC, 0xFFFFFFFF)
     Name (TPMM, 0xFED40000)
     Name (FTPM, 0xFED40040)
-    Name (PPIM, 0x7ED59F98)
+    Name (PPIM, 0x7ED58F98)
     Name (PPIL, 0x1C)
     Name (AMDT, Zero)
     Name (TPMF, One)
@@ -319,7 +343,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
     Name (TOPM, 0x00000000)
     Name (ROMS, 0xFFE00000)
     Name (VGAF, One)
-    OperationRegion (GNVS, SystemMemory, 0x7ECBF000, 0x0866)
+    OperationRegion (GNVS, SystemMemory, 0x7ECBE000, 0x0866)
     Field (GNVS, AnyAcc, Lock, Preserve)
     {
         OSYS,   16, 
@@ -4637,7 +4661,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 Method (SWAK, 1, NotSerialized)
                 {
                     Store (Zero, SLPE)
-                    If (RTCS){}
+                    If (RTCS) {}
                     Else
                     {
                         Notify (PWRB, 0x02)
@@ -4747,7 +4771,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
-                    Return (Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -4778,11 +4801,13 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 })
                 Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
                 {
+                    Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                     If (LEqual (Arg0, ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                     {
-                        Switch (ToInteger (Arg2))
+                        While (One)
                         {
-                            Case (Zero)
+                            Store (ToInteger (Arg2), _T_0)
+                            If (LEqual (_T_0, Zero))
                             {
                                 Name (OPTS, Buffer (0x02)
                                 {
@@ -4816,7 +4841,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                                 Return (OPTS)
                             }
-                            Case (0x06)
+                            ElseIf (LEqual (_T_0, 0x06))
                             {
                                 If (LGreaterEqual (Arg1, 0x02))
                                 {
@@ -4834,7 +4859,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x08)
+                            ElseIf (LEqual (_T_0, 0x08))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -4847,7 +4872,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x09)
+                            ElseIf (LEqual (_T_0, 0x09))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -4868,6 +4893,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 }
                             }
 
+                            Break
                         }
                     }
 
@@ -4982,7 +5008,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
-                    Return (Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -5013,11 +5038,13 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 })
                 Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
                 {
+                    Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                     If (LEqual (Arg0, ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                     {
-                        Switch (ToInteger (Arg2))
+                        While (One)
                         {
-                            Case (Zero)
+                            Store (ToInteger (Arg2), _T_0)
+                            If (LEqual (_T_0, Zero))
                             {
                                 Name (OPTS, Buffer (0x02)
                                 {
@@ -5051,7 +5078,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                                 Return (OPTS)
                             }
-                            Case (0x06)
+                            ElseIf (LEqual (_T_0, 0x06))
                             {
                                 If (LGreaterEqual (Arg1, 0x02))
                                 {
@@ -5069,7 +5096,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x08)
+                            ElseIf (LEqual (_T_0, 0x08))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -5082,7 +5109,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x09)
+                            ElseIf (LEqual (_T_0, 0x09))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -5103,6 +5130,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 }
                             }
 
+                            Break
                         }
                     }
 
@@ -5217,7 +5245,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
-                    Return (Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -5248,11 +5275,13 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 })
                 Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
                 {
+                    Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                     If (LEqual (Arg0, ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                     {
-                        Switch (ToInteger (Arg2))
+                        While (One)
                         {
-                            Case (Zero)
+                            Store (ToInteger (Arg2), _T_0)
+                            If (LEqual (_T_0, Zero))
                             {
                                 Name (OPTS, Buffer (0x02)
                                 {
@@ -5286,7 +5315,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                                 Return (OPTS)
                             }
-                            Case (0x06)
+                            ElseIf (LEqual (_T_0, 0x06))
                             {
                                 If (LGreaterEqual (Arg1, 0x02))
                                 {
@@ -5304,7 +5333,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x08)
+                            ElseIf (LEqual (_T_0, 0x08))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -5317,7 +5346,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x09)
+                            ElseIf (LEqual (_T_0, 0x09))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -5338,6 +5367,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 }
                             }
 
+                            Break
                         }
                     }
 
@@ -5452,7 +5482,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
-                    Return (Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -5483,11 +5512,13 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 })
                 Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
                 {
+                    Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                     If (LEqual (Arg0, ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                     {
-                        Switch (ToInteger (Arg2))
+                        While (One)
                         {
-                            Case (Zero)
+                            Store (ToInteger (Arg2), _T_0)
+                            If (LEqual (_T_0, Zero))
                             {
                                 Name (OPTS, Buffer (0x02)
                                 {
@@ -5521,7 +5552,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                                 Return (OPTS)
                             }
-                            Case (0x06)
+                            ElseIf (LEqual (_T_0, 0x06))
                             {
                                 If (LGreaterEqual (Arg1, 0x02))
                                 {
@@ -5539,7 +5570,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x08)
+                            ElseIf (LEqual (_T_0, 0x08))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -5552,7 +5583,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x09)
+                            ElseIf (LEqual (_T_0, 0x09))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -5573,6 +5604,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 }
                             }
 
+                            Break
                         }
                     }
 
@@ -5687,7 +5719,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
-                    Return (Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -5718,11 +5749,13 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 })
                 Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
                 {
+                    Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                     If (LEqual (Arg0, ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                     {
-                        Switch (ToInteger (Arg2))
+                        While (One)
                         {
-                            Case (Zero)
+                            Store (ToInteger (Arg2), _T_0)
+                            If (LEqual (_T_0, Zero))
                             {
                                 Name (OPTS, Buffer (0x02)
                                 {
@@ -5756,7 +5789,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                                 Return (OPTS)
                             }
-                            Case (0x06)
+                            ElseIf (LEqual (_T_0, 0x06))
                             {
                                 If (LGreaterEqual (Arg1, 0x02))
                                 {
@@ -5774,7 +5807,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x08)
+                            ElseIf (LEqual (_T_0, 0x08))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -5787,7 +5820,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x09)
+                            ElseIf (LEqual (_T_0, 0x09))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -5808,6 +5841,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 }
                             }
 
+                            Break
                         }
                     }
 
@@ -5922,7 +5956,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
-                    Return (Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -5953,11 +5986,13 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 })
                 Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
                 {
+                    Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                     If (LEqual (Arg0, ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                     {
-                        Switch (ToInteger (Arg2))
+                        While (One)
                         {
-                            Case (Zero)
+                            Store (ToInteger (Arg2), _T_0)
+                            If (LEqual (_T_0, Zero))
                             {
                                 Name (OPTS, Buffer (0x02)
                                 {
@@ -5991,7 +6026,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                                 Return (OPTS)
                             }
-                            Case (0x06)
+                            ElseIf (LEqual (_T_0, 0x06))
                             {
                                 If (LGreaterEqual (Arg1, 0x02))
                                 {
@@ -6009,7 +6044,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x08)
+                            ElseIf (LEqual (_T_0, 0x08))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -6022,7 +6057,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x09)
+                            ElseIf (LEqual (_T_0, 0x09))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -6043,6 +6078,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 }
                             }
 
+                            Break
                         }
                     }
 
@@ -6157,7 +6193,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
-                    Return (Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -6188,11 +6223,13 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 })
                 Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
                 {
+                    Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                     If (LEqual (Arg0, ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                     {
-                        Switch (ToInteger (Arg2))
+                        While (One)
                         {
-                            Case (Zero)
+                            Store (ToInteger (Arg2), _T_0)
+                            If (LEqual (_T_0, Zero))
                             {
                                 Name (OPTS, Buffer (0x02)
                                 {
@@ -6226,7 +6263,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                                 Return (OPTS)
                             }
-                            Case (0x06)
+                            ElseIf (LEqual (_T_0, 0x06))
                             {
                                 If (LGreaterEqual (Arg1, 0x02))
                                 {
@@ -6244,7 +6281,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x08)
+                            ElseIf (LEqual (_T_0, 0x08))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -6257,7 +6294,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x09)
+                            ElseIf (LEqual (_T_0, 0x09))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -6278,6 +6315,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 }
                             }
 
+                            Break
                         }
                     }
 
@@ -6392,7 +6430,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
-                    Return (Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -6423,11 +6460,13 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 })
                 Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
                 {
+                    Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                     If (LEqual (Arg0, ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                     {
-                        Switch (ToInteger (Arg2))
+                        While (One)
                         {
-                            Case (Zero)
+                            Store (ToInteger (Arg2), _T_0)
+                            If (LEqual (_T_0, Zero))
                             {
                                 Name (OPTS, Buffer (0x02)
                                 {
@@ -6461,7 +6500,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                                 Return (OPTS)
                             }
-                            Case (0x06)
+                            ElseIf (LEqual (_T_0, 0x06))
                             {
                                 If (LGreaterEqual (Arg1, 0x02))
                                 {
@@ -6479,7 +6518,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x08)
+                            ElseIf (LEqual (_T_0, 0x08))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -6492,7 +6531,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x09)
+                            ElseIf (LEqual (_T_0, 0x09))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -6513,6 +6552,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 }
                             }
 
+                            Break
                         }
                     }
 
@@ -6627,7 +6667,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
-                    Return (Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -6658,11 +6697,13 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 })
                 Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
                 {
+                    Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                     If (LEqual (Arg0, ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                     {
-                        Switch (ToInteger (Arg2))
+                        While (One)
                         {
-                            Case (Zero)
+                            Store (ToInteger (Arg2), _T_0)
+                            If (LEqual (_T_0, Zero))
                             {
                                 Name (OPTS, Buffer (0x02)
                                 {
@@ -6696,7 +6737,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                                 Return (OPTS)
                             }
-                            Case (0x06)
+                            ElseIf (LEqual (_T_0, 0x06))
                             {
                                 If (LGreaterEqual (Arg1, 0x02))
                                 {
@@ -6714,7 +6755,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x08)
+                            ElseIf (LEqual (_T_0, 0x08))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -6727,7 +6768,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x09)
+                            ElseIf (LEqual (_T_0, 0x09))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -6748,6 +6789,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 }
                             }
 
+                            Break
                         }
                     }
 
@@ -6862,7 +6904,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
-                    Return (Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -6893,11 +6934,13 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 })
                 Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
                 {
+                    Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                     If (LEqual (Arg0, ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                     {
-                        Switch (ToInteger (Arg2))
+                        While (One)
                         {
-                            Case (Zero)
+                            Store (ToInteger (Arg2), _T_0)
+                            If (LEqual (_T_0, Zero))
                             {
                                 Name (OPTS, Buffer (0x02)
                                 {
@@ -6931,7 +6974,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                                 Return (OPTS)
                             }
-                            Case (0x06)
+                            ElseIf (LEqual (_T_0, 0x06))
                             {
                                 If (LGreaterEqual (Arg1, 0x02))
                                 {
@@ -6949,7 +6992,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x08)
+                            ElseIf (LEqual (_T_0, 0x08))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -6962,7 +7005,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x09)
+                            ElseIf (LEqual (_T_0, 0x09))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -6983,6 +7026,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 }
                             }
 
+                            Break
                         }
                     }
 
@@ -7097,7 +7141,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
-                    Return (Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -7128,11 +7171,13 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 })
                 Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
                 {
+                    Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                     If (LEqual (Arg0, ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                     {
-                        Switch (ToInteger (Arg2))
+                        While (One)
                         {
-                            Case (Zero)
+                            Store (ToInteger (Arg2), _T_0)
+                            If (LEqual (_T_0, Zero))
                             {
                                 Name (OPTS, Buffer (0x02)
                                 {
@@ -7166,7 +7211,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                                 Return (OPTS)
                             }
-                            Case (0x06)
+                            ElseIf (LEqual (_T_0, 0x06))
                             {
                                 If (LGreaterEqual (Arg1, 0x02))
                                 {
@@ -7184,7 +7229,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x08)
+                            ElseIf (LEqual (_T_0, 0x08))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -7197,7 +7242,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x09)
+                            ElseIf (LEqual (_T_0, 0x09))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -7218,6 +7263,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 }
                             }
 
+                            Break
                         }
                     }
 
@@ -7332,7 +7378,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
-                    Return (Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -7363,11 +7408,13 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 })
                 Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
                 {
+                    Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                     If (LEqual (Arg0, ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                     {
-                        Switch (ToInteger (Arg2))
+                        While (One)
                         {
-                            Case (Zero)
+                            Store (ToInteger (Arg2), _T_0)
+                            If (LEqual (_T_0, Zero))
                             {
                                 Name (OPTS, Buffer (0x02)
                                 {
@@ -7401,7 +7448,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                                 Return (OPTS)
                             }
-                            Case (0x06)
+                            ElseIf (LEqual (_T_0, 0x06))
                             {
                                 If (LGreaterEqual (Arg1, 0x02))
                                 {
@@ -7419,7 +7466,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x08)
+                            ElseIf (LEqual (_T_0, 0x08))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -7432,7 +7479,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x09)
+                            ElseIf (LEqual (_T_0, 0x09))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -7453,6 +7500,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 }
                             }
 
+                            Break
                         }
                     }
 
@@ -7567,7 +7615,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
-                    Return (Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -7598,11 +7645,13 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 })
                 Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
                 {
+                    Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                     If (LEqual (Arg0, ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                     {
-                        Switch (ToInteger (Arg2))
+                        While (One)
                         {
-                            Case (Zero)
+                            Store (ToInteger (Arg2), _T_0)
+                            If (LEqual (_T_0, Zero))
                             {
                                 Name (OPTS, Buffer (0x02)
                                 {
@@ -7636,7 +7685,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                                 Return (OPTS)
                             }
-                            Case (0x06)
+                            ElseIf (LEqual (_T_0, 0x06))
                             {
                                 If (LGreaterEqual (Arg1, 0x02))
                                 {
@@ -7654,7 +7703,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x08)
+                            ElseIf (LEqual (_T_0, 0x08))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -7667,7 +7716,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x09)
+                            ElseIf (LEqual (_T_0, 0x09))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -7688,6 +7737,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 }
                             }
 
+                            Break
                         }
                     }
 
@@ -7802,7 +7852,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
-                    Return (Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -7833,11 +7882,13 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 })
                 Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
                 {
+                    Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                     If (LEqual (Arg0, ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                     {
-                        Switch (ToInteger (Arg2))
+                        While (One)
                         {
-                            Case (Zero)
+                            Store (ToInteger (Arg2), _T_0)
+                            If (LEqual (_T_0, Zero))
                             {
                                 Name (OPTS, Buffer (0x02)
                                 {
@@ -7871,7 +7922,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                                 Return (OPTS)
                             }
-                            Case (0x06)
+                            ElseIf (LEqual (_T_0, 0x06))
                             {
                                 If (LGreaterEqual (Arg1, 0x02))
                                 {
@@ -7889,7 +7940,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x08)
+                            ElseIf (LEqual (_T_0, 0x08))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -7902,7 +7953,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x09)
+                            ElseIf (LEqual (_T_0, 0x09))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -7923,6 +7974,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 }
                             }
 
+                            Break
                         }
                     }
 
@@ -8037,7 +8089,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
-                    Return (Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -8068,11 +8119,13 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 })
                 Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
                 {
+                    Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                     If (LEqual (Arg0, ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                     {
-                        Switch (ToInteger (Arg2))
+                        While (One)
                         {
-                            Case (Zero)
+                            Store (ToInteger (Arg2), _T_0)
+                            If (LEqual (_T_0, Zero))
                             {
                                 Name (OPTS, Buffer (0x02)
                                 {
@@ -8106,7 +8159,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                                 Return (OPTS)
                             }
-                            Case (0x06)
+                            ElseIf (LEqual (_T_0, 0x06))
                             {
                                 If (LGreaterEqual (Arg1, 0x02))
                                 {
@@ -8124,7 +8177,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x08)
+                            ElseIf (LEqual (_T_0, 0x08))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -8137,7 +8190,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x09)
+                            ElseIf (LEqual (_T_0, 0x09))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -8158,6 +8211,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 }
                             }
 
+                            Break
                         }
                     }
 
@@ -8272,7 +8326,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
-                    Return (Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -8303,11 +8356,13 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 })
                 Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
                 {
+                    Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                     If (LEqual (Arg0, ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                     {
-                        Switch (ToInteger (Arg2))
+                        While (One)
                         {
-                            Case (Zero)
+                            Store (ToInteger (Arg2), _T_0)
+                            If (LEqual (_T_0, Zero))
                             {
                                 Name (OPTS, Buffer (0x02)
                                 {
@@ -8341,7 +8396,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                                 Return (OPTS)
                             }
-                            Case (0x06)
+                            ElseIf (LEqual (_T_0, 0x06))
                             {
                                 If (LGreaterEqual (Arg1, 0x02))
                                 {
@@ -8359,7 +8414,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x08)
+                            ElseIf (LEqual (_T_0, 0x08))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -8372,7 +8427,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x09)
+                            ElseIf (LEqual (_T_0, 0x09))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -8393,6 +8448,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 }
                             }
 
+                            Break
                         }
                     }
 
@@ -8512,7 +8568,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
-                    Return (Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -8543,11 +8598,13 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 })
                 Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
                 {
+                    Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                     If (LEqual (Arg0, ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                     {
-                        Switch (ToInteger (Arg2))
+                        While (One)
                         {
-                            Case (Zero)
+                            Store (ToInteger (Arg2), _T_0)
+                            If (LEqual (_T_0, Zero))
                             {
                                 Name (OPTS, Buffer (0x02)
                                 {
@@ -8581,7 +8638,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                                 Return (OPTS)
                             }
-                            Case (0x06)
+                            ElseIf (LEqual (_T_0, 0x06))
                             {
                                 If (LGreaterEqual (Arg1, 0x02))
                                 {
@@ -8599,7 +8656,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x08)
+                            ElseIf (LEqual (_T_0, 0x08))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -8612,7 +8669,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x09)
+                            ElseIf (LEqual (_T_0, 0x09))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -8633,6 +8690,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 }
                             }
 
+                            Break
                         }
                     }
 
@@ -8747,7 +8805,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
-                    Return (Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -8778,11 +8835,13 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 })
                 Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
                 {
+                    Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                     If (LEqual (Arg0, ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                     {
-                        Switch (ToInteger (Arg2))
+                        While (One)
                         {
-                            Case (Zero)
+                            Store (ToInteger (Arg2), _T_0)
+                            If (LEqual (_T_0, Zero))
                             {
                                 Name (OPTS, Buffer (0x02)
                                 {
@@ -8816,7 +8875,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                                 Return (OPTS)
                             }
-                            Case (0x06)
+                            ElseIf (LEqual (_T_0, 0x06))
                             {
                                 If (LGreaterEqual (Arg1, 0x02))
                                 {
@@ -8834,7 +8893,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x08)
+                            ElseIf (LEqual (_T_0, 0x08))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -8847,7 +8906,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x09)
+                            ElseIf (LEqual (_T_0, 0x09))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -8868,6 +8927,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 }
                             }
 
+                            Break
                         }
                     }
 
@@ -8982,7 +9042,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
-                    Return (Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -9013,11 +9072,13 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 })
                 Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
                 {
+                    Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                     If (LEqual (Arg0, ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                     {
-                        Switch (ToInteger (Arg2))
+                        While (One)
                         {
-                            Case (Zero)
+                            Store (ToInteger (Arg2), _T_0)
+                            If (LEqual (_T_0, Zero))
                             {
                                 Name (OPTS, Buffer (0x02)
                                 {
@@ -9051,7 +9112,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                                 Return (OPTS)
                             }
-                            Case (0x06)
+                            ElseIf (LEqual (_T_0, 0x06))
                             {
                                 If (LGreaterEqual (Arg1, 0x02))
                                 {
@@ -9069,7 +9130,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x08)
+                            ElseIf (LEqual (_T_0, 0x08))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -9082,7 +9143,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x09)
+                            ElseIf (LEqual (_T_0, 0x09))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -9103,6 +9164,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 }
                             }
 
+                            Break
                         }
                     }
 
@@ -9217,7 +9279,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
-                    Return (Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -9248,11 +9309,13 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 })
                 Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
                 {
+                    Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                     If (LEqual (Arg0, ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                     {
-                        Switch (ToInteger (Arg2))
+                        While (One)
                         {
-                            Case (Zero)
+                            Store (ToInteger (Arg2), _T_0)
+                            If (LEqual (_T_0, Zero))
                             {
                                 Name (OPTS, Buffer (0x02)
                                 {
@@ -9286,7 +9349,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                                 Return (OPTS)
                             }
-                            Case (0x06)
+                            ElseIf (LEqual (_T_0, 0x06))
                             {
                                 If (LGreaterEqual (Arg1, 0x02))
                                 {
@@ -9304,7 +9367,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x08)
+                            ElseIf (LEqual (_T_0, 0x08))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -9317,7 +9380,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x09)
+                            ElseIf (LEqual (_T_0, 0x09))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -9338,6 +9401,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 }
                             }
 
+                            Break
                         }
                     }
 
@@ -9452,7 +9516,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
-                    Return (Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -9483,11 +9546,13 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 })
                 Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
                 {
+                    Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                     If (LEqual (Arg0, ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                     {
-                        Switch (ToInteger (Arg2))
+                        While (One)
                         {
-                            Case (Zero)
+                            Store (ToInteger (Arg2), _T_0)
+                            If (LEqual (_T_0, Zero))
                             {
                                 Name (OPTS, Buffer (0x02)
                                 {
@@ -9521,7 +9586,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                                 Return (OPTS)
                             }
-                            Case (0x06)
+                            ElseIf (LEqual (_T_0, 0x06))
                             {
                                 If (LGreaterEqual (Arg1, 0x02))
                                 {
@@ -9539,7 +9604,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x08)
+                            ElseIf (LEqual (_T_0, 0x08))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -9552,7 +9617,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x09)
+                            ElseIf (LEqual (_T_0, 0x09))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -9573,6 +9638,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 }
                             }
 
+                            Break
                         }
                     }
 
@@ -9687,7 +9753,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
-                    Return (Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -9718,11 +9783,13 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 })
                 Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
                 {
+                    Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                     If (LEqual (Arg0, ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                     {
-                        Switch (ToInteger (Arg2))
+                        While (One)
                         {
-                            Case (Zero)
+                            Store (ToInteger (Arg2), _T_0)
+                            If (LEqual (_T_0, Zero))
                             {
                                 Name (OPTS, Buffer (0x02)
                                 {
@@ -9756,7 +9823,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                                 Return (OPTS)
                             }
-                            Case (0x06)
+                            ElseIf (LEqual (_T_0, 0x06))
                             {
                                 If (LGreaterEqual (Arg1, 0x02))
                                 {
@@ -9774,7 +9841,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x08)
+                            ElseIf (LEqual (_T_0, 0x08))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -9787,7 +9854,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x09)
+                            ElseIf (LEqual (_T_0, 0x09))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -9808,6 +9875,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 }
                             }
 
+                            Break
                         }
                     }
 
@@ -9922,7 +9990,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
-                    Return (Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -9953,11 +10020,13 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 })
                 Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
                 {
+                    Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                     If (LEqual (Arg0, ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                     {
-                        Switch (ToInteger (Arg2))
+                        While (One)
                         {
-                            Case (Zero)
+                            Store (ToInteger (Arg2), _T_0)
+                            If (LEqual (_T_0, Zero))
                             {
                                 Name (OPTS, Buffer (0x02)
                                 {
@@ -9991,7 +10060,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                                 Return (OPTS)
                             }
-                            Case (0x06)
+                            ElseIf (LEqual (_T_0, 0x06))
                             {
                                 If (LGreaterEqual (Arg1, 0x02))
                                 {
@@ -10009,7 +10078,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x08)
+                            ElseIf (LEqual (_T_0, 0x08))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -10022,7 +10091,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x09)
+                            ElseIf (LEqual (_T_0, 0x09))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -10043,6 +10112,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 }
                             }
 
+                            Break
                         }
                     }
 
@@ -10157,7 +10227,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Sleep (0x10)
                         Increment (Local0)
                     }
-                    Return (Zero)
                 }
 
                 Method (DL23, 0, Serialized)
@@ -10188,11 +10257,13 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 })
                 Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
                 {
+                    Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                     If (LEqual (Arg0, ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                     {
-                        Switch (ToInteger (Arg2))
+                        While (One)
                         {
-                            Case (Zero)
+                            Store (ToInteger (Arg2), _T_0)
+                            If (LEqual (_T_0, Zero))
                             {
                                 Name (OPTS, Buffer (0x02)
                                 {
@@ -10226,7 +10297,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                                 Return (OPTS)
                             }
-                            Case (0x06)
+                            ElseIf (LEqual (_T_0, 0x06))
                             {
                                 If (LGreaterEqual (Arg1, 0x02))
                                 {
@@ -10244,7 +10315,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x08)
+                            ElseIf (LEqual (_T_0, 0x08))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -10257,7 +10328,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
                             }
-                            Case (0x09)
+                            ElseIf (LEqual (_T_0, 0x09))
                             {
                                 If (CondRefOf (ECR1))
                                 {
@@ -10278,6 +10349,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 }
                             }
 
+                            Break
                         }
                     }
 
@@ -10311,10 +10383,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                     Return (PD1F)
                 }
-            }
-            Device (MCHC)
-            {
-                Name (_ADR, Zero)
             }
         }
     }
@@ -10374,22 +10442,22 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
     Scope (_SB)
     {
-        Processor (PR00, 0x01, 0x00001810, 0x06){}
-        Processor (PR01, 0x02, 0x00001810, 0x06){}
-        Processor (PR02, 0x03, 0x00001810, 0x06){}
-        Processor (PR03, 0x04, 0x00001810, 0x06){}
-        Processor (PR04, 0x05, 0x00001810, 0x06){}
-        Processor (PR05, 0x06, 0x00001810, 0x06){}
-        Processor (PR06, 0x07, 0x00001810, 0x06){}
-        Processor (PR07, 0x08, 0x00001810, 0x06){}
-        Processor (PR08, 0x09, 0x00001810, 0x06){}
-        Processor (PR09, 0x0A, 0x00001810, 0x06){}
-        Processor (PR10, 0x0B, 0x00001810, 0x06){}
-        Processor (PR11, 0x0C, 0x00001810, 0x06){}
-        Processor (PR12, 0x0D, 0x00001810, 0x06){}
-        Processor (PR13, 0x0E, 0x00001810, 0x06){}
-        Processor (PR14, 0x0F, 0x00001810, 0x06){}
-        Processor (PR15, 0x10, 0x00001810, 0x06){}
+        Processor (PR00, 0x01, 0x00001810, 0x06) {}
+        Processor (PR01, 0x02, 0x00001810, 0x06) {}
+        Processor (PR02, 0x03, 0x00001810, 0x06) {}
+        Processor (PR03, 0x04, 0x00001810, 0x06) {}
+        Processor (PR04, 0x05, 0x00001810, 0x06) {}
+        Processor (PR05, 0x06, 0x00001810, 0x06) {}
+        Processor (PR06, 0x07, 0x00001810, 0x06) {}
+        Processor (PR07, 0x08, 0x00001810, 0x06) {}
+        Processor (PR08, 0x09, 0x00001810, 0x06) {}
+        Processor (PR09, 0x0A, 0x00001810, 0x06) {}
+        Processor (PR10, 0x0B, 0x00001810, 0x06) {}
+        Processor (PR11, 0x0C, 0x00001810, 0x06) {}
+        Processor (PR12, 0x0D, 0x00001810, 0x06) {}
+        Processor (PR13, 0x0E, 0x00001810, 0x06) {}
+        Processor (PR14, 0x0F, 0x00001810, 0x06) {}
+        Processor (PR15, 0x10, 0x00001810, 0x06) {}
     }
 
     Scope (_SB.PR00)
@@ -10905,9 +10973,11 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (IICB, 2, Serialized)
         {
-            Switch (ToInteger (Arg1))
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+            While (One)
             {
-                Case (Zero)
+                Store (ToInteger (Arg1), _T_0)
+                If (LEqual (_T_0, Zero))
                 {
                     Name (IIC0, ResourceTemplate ()
                     {
@@ -10920,7 +10990,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     Store (Arg0, DAD0)
                     Return (IIC0)
                 }
-                Case (One)
+                ElseIf (LEqual (_T_0, One))
                 {
                     Name (IIC1, ResourceTemplate ()
                     {
@@ -10933,7 +11003,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     Store (Arg0, DAD1)
                     Return (IIC1)
                 }
-                Case (0x02)
+                ElseIf (LEqual (_T_0, 0x02))
                 {
                     Name (IIC2, ResourceTemplate ()
                     {
@@ -10946,7 +11016,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     Store (Arg0, DAD2)
                     Return (IIC2)
                 }
-                Case (0x03)
+                ElseIf (LEqual (_T_0, 0x03))
                 {
                     Name (IIC3, ResourceTemplate ()
                     {
@@ -10959,7 +11029,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     Store (Arg0, DAD3)
                     Return (IIC3)
                 }
-                Case (0x04)
+                ElseIf (LEqual (_T_0, 0x04))
                 {
                     Name (IIC4, ResourceTemplate ()
                     {
@@ -10972,7 +11042,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     Store (Arg0, DAD4)
                     Return (IIC4)
                 }
-                Case (0x05)
+                ElseIf (LEqual (_T_0, 0x05))
                 {
                     Name (IIC5, ResourceTemplate ()
                     {
@@ -10985,11 +11055,12 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     Store (Arg0, DAD5)
                     Return (IIC5)
                 }
-                Default
+                Else
                 {
                     Return (Zero)
                 }
 
+                Break
             }
         }
 
@@ -12125,7 +12196,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
         }
     }
 
-    Name (PNVB, 0x7ED59B98)
+    Name (PNVB, 0x7ED58B98)
     Name (PNVL, 0x028F)
     OperationRegion (PNVA, SystemMemory, PNVB, PNVL)
     Field (PNVA, AnyAcc, Lock, Preserve)
@@ -12399,37 +12470,43 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (CLKC, 2, Serialized)
         {
-            Switch (ToInteger (Arg0))
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+            While (One)
             {
-                Case (Zero)
+                Store (Arg0, _T_0)
+                If (LEqual (_T_0, Zero))
                 {
                     Store (CLK1, Local0)
                     Store (Or (And (Local0, 0xFFFFFFFFFFFFFFFD), ShiftLeft (Arg1, One)), CLK1)
                 }
-                Case (One)
+                ElseIf (LEqual (_T_0, One))
                 {
                     Store (CLK2, Local0)
                     Store (Or (And (Local0, 0xFFFFFFFFFFFFFFFD), ShiftLeft (Arg1, One)), CLK2)
                 }
 
+                Break
             }
         }
 
         Method (CLKF, 2, Serialized)
         {
-            Switch (ToInteger (Arg0))
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+            While (One)
             {
-                Case (Zero)
+                Store (Arg0, _T_0)
+                If (LEqual (_T_0, Zero))
                 {
                     Store (CLK1, Local0)
                     Store (Or (And (Local0, 0xFFFFFFFFFFFFFFFE), Arg1), CLK1)
                 }
-                Case (One)
+                ElseIf (LEqual (_T_0, One))
                 {
                     Store (CLK2, Local0)
                     Store (Or (And (Local0, 0xFFFFFFFFFFFFFFFE), Arg1), CLK2)
                 }
 
+                Break
             }
         }
     }
@@ -12794,19 +12871,19 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
         })
         Name (RXEV, Package (0x0D)
         {
-            Buffer (0x19){}, 
-            Buffer (0x1A){}, 
-            Buffer (0x18){}, 
-            Buffer (0x18){}, 
-            Buffer (0x18){}, 
-            Buffer (0x18){}, 
-            Buffer (0x08){}, 
-            Buffer (0x18){}, 
-            Buffer (0x12){}, 
-            Buffer (0x28){}, 
-            Buffer (0x18){}, 
-            Buffer (0x10){}, 
-            Buffer (0x28){}
+            Buffer (0x19) {}, 
+            Buffer (0x1A) {}, 
+            Buffer (0x18) {}, 
+            Buffer (0x18) {}, 
+            Buffer (0x18) {}, 
+            Buffer (0x18) {}, 
+            Buffer (0x08) {}, 
+            Buffer (0x18) {}, 
+            Buffer (0x12) {}, 
+            Buffer (0x28) {}, 
+            Buffer (0x18) {}, 
+            Buffer (0x10) {}, 
+            Buffer (0x28) {}
         })
     }
 
@@ -13265,9 +13342,11 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
     {
         Method (PSD3, 1, Serialized)
         {
-            Switch (Add (Zero, Decrement (Arg0)))
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+            While (One)
             {
-                Case (Zero)
+                Store (Add (Zero, Decrement (Arg0)), _T_0)
+                If (LEqual (_T_0, Zero))
                 {
                     Store (One, RAA0)
                     While (LEqual (APA0, Zero))
@@ -13275,7 +13354,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Stall (0x0A)
                     }
                 }
-                Case (One)
+                ElseIf (LEqual (_T_0, One))
                 {
                     Store (One, RAA1)
                     While (LEqual (APA1, Zero))
@@ -13283,7 +13362,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Stall (0x0A)
                     }
                 }
-                Case (0x02)
+                ElseIf (LEqual (_T_0, 0x02))
                 {
                     Store (One, RAA2)
                     While (LEqual (APA2, Zero))
@@ -13291,7 +13370,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Stall (0x0A)
                     }
                 }
-                Case (0x03)
+                ElseIf (LEqual (_T_0, 0x03))
                 {
                     Store (One, RAA3)
                     While (LEqual (APA3, Zero))
@@ -13299,7 +13378,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Stall (0x0A)
                     }
                 }
-                Case (0x04)
+                ElseIf (LEqual (_T_0, 0x04))
                 {
                     Store (One, RPB0)
                     While (LEqual (APB0, Zero))
@@ -13307,7 +13386,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Stall (0x0A)
                     }
                 }
-                Case (0x05)
+                ElseIf (LEqual (_T_0, 0x05))
                 {
                     Store (One, RPB1)
                     While (LEqual (APB1, Zero))
@@ -13315,7 +13394,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Stall (0x0A)
                     }
                 }
-                Case (0x06)
+                ElseIf (LEqual (_T_0, 0x06))
                 {
                     Store (One, RPB2)
                     While (LEqual (APB2, Zero))
@@ -13323,7 +13402,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Stall (0x0A)
                     }
                 }
-                Case (0x07)
+                ElseIf (LEqual (_T_0, 0x07))
                 {
                     Store (One, RPB3)
                     While (LEqual (APB3, Zero))
@@ -13331,7 +13410,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Stall (0x0A)
                     }
                 }
-                Case (0x08)
+                ElseIf (LEqual (_T_0, 0x08))
                 {
                     Store (One, RPC0)
                     While (LEqual (APC0, Zero))
@@ -13339,7 +13418,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Stall (0x0A)
                     }
                 }
-                Case (0x09)
+                ElseIf (LEqual (_T_0, 0x09))
                 {
                     Store (One, RPC1)
                     While (LEqual (APC1, Zero))
@@ -13347,7 +13426,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Stall (0x0A)
                     }
                 }
-                Case (0x0A)
+                ElseIf (LEqual (_T_0, 0x0A))
                 {
                     Store (One, RPC2)
                     While (LEqual (APC2, Zero))
@@ -13355,7 +13434,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Stall (0x0A)
                     }
                 }
-                Case (0x0B)
+                ElseIf (LEqual (_T_0, 0x0B))
                 {
                     Store (One, RPC3)
                     While (LEqual (APC3, Zero))
@@ -13363,7 +13442,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Stall (0x0A)
                     }
                 }
-                Case (0x0C)
+                ElseIf (LEqual (_T_0, 0x0C))
                 {
                     Store (One, RPD0)
                     While (LEqual (APD0, Zero))
@@ -13371,7 +13450,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Stall (0x0A)
                     }
                 }
-                Case (0x0D)
+                ElseIf (LEqual (_T_0, 0x0D))
                 {
                     Store (One, RPD1)
                     While (LEqual (APD1, Zero))
@@ -13379,7 +13458,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Stall (0x0A)
                     }
                 }
-                Case (0x0E)
+                ElseIf (LEqual (_T_0, 0x0E))
                 {
                     Store (One, RPD2)
                     While (LEqual (APD2, Zero))
@@ -13387,7 +13466,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Stall (0x0A)
                     }
                 }
-                Case (0x0F)
+                ElseIf (LEqual (_T_0, 0x0F))
                 {
                     Store (One, RPD3)
                     While (LEqual (APD3, Zero))
@@ -13395,7 +13474,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Stall (0x0A)
                     }
                 }
-                Case (0x10)
+                ElseIf (LEqual (_T_0, 0x10))
                 {
                     Store (One, RPE0)
                     While (LEqual (APE0, Zero))
@@ -13403,7 +13482,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Stall (0x0A)
                     }
                 }
-                Case (0x11)
+                ElseIf (LEqual (_T_0, 0x11))
                 {
                     Store (One, RPE1)
                     While (LEqual (APE1, Zero))
@@ -13411,7 +13490,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Stall (0x0A)
                     }
                 }
-                Case (0x12)
+                ElseIf (LEqual (_T_0, 0x12))
                 {
                     Store (One, RPE2)
                     While (LEqual (APE2, Zero))
@@ -13419,7 +13498,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Stall (0x0A)
                     }
                 }
-                Case (0x13)
+                ElseIf (LEqual (_T_0, 0x13))
                 {
                     Store (One, RPE3)
                     While (LEqual (APE3, Zero))
@@ -13428,14 +13507,17 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     }
                 }
 
+                Break
             }
         }
 
         Method (PSD0, 1, Serialized)
         {
-            Switch (Add (Zero, Decrement (Arg0)))
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+            While (One)
             {
-                Case (Zero)
+                Store (Add (Zero, Decrement (Arg0)), _T_0)
+                If (LEqual (_T_0, Zero))
                 {
                     Store (Zero, RAA0)
                     While (LEqual (APA0, One))
@@ -13443,7 +13525,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Stall (0x0A)
                     }
                 }
-                Case (One)
+                ElseIf (LEqual (_T_0, One))
                 {
                     Store (Zero, RAA1)
                     While (LEqual (APA1, One))
@@ -13451,7 +13533,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Stall (0x0A)
                     }
                 }
-                Case (0x02)
+                ElseIf (LEqual (_T_0, 0x02))
                 {
                     Store (Zero, RAA2)
                     While (LEqual (APA2, One))
@@ -13459,7 +13541,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Stall (0x0A)
                     }
                 }
-                Case (0x03)
+                ElseIf (LEqual (_T_0, 0x03))
                 {
                     Store (Zero, RAA3)
                     While (LEqual (APA3, One))
@@ -13467,7 +13549,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Stall (0x0A)
                     }
                 }
-                Case (0x04)
+                ElseIf (LEqual (_T_0, 0x04))
                 {
                     Store (Zero, RPB0)
                     While (LEqual (APB0, One))
@@ -13475,7 +13557,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Stall (0x0A)
                     }
                 }
-                Case (0x05)
+                ElseIf (LEqual (_T_0, 0x05))
                 {
                     Store (Zero, RPB1)
                     While (LEqual (APB1, One))
@@ -13483,7 +13565,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Stall (0x0A)
                     }
                 }
-                Case (0x06)
+                ElseIf (LEqual (_T_0, 0x06))
                 {
                     Store (Zero, RPB2)
                     While (LEqual (APB2, One))
@@ -13491,7 +13573,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Stall (0x0A)
                     }
                 }
-                Case (0x07)
+                ElseIf (LEqual (_T_0, 0x07))
                 {
                     Store (Zero, RPB3)
                     While (LEqual (APB3, One))
@@ -13499,7 +13581,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Stall (0x0A)
                     }
                 }
-                Case (0x08)
+                ElseIf (LEqual (_T_0, 0x08))
                 {
                     Store (Zero, RPC0)
                     While (LEqual (APC0, One))
@@ -13507,7 +13589,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Stall (0x0A)
                     }
                 }
-                Case (0x09)
+                ElseIf (LEqual (_T_0, 0x09))
                 {
                     Store (Zero, RPC1)
                     While (LEqual (APC1, One))
@@ -13515,7 +13597,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Stall (0x0A)
                     }
                 }
-                Case (0x0A)
+                ElseIf (LEqual (_T_0, 0x0A))
                 {
                     Store (Zero, RPC2)
                     While (LEqual (APC2, One))
@@ -13523,7 +13605,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Stall (0x0A)
                     }
                 }
-                Case (0x0B)
+                ElseIf (LEqual (_T_0, 0x0B))
                 {
                     Store (Zero, RPC3)
                     While (LEqual (APC3, One))
@@ -13531,7 +13613,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Stall (0x0A)
                     }
                 }
-                Case (0x0C)
+                ElseIf (LEqual (_T_0, 0x0C))
                 {
                     Store (Zero, RPD0)
                     While (LEqual (APD0, One))
@@ -13539,7 +13621,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Stall (0x0A)
                     }
                 }
-                Case (0x0D)
+                ElseIf (LEqual (_T_0, 0x0D))
                 {
                     Store (Zero, RPD1)
                     While (LEqual (APD1, One))
@@ -13547,7 +13629,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Stall (0x0A)
                     }
                 }
-                Case (0x0E)
+                ElseIf (LEqual (_T_0, 0x0E))
                 {
                     Store (Zero, RPD2)
                     While (LEqual (APD2, One))
@@ -13555,7 +13637,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Stall (0x0A)
                     }
                 }
-                Case (0x0F)
+                ElseIf (LEqual (_T_0, 0x0F))
                 {
                     Store (Zero, RPD3)
                     While (LEqual (APD3, One))
@@ -13563,7 +13645,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Stall (0x0A)
                     }
                 }
-                Case (0x10)
+                ElseIf (LEqual (_T_0, 0x10))
                 {
                     Store (Zero, RPE0)
                     While (LEqual (APE0, One))
@@ -13571,7 +13653,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Stall (0x0A)
                     }
                 }
-                Case (0x11)
+                ElseIf (LEqual (_T_0, 0x11))
                 {
                     Store (Zero, RPE1)
                     While (LEqual (APE1, One))
@@ -13579,7 +13661,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Stall (0x0A)
                     }
                 }
-                Case (0x12)
+                ElseIf (LEqual (_T_0, 0x12))
                 {
                     Store (Zero, RPE2)
                     While (LEqual (APE2, One))
@@ -13587,7 +13669,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Stall (0x0A)
                     }
                 }
-                Case (0x13)
+                ElseIf (LEqual (_T_0, 0x13))
                 {
                     Store (Zero, RPE3)
                     While (LEqual (APE3, One))
@@ -13596,14 +13678,17 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     }
                 }
 
+                Break
             }
         }
 
         Method (CSD3, 1, Serialized)
         {
-            Switch (ToInteger (Arg0))
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+            While (One)
             {
-                Case (0x14)
+                Store (ToInteger (Arg0), _T_0)
+                If (LEqual (_T_0, 0x14))
                 {
                     Store (One, RSAT)
                     While (LEqual (ASAT, Zero))
@@ -13611,7 +13696,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Stall (0x0A)
                     }
                 }
-                Case (0x15)
+                ElseIf (LEqual (_T_0, 0x15))
                 {
                     Store (One, RGBE)
                     While (LEqual (AGBE, Zero))
@@ -13619,7 +13704,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Stall (0x0A)
                     }
                 }
-                Case (0x16)
+                ElseIf (LEqual (_T_0, 0x16))
                 {
                     Store (One, RXHC)
                     While (LEqual (AXHC, Zero))
@@ -13627,7 +13712,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Stall (0x0A)
                     }
                 }
-                Case (0x17)
+                ElseIf (LEqual (_T_0, 0x17))
                 {
                     Store (One, RXDC)
                     While (LEqual (AXDC, Zero))
@@ -13635,7 +13720,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Stall (0x0A)
                     }
                 }
-                Case (0x18)
+                ElseIf (LEqual (_T_0, 0x18))
                 {
                     Store (One, RUFS)
                     While (LEqual (AUFS, Zero))
@@ -13644,14 +13729,17 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     }
                 }
 
+                Break
             }
         }
 
         Method (CSD0, 1, Serialized)
         {
-            Switch (ToInteger (Arg0))
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+            While (One)
             {
-                Case (0x14)
+                Store (ToInteger (Arg0), _T_0)
+                If (LEqual (_T_0, 0x14))
                 {
                     Store (Zero, RSAT)
                     While (LEqual (ASAT, One))
@@ -13659,7 +13747,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Stall (0x0A)
                     }
                 }
-                Case (0x15)
+                ElseIf (LEqual (_T_0, 0x15))
                 {
                     Store (Zero, RGBE)
                     While (LEqual (AGBE, One))
@@ -13667,7 +13755,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Stall (0x0A)
                     }
                 }
-                Case (0x16)
+                ElseIf (LEqual (_T_0, 0x16))
                 {
                     Store (Zero, RXHC)
                     While (LEqual (AXHC, One))
@@ -13675,7 +13763,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Stall (0x0A)
                     }
                 }
-                Case (0x17)
+                ElseIf (LEqual (_T_0, 0x17))
                 {
                     Store (Zero, RXDC)
                     While (LEqual (AXDC, One))
@@ -13683,7 +13771,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Stall (0x0A)
                     }
                 }
-                Case (0x18)
+                ElseIf (LEqual (_T_0, 0x18))
                 {
                     Store (Zero, RUFS)
                     While (LEqual (AUFS, One))
@@ -13692,6 +13780,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     }
                 }
 
+                Break
             }
         }
     }
@@ -13805,7 +13894,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             }
 
             Store (Zero, DO30)
-            Return (Zero)
         }
 
         Method (THDH, 1, Serialized)
@@ -14568,7 +14656,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 {
                     PS0X ()
                 }
-                Return (Zero)
             }
 
             Method (_PS3, 0, Serialized)  // _PS3: Power State 3
@@ -14582,7 +14669,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 {
                     PS3X ()
                 }
-                Return (Zero)
             }
 
             Method (CUID, 1, Serialized)
@@ -14610,7 +14696,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         CSD0 (0x16)
                         PS0X ()
                     }
-                    Return (Zero)
                 }
 
                 Method (_PS2, 0, Serialized)  // _PS2: Power State 2
@@ -14625,7 +14710,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         PS2X ()
                         CSD3 (0x16)
                     }
-                    Return (Zero)
                 }
 
                 Method (_PS3, 0, Serialized)  // _PS3: Power State 3
@@ -14640,7 +14724,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         PS3X ()
                         CSD3 (0x16)
                     }
-                    Return (Zero)
                 }
 
                 Device (HS01)
@@ -14862,6 +14945,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
+                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If (PCIC (Arg0))
                 {
                     Return (PCID (Arg0, Arg1, Arg2, Arg3))
@@ -14916,15 +15000,15 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     Increment (Local0)
                                 }
 
-                                If (LNotEqual (U2CP, Zero)){}
-                                If (LNotEqual (U3CP, Zero)){}
+                                If (LNotEqual (U2CP, Zero)) {}
+                                If (LNotEqual (U3CP, Zero)) {}
                                 Return (Zero)
                             }
 
                             If (LEqual (Local1, 0x03))
                             {
-                                If (LNotEqual (U2CP, Zero)){}
-                                If (LNotEqual (U3CP, Zero)){}
+                                If (LNotEqual (U2CP, Zero)) {}
+                                If (LNotEqual (U3CP, Zero)) {}
                                 Store (0x03, PUPS)
                                 Store (Zero, Local0)
                                 While (LLess (Local0, 0x07D0))
@@ -14938,8 +15022,8 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     Increment (Local0)
                                 }
 
-                                If (LNotEqual (U2CP, 0x03)){}
-                                If (LNotEqual (U3CP, 0x03)){}
+                                If (LNotEqual (U2CP, 0x03)) {}
+                                If (LNotEqual (U3CP, 0x03)) {}
                                 Store (Local2, UXPE)
                                 Return (Zero)
                             }
@@ -14947,25 +15031,26 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                             Return (Zero)
                         }
 
-                        Switch (ToInteger (Arg2))
+                        While (One)
                         {
-                            Case (Zero)
+                            Store (ToInteger (Arg2), _T_0)
+                            If (LEqual (_T_0, Zero))
                             {
                                 Return (Buffer (One)
                                 {
                                      0xB3                                           
                                 })
                             }
-                            Case (One)
+                            ElseIf (LEqual (_T_0, One))
                             {
                                 Return (One)
                             }
-                            Case (0x04)
+                            ElseIf (LEqual (_T_0, 0x04))
                             {
                                 Store (DerefOf (Index (Arg3, Zero)), Local1)
                                 SPPS (Local1, Zero)
                             }
-                            Case (0x05)
+                            ElseIf (LEqual (_T_0, 0x05))
                             {
                                 If (CondRefOf (\_SB.PCI0.LPCB.H_EC.XDAT))
                                 {
@@ -14981,7 +15066,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                                 Return (Zero)
                             }
-                            Case (0x07)
+                            ElseIf (LEqual (_T_0, 0x07))
                             {
                                 OperationRegion (XD22, SystemMemory, XDBA (), 0x00110000)
                                 Field (XD22, WordAcc, NoLock, Preserve)
@@ -14995,6 +15080,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 Return (Local0)
                             }
 
+                            Break
                         }
                     }
                 }
@@ -15053,7 +15139,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     PS3X ()
                     CSD3 (0x17)
                 }
-                Return (Zero)
             }
 
             Method (_PS0, 0, Serialized)  // _PS0: Power State 0
@@ -15088,7 +15173,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     PS0X ()
                     CSD0 (0x17)
                 }
-                Return (Zero)
             }
 
             Method (_RMV, 0, NotSerialized)  // _RMV: Removal Status
@@ -15213,21 +15297,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     "PinConfigurations", Buffer() { },
                     //"MaximumBootBeepVolume", 77,
                 })
-            }
-            Device (BUS0)
-            {
-                Name (_CID, "smbus")
-                Name (_ADR, Zero)
-                Device (DVL0)
-                {
-                    Name (_ADR, 0x57)
-                    Name (_CID, "diagsvault")
-                    Method (_DSM, 4, NotSerialized)
-                    {
-                        If (LEqual (Arg2, Zero)) { Return (Buffer() { 0x03 } ) }
-                        Return (Package() { "address", 0x57 })
-                    }
-                }
             }
             
         }
@@ -15613,7 +15682,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                          0x00                                           
                     })
                 }
-                Return (Zero)
             }
 
             Method (_PS0, 0, Serialized)  // _PS0: Power State 0
@@ -15731,7 +15799,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     }
 
                     NVD3 ()
-                    Return (Zero)
                 }
 
                 Method (_PS0, 0, Serialized)  // _PS0: Power State 0
@@ -15743,7 +15810,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     }
 
                     NVD0 ()
-                    Return (Zero)
                 }
 
                 Method (RL23, 0, NotSerialized)
@@ -15812,7 +15878,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     Sleep (0x64)
                     Store (Zero, ID3C)
                     ADBG (Concatenate ("RPONe: ", ToHexString (_ADR)))
-                    Return (Zero)
                 }
 
                 Method (RPOF, 0, Serialized)
@@ -15833,7 +15898,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     RL23 ()
                     RSOF (NRPN)
                     Store (One, ID3C)
-                    Return (Zero)
                 }
 
                 Method (SAVC, 0, Serialized)
@@ -15985,7 +16049,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     }
 
                     ADBG (Concatenate ("CNRSe ", ToDecimalString (Timer)))
-                    Return (Zero)
                 }
             }
 
@@ -16048,7 +16111,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     }
 
                     NVD3 ()
-                    Return (Zero)
                 }
 
                 Method (_PS0, 0, Serialized)  // _PS0: Power State 0
@@ -16060,7 +16122,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     }
 
                     NVD0 ()
-                    Return (Zero)
                 }
 
                 Method (RL23, 0, NotSerialized)
@@ -16129,7 +16190,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     Sleep (0x64)
                     Store (Zero, ID3C)
                     ADBG (Concatenate ("RPONe: ", ToHexString (_ADR)))
-                    Return (Zero)
                 }
 
                 Method (RPOF, 0, Serialized)
@@ -16150,7 +16210,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     RL23 ()
                     RSOF (NRPN)
                     Store (One, ID3C)
-                    Return (Zero)
                 }
 
                 Method (SAVC, 0, Serialized)
@@ -16302,7 +16361,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     }
 
                     ADBG (Concatenate ("CNRSe ", ToDecimalString (Timer)))
-                    Return (Zero)
                 }
             }
 
@@ -16365,7 +16423,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     }
 
                     NVD3 ()
-                    Return (Zero)
                 }
 
                 Method (_PS0, 0, Serialized)  // _PS0: Power State 0
@@ -16377,7 +16434,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     }
 
                     NVD0 ()
-                    Return (Zero)
                 }
 
                 Method (RL23, 0, NotSerialized)
@@ -16446,7 +16502,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     Sleep (0x64)
                     Store (Zero, ID3C)
                     ADBG (Concatenate ("RPONe: ", ToHexString (_ADR)))
-                    Return (Zero)
                 }
 
                 Method (RPOF, 0, Serialized)
@@ -16467,7 +16522,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     RL23 ()
                     RSOF (NRPN)
                     Store (One, ID3C)
-                    Return (Zero)
                 }
 
                 Method (SAVC, 0, Serialized)
@@ -16619,12 +16673,12 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     }
 
                     ADBG (Concatenate ("CNRSe ", ToDecimalString (Timer)))
-                    Return (Zero)
                 }
             }
 
             Method (RDCA, 5, Serialized)
             {
+                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 OperationRegion (RPAL, SystemMemory, Add (GPCB (), Add (0x000B8100, Arg1)), 0x04)
                 Field (RPAL, DWordAcc, Lock, Preserve)
                 {
@@ -16653,35 +16707,37 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     Store (Arg0, CRGC)
                 }
 
-                Switch (ToInteger (Arg4))
+                While (One)
                 {
-                    Case (Zero)
+                    Store (ToInteger (Arg4), _T_0)
+                    If (LEqual (_T_0, Zero))
                     {
                         Return (RPCD)
                     }
-                    Case (0x02)
+                    ElseIf (LEqual (_T_0, 0x02))
                     {
                         Store (Arg1, CAIR)
                         Return (CADR)
                     }
-                    Case (One)
+                    ElseIf (LEqual (_T_0, One))
                     {
                         And (Arg2, RPCD, Local0)
                         Or (Arg3, Local0, Local0)
                         Store (Local0, RPCD)
                     }
-                    Case (0x03)
+                    ElseIf (LEqual (_T_0, 0x03))
                     {
                         Store (Arg1, CAIR)
                         And (Arg2, CADR, Local0)
                         Or (Arg3, Local0, Local0)
                         Store (Local0, CADR)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
 
                 Return (Zero)
@@ -16689,72 +16745,74 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
             Method (D3CS, 1, Serialized)
             {
-                Switch (ToInteger (Arg0))
+                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+                While (One)
                 {
-                    Case (0x04)
+                    Store (Arg0, _T_0)
+                    If (LEqual (_T_0, 0x04))
                     {
                         If (CondRefOf (\_SB.PCI0.RP05.POFF))
                         {
                             Return (One)
                         }
                     }
-                    Case (0x06)
+                    ElseIf (LEqual (_T_0, 0x06))
                     {
                         If (CondRefOf (\_SB.PCI0.RP07.POFF))
                         {
                             Return (One)
                         }
                     }
-                    Case (0x08)
+                    ElseIf (LEqual (_T_0, 0x08))
                     {
                         If (CondRefOf (\_SB.PCI0.RP09.POFF))
                         {
                             Return (One)
                         }
                     }
-                    Case (0x0A)
+                    ElseIf (LEqual (_T_0, 0x0A))
                     {
                         If (CondRefOf (\_SB.PCI0.RP11.POFF))
                         {
                             Return (One)
                         }
                     }
-                    Case (0x0C)
+                    ElseIf (LEqual (_T_0, 0x0C))
                     {
                         If (CondRefOf (\_SB.PCI0.RP13.POFF))
                         {
                             Return (One)
                         }
                     }
-                    Case (0x0E)
+                    ElseIf (LEqual (_T_0, 0x0E))
                     {
                         If (CondRefOf (\_SB.PCI0.RP15.POFF))
                         {
                             Return (One)
                         }
                     }
-                    Case (0x10)
+                    ElseIf (LEqual (_T_0, 0x10))
                     {
                         If (CondRefOf (\_SB.PCI0.RP17.POFF))
                         {
                             Return (One)
                         }
                     }
-                    Case (0x12)
+                    ElseIf (LEqual (_T_0, 0x12))
                     {
                         If (CondRefOf (\_SB.PCI0.RP19.POFF))
                         {
                             Return (One)
                         }
                     }
-                    Case (0x14)
+                    ElseIf (LEqual (_T_0, 0x14))
                     {
                         If (CondRefOf (\_SB.PCI0.RP21.POFF))
                         {
                             Return (One)
                         }
                     }
-                    Case (0x16)
+                    ElseIf (LEqual (_T_0, 0x16))
                     {
                         If (CondRefOf (\_SB.PCI0.RP23.POFF))
                         {
@@ -16762,6 +16820,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         }
                     }
 
+                    Break
                 }
 
                 Return (Zero)
@@ -16769,72 +16828,74 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
             Method (RSON, 1, Serialized)
             {
-                Switch (ToInteger (Arg0))
+                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+                While (One)
                 {
-                    Case (0x04)
+                    Store (Arg0, _T_0)
+                    If (LEqual (_T_0, 0x04))
                     {
                         If (CondRefOf (\_SB.PCI0.RP05.PON))
                         {
                             ^^RP05.PON ()
                         }
                     }
-                    Case (0x06)
+                    ElseIf (LEqual (_T_0, 0x06))
                     {
                         If (CondRefOf (\_SB.PCI0.RP07.PON))
                         {
                             ^^RP07.PON ()
                         }
                     }
-                    Case (0x08)
+                    ElseIf (LEqual (_T_0, 0x08))
                     {
                         If (CondRefOf (\_SB.PCI0.RP09.PON))
                         {
                             ^^RP09.PON ()
                         }
                     }
-                    Case (0x0A)
+                    ElseIf (LEqual (_T_0, 0x0A))
                     {
                         If (CondRefOf (\_SB.PCI0.RP11.PON))
                         {
                             ^^RP11.PON ()
                         }
                     }
-                    Case (0x0C)
+                    ElseIf (LEqual (_T_0, 0x0C))
                     {
                         If (CondRefOf (\_SB.PCI0.RP13.PON))
                         {
                             ^^RP13.PON ()
                         }
                     }
-                    Case (0x0E)
+                    ElseIf (LEqual (_T_0, 0x0E))
                     {
                         If (CondRefOf (\_SB.PCI0.RP15.PON))
                         {
                             ^^RP15.PON ()
                         }
                     }
-                    Case (0x10)
+                    ElseIf (LEqual (_T_0, 0x10))
                     {
                         If (CondRefOf (\_SB.PCI0.RP17.PON))
                         {
                             ^^RP17.PON ()
                         }
                     }
-                    Case (0x12)
+                    ElseIf (LEqual (_T_0, 0x12))
                     {
                         If (CondRefOf (\_SB.PCI0.RP19.PON))
                         {
                             ^^RP19.PON ()
                         }
                     }
-                    Case (0x14)
+                    ElseIf (LEqual (_T_0, 0x14))
                     {
                         If (CondRefOf (\_SB.PCI0.RP21.PON))
                         {
                             ^^RP21.PON ()
                         }
                     }
-                    Case (0x16)
+                    ElseIf (LEqual (_T_0, 0x16))
                     {
                         If (CondRefOf (\_SB.PCI0.RP23.PON))
                         {
@@ -16842,77 +16903,80 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         }
                     }
 
+                    Break
                 }
             }
 
             Method (RSOF, 1, Serialized)
             {
-                Switch (ToInteger (Arg0))
+                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+                While (One)
                 {
-                    Case (0x04)
+                    Store (Arg0, _T_0)
+                    If (LEqual (_T_0, 0x04))
                     {
                         If (CondRefOf (\_SB.PCI0.RP05.POFF))
                         {
                             ^^RP05.POFF ()
                         }
                     }
-                    Case (0x06)
+                    ElseIf (LEqual (_T_0, 0x06))
                     {
                         If (CondRefOf (\_SB.PCI0.RP07.POFF))
                         {
                             ^^RP07.POFF ()
                         }
                     }
-                    Case (0x08)
+                    ElseIf (LEqual (_T_0, 0x08))
                     {
                         If (CondRefOf (\_SB.PCI0.RP09.POFF))
                         {
                             ^^RP09.POFF ()
                         }
                     }
-                    Case (0x0A)
+                    ElseIf (LEqual (_T_0, 0x0A))
                     {
                         If (CondRefOf (\_SB.PCI0.RP11.POFF))
                         {
                             ^^RP11.POFF ()
                         }
                     }
-                    Case (0x0C)
+                    ElseIf (LEqual (_T_0, 0x0C))
                     {
                         If (CondRefOf (\_SB.PCI0.RP13.POFF))
                         {
                             ^^RP13.POFF ()
                         }
                     }
-                    Case (0x0E)
+                    ElseIf (LEqual (_T_0, 0x0E))
                     {
                         If (CondRefOf (\_SB.PCI0.RP15.POFF))
                         {
                             ^^RP15.POFF ()
                         }
                     }
-                    Case (0x10)
+                    ElseIf (LEqual (_T_0, 0x10))
                     {
                         If (CondRefOf (\_SB.PCI0.RP17.POFF))
                         {
                             ^^RP17.POFF ()
                         }
                     }
-                    Case (0x12)
+                    ElseIf (LEqual (_T_0, 0x12))
                     {
                         If (CondRefOf (\_SB.PCI0.RP19.POFF))
                         {
                             ^^RP19.POFF ()
                         }
                     }
-                    Case (0x14)
+                    ElseIf (LEqual (_T_0, 0x14))
                     {
                         If (CondRefOf (\_SB.PCI0.RP21.POFF))
                         {
                             ^^RP21.POFF ()
                         }
                     }
-                    Case (0x16)
+                    ElseIf (LEqual (_T_0, 0x16))
                     {
                         If (CondRefOf (\_SB.PCI0.RP23.POFF))
                         {
@@ -16920,6 +16984,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         }
                     }
 
+                    Break
                 }
             }
 
@@ -17026,11 +17091,13 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
             Method (RSTD, 5, Serialized)
             {
+                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If (LEqual (Arg0, ToUUID ("e03e3431-e510-4fa2-abc0-2d7e901245fe")))
                 {
-                    Switch (ToInteger (Arg2))
+                    While (One)
                     {
-                        Case (Zero)
+                        Store (ToInteger (Arg2), _T_0)
+                        If (LEqual (_T_0, Zero))
                         {
                             Name (RBUF, Buffer (One)
                             {
@@ -17040,7 +17107,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                             Store (0x3F, SFUN)
                             Return (RBUF)
                         }
-                        Case (One)
+                        ElseIf (LEqual (_T_0, One))
                         {
                             Store (DerefOf (Index (Arg3, Zero)), Arg4)
                             Store (DerefOf (Index (Arg3, Zero)), Local0)
@@ -17050,7 +17117,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 Zero
                             })
                         }
-                        Case (0x02)
+                        ElseIf (LEqual (_T_0, 0x02))
                         {
                             Store (DerefOf (Index (Arg3, Zero)), Local0)
                             ADBG (Concatenate ("RSTD.ON:", ToHexString (Local0)))
@@ -17060,7 +17127,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 Zero
                             })
                         }
-                        Case (0x03)
+                        ElseIf (LEqual (_T_0, 0x03))
                         {
                             Store (DerefOf (Index (Arg3, Zero)), Local0)
                             ADBG (Concatenate ("RSTD.OFF:", ToHexString (Local0)))
@@ -17070,7 +17137,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 Zero
                             })
                         }
-                        Case (0x04)
+                        ElseIf (LEqual (_T_0, 0x04))
                         {
                             Name (GETM, Buffer (One)
                             {
@@ -17081,13 +17148,13 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                             ADBG (Concatenate ("RSTD.GET:", ToHexString (GMSK)))
                             Return (GETM)
                         }
-                        Case (0x05)
+                        ElseIf (LEqual (_T_0, 0x05))
                         {
                             Store (DerefOf (Index (Arg3, Zero)), VR3A)
                             ADBG (Concatenate ("RSTD.D3A:", ToHexString (VR3A)))
                             Return (Zero)
                         }
-                        Default
+                        Else
                         {
                             Return (Package (0x01)
                             {
@@ -17095,6 +17162,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                             })
                         }
 
+                        Break
                     }
                 }
                 Else
@@ -17108,16 +17176,18 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
             Method (D3AS, 3, Serialized)
             {
-                Switch (ToInteger (Arg1))
+                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+                While (One)
                 {
-                    Case (Zero)
+                    Store (Arg1, _T_0)
+                    If (LEqual (_T_0, Zero))
                     {
                         Return (Buffer (One)
                         {
                              0x03                                           
                         })
                     }
-                    Case (One)
+                    ElseIf (LEqual (_T_0, One))
                     {
                         If (LEqual (PSON, One))
                         {
@@ -17135,6 +17205,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         }
                     }
 
+                    Break
                 }
 
                 Return (Buffer (One)
@@ -18463,6 +18534,8 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
+                Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler
+                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If (PCIC (Arg0))
                 {
                     Return (PCID (Arg0, Arg1, Arg2, Arg3))
@@ -18473,9 +18546,10 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 {
                     If (LGreaterEqual (Arg1, Zero))
                     {
-                        Switch (ToInteger (Arg2))
+                        While (One)
                         {
-                            Case (Zero)
+                            Store (ToInteger (Arg2), _T_0)
+                            If (LEqual (_T_0, Zero))
                             {
                                 If (LEqual (EMH4, One))
                                 {
@@ -18490,39 +18564,40 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                      0x21, 0x02                                     
                                 })
                             }
-                            Case (0x05)
+                            ElseIf (LEqual (_T_0, 0x05))
                             {
                                 Return (Buffer (One)
                                 {
                                      0x03                                           
                                 })
                             }
-                            Case (0x06)
+                            ElseIf (LEqual (_T_0, 0x06))
                             {
                                 Return (Buffer (One)
                                 {
                                      0x05                                           
                                 })
                             }
-                            Case (0x09)
+                            ElseIf (LEqual (_T_0, 0x09))
                             {
-                                Switch (ToInteger (EMDS))
+                                While (One)
                                 {
-                                    Case (Zero)
+                                    Store (EMDS, _T_1)
+                                    If (LEqual (_T_1, Zero))
                                     {
                                         Return (Buffer (One)
                                         {
                                              0x00                                           
                                         })
                                     }
-                                    Case (One)
+                                    ElseIf (LEqual (_T_1, One))
                                     {
                                         Return (Buffer (One)
                                         {
                                              0x01                                           
                                         })
                                     }
-                                    Case (0x04)
+                                    ElseIf (LEqual (_T_1, 0x04))
                                     {
                                         Return (Buffer (One)
                                         {
@@ -18530,9 +18605,11 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                         })
                                     }
 
+                                    Break
                                 }
                             }
 
+                            Break
                         }
                     }
                 }
@@ -18616,6 +18693,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
+                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If (PCIC (Arg0))
                 {
                     Return (PCID (Arg0, Arg1, Arg2, Arg3))
@@ -18625,16 +18703,17 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 {
                     If (LGreaterEqual (Arg1, Zero))
                     {
-                        Switch (ToInteger (Arg2))
+                        While (One)
                         {
-                            Case (Zero)
+                            Store (ToInteger (Arg2), _T_0)
+                            If (LEqual (_T_0, Zero))
                             {
                                 Return (Buffer (One)
                                 {
                                      0x19                                           
                                 })
                             }
-                            Case (0x03)
+                            ElseIf (LEqual (_T_0, 0x03))
                             {
                                 Sleep (0x64)
                                 Return (Buffer (One)
@@ -18642,7 +18721,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                      0x00                                           
                                 })
                             }
-                            Case (0x04)
+                            ElseIf (LEqual (_T_0, 0x04))
                             {
                                 Sleep (0x64)
                                 Return (Buffer (One)
@@ -18651,6 +18730,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 })
                             }
 
+                            Break
                         }
                     }
                 }
@@ -19183,7 +19263,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
     Name (LDLY, 0x012C)
     Name (TNVB, 0xFFFF0000)
     Name (TNVL, 0xAA55)
-    OperationRegion (BNVS, SystemMemory, 0x7ED5A000, 0x0043)
+    OperationRegion (BNVS, SystemMemory, 0x7ED59000, 0x0043)
     Field (BNVS, AnyAcc, Lock, Preserve)
     {
         TBSF,   8, 
@@ -19238,171 +19318,173 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
     Name (TOFF, Zero)
     Method (TBON, 0, Serialized)
     {
+        Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
         Store (One, TRDO)
-        Switch (ToInteger (RPS0))
+        While (One)
         {
-            Case (One)
+            Store (ToInteger (RPS0), _T_0)
+            If (LEqual (_T_0, One))
             {
                 If (CondRefOf (\_SB.PCI0.RP01.PON))
                 {
                     \_SB.PCI0.RP01.PON ()
                 }
             }
-            Case (0x02)
+            ElseIf (LEqual (_T_0, 0x02))
             {
                 If (CondRefOf (\_SB.PCI0.RP02.PON))
                 {
                     \_SB.PCI0.RP02.PON ()
                 }
             }
-            Case (0x03)
+            ElseIf (LEqual (_T_0, 0x03))
             {
                 If (CondRefOf (\_SB.PCI0.RP03.PON))
                 {
                     \_SB.PCI0.RP03.PON ()
                 }
             }
-            Case (0x04)
+            ElseIf (LEqual (_T_0, 0x04))
             {
                 If (CondRefOf (\_SB.PCI0.RP04.PON))
                 {
                     \_SB.PCI0.RP04.PON ()
                 }
             }
-            Case (0x05)
+            ElseIf (LEqual (_T_0, 0x05))
             {
                 If (CondRefOf (\_SB.PCI0.RP05.PON))
                 {
                     \_SB.PCI0.RP05.PON ()
                 }
             }
-            Case (0x06)
+            ElseIf (LEqual (_T_0, 0x06))
             {
                 If (CondRefOf (\_SB.PCI0.RP06.PON))
                 {
                     \_SB.PCI0.RP06.PON ()
                 }
             }
-            Case (0x07)
+            ElseIf (LEqual (_T_0, 0x07))
             {
                 If (CondRefOf (\_SB.PCI0.RP07.PON))
                 {
                     \_SB.PCI0.RP07.PON ()
                 }
             }
-            Case (0x08)
+            ElseIf (LEqual (_T_0, 0x08))
             {
                 If (CondRefOf (\_SB.PCI0.RP08.PON))
                 {
                     \_SB.PCI0.RP08.PON ()
                 }
             }
-            Case (0x09)
+            ElseIf (LEqual (_T_0, 0x09))
             {
                 If (CondRefOf (\_SB.PCI0.RP09.PON))
                 {
                     \_SB.PCI0.RP09.PON ()
                 }
             }
-            Case (0x0A)
+            ElseIf (LEqual (_T_0, 0x0A))
             {
                 If (CondRefOf (\_SB.PCI0.RP10.PON))
                 {
                     \_SB.PCI0.RP10.PON ()
                 }
             }
-            Case (0x0B)
+            ElseIf (LEqual (_T_0, 0x0B))
             {
                 If (CondRefOf (\_SB.PCI0.RP11.PON))
                 {
                     \_SB.PCI0.RP11.PON ()
                 }
             }
-            Case (0x0C)
+            ElseIf (LEqual (_T_0, 0x0C))
             {
                 If (CondRefOf (\_SB.PCI0.RP12.PON))
                 {
                     \_SB.PCI0.RP12.PON ()
                 }
             }
-            Case (0x0D)
+            ElseIf (LEqual (_T_0, 0x0D))
             {
                 If (CondRefOf (\_SB.PCI0.RP13.PON))
                 {
                     \_SB.PCI0.RP13.PON ()
                 }
             }
-            Case (0x0E)
+            ElseIf (LEqual (_T_0, 0x0E))
             {
                 If (CondRefOf (\_SB.PCI0.RP14.PON))
                 {
                     \_SB.PCI0.RP14.PON ()
                 }
             }
-            Case (0x0F)
+            ElseIf (LEqual (_T_0, 0x0F))
             {
                 If (CondRefOf (\_SB.PCI0.RP15.PON))
                 {
                     \_SB.PCI0.RP15.PON ()
                 }
             }
-            Case (0x10)
+            ElseIf (LEqual (_T_0, 0x10))
             {
                 If (CondRefOf (\_SB.PCI0.RP16.PON))
                 {
                     \_SB.PCI0.RP16.PON ()
                 }
             }
-            Case (0x11)
+            ElseIf (LEqual (_T_0, 0x11))
             {
                 If (CondRefOf (\_SB.PCI0.RP17.PON))
                 {
                     \_SB.PCI0.RP17.PON ()
                 }
             }
-            Case (0x12)
+            ElseIf (LEqual (_T_0, 0x12))
             {
                 If (CondRefOf (\_SB.PCI0.RP18.PON))
                 {
                     \_SB.PCI0.RP18.PON ()
                 }
             }
-            Case (0x13)
+            ElseIf (LEqual (_T_0, 0x13))
             {
                 If (CondRefOf (\_SB.PCI0.RP19.PON))
                 {
                     \_SB.PCI0.RP19.PON ()
                 }
             }
-            Case (0x14)
+            ElseIf (LEqual (_T_0, 0x14))
             {
                 If (CondRefOf (\_SB.PCI0.RP20.PON))
                 {
                     \_SB.PCI0.RP20.PON ()
                 }
             }
-            Case (0x15)
+            ElseIf (LEqual (_T_0, 0x15))
             {
                 If (CondRefOf (\_SB.PCI0.RP21.PON))
                 {
                     \_SB.PCI0.RP21.PON ()
                 }
             }
-            Case (0x16)
+            ElseIf (LEqual (_T_0, 0x16))
             {
                 If (CondRefOf (\_SB.PCI0.RP22.PON))
                 {
                     \_SB.PCI0.RP22.PON ()
                 }
             }
-            Case (0x17)
+            ElseIf (LEqual (_T_0, 0x17))
             {
                 If (CondRefOf (\_SB.PCI0.RP23.PON))
                 {
                     \_SB.PCI0.RP23.PON ()
                 }
             }
-            Case (0x18)
+            ElseIf (LEqual (_T_0, 0x18))
             {
                 If (CondRefOf (\_SB.PCI0.RP24.PON))
                 {
@@ -19410,6 +19492,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 }
             }
 
+            Break
         }
 
         Store (Zero, TRDO)
@@ -19417,78 +19500,76 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
     Method (TBTD, 2, Serialized)
     {
+        Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler
+        Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
         ADBG ("TBTD")
         If (LEqual (Arg1, One))
         {
-            Switch (ToInteger (Arg0))
+            While (One)
             {
-                Case (Package (0x08)
-                    {
-                        One, 
-                        0x02, 
-                        0x03, 
-                        0x04, 
-                        0x05, 
-                        0x06, 
-                        0x07, 
-                        0x08
-                    }
-
-)
+                Store (ToInteger (Arg0), _T_0)
+                If (LNotEqual (Match (Package (0x08)
+                                {
+                                    One, 
+                                    0x02, 
+                                    0x03, 
+                                    0x04, 
+                                    0x05, 
+                                    0x06, 
+                                    0x07, 
+                                    0x08
+                                }, MEQ, _T_0, MTR, Zero, Zero), Ones))
                 {
                     Store (0x1C, Local0)
                 }
-                Case (Package (0x08)
-                    {
-                        0x09, 
-                        0x0A, 
-                        0x0B, 
-                        0x0C, 
-                        0x0D, 
-                        0x0E, 
-                        0x0F, 
-                        0x10
-                    }
-
-)
+                ElseIf (LNotEqual (Match (Package (0x08)
+                                {
+                                    0x09, 
+                                    0x0A, 
+                                    0x0B, 
+                                    0x0C, 
+                                    0x0D, 
+                                    0x0E, 
+                                    0x0F, 
+                                    0x10
+                                }, MEQ, _T_0, MTR, Zero, Zero), Ones))
                 {
                     Store (0x1D, Local0)
                 }
-                Case (Package (0x08)
-                    {
-                        0x11, 
-                        0x12, 
-                        0x13, 
-                        0x14, 
-                        0x15, 
-                        0x16, 
-                        0x17, 
-                        0x18
-                    }
-
-)
+                ElseIf (LNotEqual (Match (Package (0x08)
+                                {
+                                    0x11, 
+                                    0x12, 
+                                    0x13, 
+                                    0x14, 
+                                    0x15, 
+                                    0x16, 
+                                    0x17, 
+                                    0x18
+                                }, MEQ, _T_0, MTR, Zero, Zero), Ones))
                 {
                     Store (0x1B, Local0)
                 }
 
+                Break
             }
         }
         ElseIf (LEqual (Arg1, 0x02))
         {
-            Switch (ToInteger (Arg0))
+            While (One)
             {
-                Case (Package (0x03)
-                    {
-                        One, 
-                        0x02, 
-                        0x03
-                    }
-
-)
+                Store (ToInteger (Arg0), _T_1)
+                If (LNotEqual (Match (Package (0x03)
+                                {
+                                    One, 
+                                    0x02, 
+                                    0x03
+                                }, MEQ, _T_1, MTR, Zero, Zero), Ones))
                 {
                     Store (One, Local0)
                 }
 
+                Break
             }
         }
         Else
@@ -19503,127 +19584,133 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
     Method (TBTF, 2, Serialized)
     {
+        Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler
+        Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
         ADBG ("TBTF")
         If (LEqual (Arg1, One))
         {
-            Switch (ToInteger (Arg0))
+            While (One)
             {
-                Case (One)
+                Store (ToInteger (Arg0), _T_0)
+                If (LEqual (_T_0, One))
                 {
                     Store (And (RPA1, 0x0F), Local0)
                 }
-                Case (0x02)
+                ElseIf (LEqual (_T_0, 0x02))
                 {
                     Store (And (RPA2, 0x0F), Local0)
                 }
-                Case (0x03)
+                ElseIf (LEqual (_T_0, 0x03))
                 {
                     Store (And (RPA3, 0x0F), Local0)
                 }
-                Case (0x04)
+                ElseIf (LEqual (_T_0, 0x04))
                 {
                     Store (And (RPA4, 0x0F), Local0)
                 }
-                Case (0x05)
+                ElseIf (LEqual (_T_0, 0x05))
                 {
                     Store (And (RPA5, 0x0F), Local0)
                 }
-                Case (0x06)
+                ElseIf (LEqual (_T_0, 0x06))
                 {
                     Store (And (RPA6, 0x0F), Local0)
                 }
-                Case (0x07)
+                ElseIf (LEqual (_T_0, 0x07))
                 {
                     Store (And (RPA7, 0x0F), Local0)
                 }
-                Case (0x08)
+                ElseIf (LEqual (_T_0, 0x08))
                 {
                     Store (And (RPA8, 0x0F), Local0)
                 }
-                Case (0x09)
+                ElseIf (LEqual (_T_0, 0x09))
                 {
                     Store (And (RPA9, 0x0F), Local0)
                 }
-                Case (0x0A)
+                ElseIf (LEqual (_T_0, 0x0A))
                 {
                     Store (And (RPAA, 0x0F), Local0)
                 }
-                Case (0x0B)
+                ElseIf (LEqual (_T_0, 0x0B))
                 {
                     Store (And (RPAB, 0x0F), Local0)
                 }
-                Case (0x0C)
+                ElseIf (LEqual (_T_0, 0x0C))
                 {
                     Store (And (RPAC, 0x0F), Local0)
                 }
-                Case (0x0D)
+                ElseIf (LEqual (_T_0, 0x0D))
                 {
                     Store (And (RPAD, 0x0F), Local0)
                 }
-                Case (0x0E)
+                ElseIf (LEqual (_T_0, 0x0E))
                 {
                     Store (And (RPAE, 0x0F), Local0)
                 }
-                Case (0x0F)
+                ElseIf (LEqual (_T_0, 0x0F))
                 {
                     Store (And (RPAF, 0x0F), Local0)
                 }
-                Case (0x10)
+                ElseIf (LEqual (_T_0, 0x10))
                 {
                     Store (And (RPAG, 0x0F), Local0)
                 }
-                Case (0x11)
+                ElseIf (LEqual (_T_0, 0x11))
                 {
                     Store (And (RPAH, 0x0F), Local0)
                 }
-                Case (0x12)
+                ElseIf (LEqual (_T_0, 0x12))
                 {
                     Store (And (RPAI, 0x0F), Local0)
                 }
-                Case (0x13)
+                ElseIf (LEqual (_T_0, 0x13))
                 {
                     Store (And (RPAJ, 0x0F), Local0)
                 }
-                Case (0x14)
+                ElseIf (LEqual (_T_0, 0x14))
                 {
                     Store (And (RPAK, 0x0F), Local0)
                 }
-                Case (0x15)
+                ElseIf (LEqual (_T_0, 0x15))
                 {
                     Store (And (RPAL, 0x0F), Local0)
                 }
-                Case (0x16)
+                ElseIf (LEqual (_T_0, 0x16))
                 {
                     Store (And (RPAM, 0x0F), Local0)
                 }
-                Case (0x17)
+                ElseIf (LEqual (_T_0, 0x17))
                 {
                     Store (And (RPAN, 0x0F), Local0)
                 }
-                Case (0x18)
+                ElseIf (LEqual (_T_0, 0x18))
                 {
                     Store (And (RPAO, 0x0F), Local0)
                 }
 
+                Break
             }
         }
         ElseIf (LEqual (Arg1, 0x02))
         {
-            Switch (ToInteger (Arg0))
+            While (One)
             {
-                Case (One)
+                Store (ToInteger (Arg0), _T_1)
+                If (LEqual (_T_1, One))
                 {
                     Store (Zero, Local0)
                 }
-                Case (0x02)
+                ElseIf (LEqual (_T_1, 0x02))
                 {
                     Store (One, Local0)
                 }
-                Case (0x03)
+                ElseIf (LEqual (_T_1, 0x03))
                 {
                     Store (0x02, Local0)
                 }
 
+                Break
             }
         }
         Else
@@ -19895,156 +19982,162 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (NTFY, 2, Serialized)
         {
+            Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             ADBG ("NTFY")
             If (LEqual (NOHP, One))
             {
                 If (LEqual (Arg1, One))
                 {
-                    Switch (ToInteger (Arg0))
+                    While (One)
                     {
-                        Case (One)
+                        Store (ToInteger (Arg0), _T_0)
+                        If (LEqual (_T_0, One))
                         {
                             ADBG ("Notify RP01")
                             Notify (\_SB.PCI0.RP01, Zero)
                         }
-                        Case (0x02)
+                        ElseIf (LEqual (_T_0, 0x02))
                         {
                             ADBG ("Notify RP02")
                             Notify (\_SB.PCI0.RP02, Zero)
                         }
-                        Case (0x03)
+                        ElseIf (LEqual (_T_0, 0x03))
                         {
                             ADBG ("Notify RP03")
                             Notify (\_SB.PCI0.RP03, Zero)
                         }
-                        Case (0x04)
+                        ElseIf (LEqual (_T_0, 0x04))
                         {
                             ADBG ("Notify RP04")
                             Notify (\_SB.PCI0.RP04, Zero)
                         }
-                        Case (0x05)
+                        ElseIf (LEqual (_T_0, 0x05))
                         {
                             ADBG ("Notify RP05")
                             Notify (\_SB.PCI0.RP05, Zero)
                         }
-                        Case (0x06)
+                        ElseIf (LEqual (_T_0, 0x06))
                         {
                             ADBG ("Notify RP06")
                             Notify (\_SB.PCI0.RP06, Zero)
                         }
-                        Case (0x07)
+                        ElseIf (LEqual (_T_0, 0x07))
                         {
                             ADBG ("Notify RP07")
                             Notify (\_SB.PCI0.RP07, Zero)
                         }
-                        Case (0x08)
+                        ElseIf (LEqual (_T_0, 0x08))
                         {
                             ADBG ("Notify RP08")
                             Notify (\_SB.PCI0.RP08, Zero)
                         }
-                        Case (0x09)
+                        ElseIf (LEqual (_T_0, 0x09))
                         {
                             ADBG ("Notify RP09")
                             Notify (\_SB.PCI0.RP09, Zero)
                         }
-                        Case (0x0A)
+                        ElseIf (LEqual (_T_0, 0x0A))
                         {
                             ADBG ("Notify RP10")
                             Notify (\_SB.PCI0.RP10, Zero)
                         }
-                        Case (0x0B)
+                        ElseIf (LEqual (_T_0, 0x0B))
                         {
                             ADBG ("Notify RP11")
                             Notify (\_SB.PCI0.RP11, Zero)
                         }
-                        Case (0x0C)
+                        ElseIf (LEqual (_T_0, 0x0C))
                         {
                             ADBG ("Notify RP12")
                             Notify (\_SB.PCI0.RP12, Zero)
                         }
-                        Case (0x0D)
+                        ElseIf (LEqual (_T_0, 0x0D))
                         {
                             ADBG ("Notify RP13")
                             Notify (\_SB.PCI0.RP13, Zero)
                         }
-                        Case (0x0E)
+                        ElseIf (LEqual (_T_0, 0x0E))
                         {
                             ADBG ("Notify RP14")
                             Notify (\_SB.PCI0.RP14, Zero)
                         }
-                        Case (0x0F)
+                        ElseIf (LEqual (_T_0, 0x0F))
                         {
                             ADBG ("Notify RP15")
                             Notify (\_SB.PCI0.RP15, Zero)
                         }
-                        Case (0x10)
+                        ElseIf (LEqual (_T_0, 0x10))
                         {
                             ADBG ("Notify RP16")
                             Notify (\_SB.PCI0.RP16, Zero)
                         }
-                        Case (0x11)
+                        ElseIf (LEqual (_T_0, 0x11))
                         {
                             ADBG ("Notify RP17")
                             Notify (\_SB.PCI0.RP17, Zero)
                         }
-                        Case (0x12)
+                        ElseIf (LEqual (_T_0, 0x12))
                         {
                             ADBG ("Notify RP18")
                             Notify (\_SB.PCI0.RP18, Zero)
                         }
-                        Case (0x13)
+                        ElseIf (LEqual (_T_0, 0x13))
                         {
                             ADBG ("Notify RP19")
                             Notify (\_SB.PCI0.RP19, Zero)
                         }
-                        Case (0x14)
+                        ElseIf (LEqual (_T_0, 0x14))
                         {
                             ADBG ("Notify RP20")
                             Notify (\_SB.PCI0.RP20, Zero)
                         }
-                        Case (0x15)
+                        ElseIf (LEqual (_T_0, 0x15))
                         {
                             ADBG ("Notify RP21")
                             Notify (\_SB.PCI0.RP21, Zero)
                         }
-                        Case (0x16)
+                        ElseIf (LEqual (_T_0, 0x16))
                         {
                             ADBG ("Notify RP22")
                             Notify (\_SB.PCI0.RP22, Zero)
                         }
-                        Case (0x17)
+                        ElseIf (LEqual (_T_0, 0x17))
                         {
                             ADBG ("Notify RP23")
                             Notify (\_SB.PCI0.RP23, Zero)
                         }
-                        Case (0x18)
+                        ElseIf (LEqual (_T_0, 0x18))
                         {
                             ADBG ("Notify RP24")
                             Notify (\_SB.PCI0.RP24, Zero)
                         }
 
+                        Break
                     }
                 }
                 ElseIf (LEqual (Arg1, 0x02))
                 {
-                    Switch (ToInteger (Arg0))
+                    While (One)
                     {
-                        Case (One)
+                        Store (ToInteger (Arg0), _T_1)
+                        If (LEqual (_T_1, One))
                         {
                             ADBG ("Notify PEG0")
                             Notify (\_SB.PCI0.PEG0, Zero)
                         }
-                        Case (0x02)
+                        ElseIf (LEqual (_T_1, 0x02))
                         {
                             ADBG ("Notify PEG1")
                             Notify (\_SB.PCI0.PEG1, Zero)
                         }
-                        Case (0x03)
+                        ElseIf (LEqual (_T_1, 0x03))
                         {
                             ADBG ("Notify PEG2")
                             Notify (\_SB.PCI0.PEG2, Zero)
                         }
 
+                        Break
                     }
                 }
             }
@@ -20133,7 +20226,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             }
             Else
             {
-                And (Local0, Ones, Local0)
                 Store (Zero, Local0)
                 Return (Zero)
             }
@@ -20194,7 +20286,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             Sleep (0x10)
             Release (OSUM)
             ADBG ("End-of-XTBT")
-            Return (Zero)
         }
 
         Method (_E03, 0, NotSerialized)  // _Exx: Edge-Triggered GPE
@@ -20554,30 +20645,33 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
+                Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler
+                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If (LEqual (Arg0, ToUUID ("1730e71d-e5dd-4a34-be57-4d76b6a2fe37")))
                 {
                     If (LGreaterEqual (ToInteger (Arg1), Zero))
                     {
-                        Switch (ToInteger (Arg2))
+                        While (One)
                         {
-                            Case (Zero)
+                            Store (ToInteger (Arg2), _T_0)
+                            If (LEqual (_T_0, Zero))
                             {
                                 Return (Buffer (One)
                                 {
                                      0x03                                           
                                 })
                             }
-                            Case (One)
+                            ElseIf (LEqual (_T_0, One))
                             {
-                                Switch (ToInteger (DerefOf (Index (Arg3, Zero))))
+                                While (One)
                                 {
-                                    Case (Zero)
-                                    {
-                                    }
-
+                                    Store (ToInteger (DerefOf (Index (Arg3, Zero))), _T_1)
+                                    If (LEqual (_T_1, Zero)) {}
+                                    Break
                                 }
                             }
 
+                            Break
                         }
 
                         Return (Zero)
@@ -21300,7 +21394,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
         Store (Local1, PPL1)
         Store (One, PL1E)
         Store (One, CLP1)
-        Return (Zero)
     }
 
     Method (RPL1, 0, Serialized)
@@ -21315,9 +21408,11 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
     Name (GLCK, Zero)
     Method (GUAM, 1, Serialized)
     {
-        Switch (ToInteger (Arg0))
+        Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+        While (One)
         {
-            Case (Zero)
+            Store (ToInteger (Arg0), _T_0)
+            If (LEqual (_T_0, Zero))
             {
                 If (LEqual (GLCK, One))
                 {
@@ -21340,7 +21435,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     }
                 }
             }
-            Case (One)
+            ElseIf (LEqual (_T_0, One))
             {
                 If (LEqual (GLCK, Zero))
                 {
@@ -21371,16 +21466,16 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     }
                 }
             }
-            Default
+            Else
             {
                 Return (Zero)
             }
 
+            Break
         }
 
         Store (LAnd (Arg0, LNot (PWRS)), UAMS)
         P_CS ()
-        Return (Zero)
     }
 
     Method (P_CS, 0, Serialized)
@@ -21440,7 +21535,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             Store (0x03E8, OSYS)
             If (CondRefOf (\_OSI, Local0))
             {
-                And (Local0, Ones, Local0)
                 If (_OSI ("Windows 2001"))
                 {
                     Store (0x07D1, OSYS)
@@ -21910,42 +22004,45 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
     Method (UXDV, 1, Serialized)
     {
+        Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
         Store (0xFF, Local0)
-        Switch (Add (Arg0, Zero))
+        While (One)
         {
-            Case (0x03F8)
+            Store (Add (Arg0, Zero), _T_0)
+            If (LEqual (_T_0, 0x03F8))
             {
                 Store (Zero, Local0)
             }
-            Case (0x02F8)
+            ElseIf (LEqual (_T_0, 0x02F8))
             {
                 Store (One, Local0)
             }
-            Case (0x0220)
+            ElseIf (LEqual (_T_0, 0x0220))
             {
                 Store (0x02, Local0)
             }
-            Case (0x0228)
+            ElseIf (LEqual (_T_0, 0x0228))
             {
                 Store (0x03, Local0)
             }
-            Case (0x0238)
+            ElseIf (LEqual (_T_0, 0x0238))
             {
                 Store (0x04, Local0)
             }
-            Case (0x02E8)
+            ElseIf (LEqual (_T_0, 0x02E8))
             {
                 Store (0x05, Local0)
             }
-            Case (0x0338)
+            ElseIf (LEqual (_T_0, 0x0338))
             {
                 Store (0x06, Local0)
             }
-            Case (0x03E8)
+            ElseIf (LEqual (_T_0, 0x03E8))
             {
                 Store (0x07, Local0)
             }
 
+            Break
         }
 
         Return (Local0)
@@ -21953,9 +22050,11 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
     Method (RRIO, 4, Serialized)
     {
-        Switch (Add (Arg0, Zero))
+        Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+        While (One)
         {
-            Case (Zero)
+            Store (Add (Arg0, Zero), _T_0)
+            If (LEqual (_T_0, Zero))
             {
                 Store (Zero, CALE)
                 Store (UXDV (Arg2), Local0)
@@ -21969,7 +22068,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     Store (One, CALE)
                 }
             }
-            Case (One)
+            ElseIf (LEqual (_T_0, One))
             {
                 Store (Zero, CBLE)
                 Store (UXDV (Arg2), Local0)
@@ -21983,7 +22082,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     Store (One, CBLE)
                 }
             }
-            Case (0x02)
+            ElseIf (LEqual (_T_0, 0x02))
             {
                 Store (Zero, LTLE)
                 If (LEqual (Arg2, 0x0378))
@@ -22006,7 +22105,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     Store (One, LTLE)
                 }
             }
-            Case (0x03)
+            ElseIf (LEqual (_T_0, 0x03))
             {
                 Store (Zero, FDLE)
                 If (LEqual (Arg2, 0x03F0))
@@ -22024,7 +22123,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     Store (One, FDLE)
                 }
             }
-            Case (0x08)
+            ElseIf (LEqual (_T_0, 0x08))
             {
                 If (LEqual (Arg2, 0x0200))
                 {
@@ -22050,7 +22149,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     }
                 }
             }
-            Case (0x09)
+            ElseIf (LEqual (_T_0, 0x09))
             {
                 If (LEqual (Arg2, 0x0200))
                 {
@@ -22076,7 +22175,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     }
                 }
             }
-            Case (0x0A)
+            ElseIf (LEqual (_T_0, 0x0A))
             {
                 If (LOr (LEqual (Arg2, 0x60), LEqual (Arg2, 0x64)))
                 {
@@ -22090,7 +22189,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     }
                 }
             }
-            Case (0x0B)
+            ElseIf (LEqual (_T_0, 0x0B))
             {
                 If (LOr (LEqual (Arg2, 0x62), LEqual (Arg2, 0x66)))
                 {
@@ -22104,7 +22203,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     }
                 }
             }
-            Case (0x0C)
+            ElseIf (LEqual (_T_0, 0x0C))
             {
                 If (LEqual (Arg2, 0x2E))
                 {
@@ -22130,7 +22229,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     }
                 }
             }
-            Case (0x0D)
+            ElseIf (LEqual (_T_0, 0x0D))
             {
                 If (LEqual (Arg2, 0x2E))
                 {
@@ -22157,6 +22256,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 }
             }
 
+            Break
         }
     }
 
@@ -23019,75 +23119,78 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
             Method (WIST, 0, Serialized)
             {
+                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If (CondRefOf (VDID))
                 {
-                    Switch (ToInteger (VDID))
+                    While (One)
                     {
-                        Case (0x095A8086)
+                        Store (ToInteger (VDID), _T_0)
+                        If (LEqual (_T_0, 0x095A8086))
                         {
                             Return (One)
                         }
-                        Case (0x095B8086)
+                        ElseIf (LEqual (_T_0, 0x095B8086))
                         {
                             Return (One)
                         }
-                        Case (0x31658086)
+                        ElseIf (LEqual (_T_0, 0x31658086))
                         {
                             Return (One)
                         }
-                        Case (0x31668086)
+                        ElseIf (LEqual (_T_0, 0x31668086))
                         {
                             Return (One)
                         }
-                        Case (0x08B18086)
+                        ElseIf (LEqual (_T_0, 0x08B18086))
                         {
                             Return (One)
                         }
-                        Case (0x08B28086)
+                        ElseIf (LEqual (_T_0, 0x08B28086))
                         {
                             Return (One)
                         }
-                        Case (0x08B38086)
+                        ElseIf (LEqual (_T_0, 0x08B38086))
                         {
                             Return (One)
                         }
-                        Case (0x08B48086)
+                        ElseIf (LEqual (_T_0, 0x08B48086))
                         {
                             Return (One)
                         }
-                        Case (0x24F38086)
+                        ElseIf (LEqual (_T_0, 0x24F38086))
                         {
                             Return (One)
                         }
-                        Case (0x24F48086)
+                        ElseIf (LEqual (_T_0, 0x24F48086))
                         {
                             Return (One)
                         }
-                        Case (0x24F58086)
+                        ElseIf (LEqual (_T_0, 0x24F58086))
                         {
                             Return (One)
                         }
-                        Case (0x24F68086)
+                        ElseIf (LEqual (_T_0, 0x24F68086))
                         {
                             Return (One)
                         }
-                        Case (0x24FD8086)
+                        ElseIf (LEqual (_T_0, 0x24FD8086))
                         {
                             Return (One)
                         }
-                        Case (0x24FB8086)
+                        ElseIf (LEqual (_T_0, 0x24FB8086))
                         {
                             Return (One)
                         }
-                        Case (0x25268086)
+                        ElseIf (LEqual (_T_0, 0x25268086))
                         {
                             Return (One)
                         }
-                        Default
+                        Else
                         {
                             Return (Zero)
                         }
 
+                        Break
                     }
                 }
                 Else
@@ -23098,23 +23201,26 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
             Method (WGST, 0, Serialized)
             {
+                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If (CondRefOf (VDID))
                 {
-                    Switch (ToInteger (VDID))
+                    While (One)
                     {
-                        Case (0x093C8086)
+                        Store (ToInteger (VDID), _T_0)
+                        If (LEqual (_T_0, 0x093C8086))
                         {
                             Return (One)
                         }
-                        Case (0x097C8086)
+                        ElseIf (LEqual (_T_0, 0x097C8086))
                         {
                             Return (One)
                         }
-                        Default
+                        Else
                         {
                             Return (Zero)
                         }
 
+                        Break
                     }
                 }
                 Else
@@ -23125,19 +23231,22 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
             Method (WWST, 0, Serialized)
             {
+                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If (CondRefOf (VDID))
                 {
-                    Switch (ToInteger (VDID))
+                    While (One)
                     {
-                        Case (0x73608086)
+                        Store (ToInteger (VDID), _T_0)
+                        If (LEqual (_T_0, 0x73608086))
                         {
                             Return (One)
                         }
-                        Default
+                        Else
                         {
                             Return (Zero)
                         }
 
+                        Break
                     }
                 }
                 Else
@@ -23508,6 +23617,8 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                 Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
                 {
+                    Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler
+                    Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                     If (PCIC (Arg0))
                     {
                         Return (PCID (Arg0, Arg1, Arg2, Arg3))
@@ -23535,25 +23646,20 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                         If (LEqual (Arg2, One))
                         {
-                            Switch (ToInteger (DerefOf (Index (Arg3, Zero))))
+                            While (One)
                             {
-                                Case (Zero)
-                                {
-                                }
-                                Case (One)
+                                Store (ToInteger (DerefOf (Index (Arg3, Zero))), _T_0)
+                                If (LEqual (_T_0, Zero)) {}
+                                ElseIf (LEqual (_T_0, One))
                                 {
                                     If (CondRefOf (\_SB.SLPB))
                                     {
                                         Notify (SLPB, 0x80)
                                     }
                                 }
-                                Case (0x02)
-                                {
-                                }
-                                Case (0x03)
-                                {
-                                }
-                                Case (0x04)
+                                ElseIf (LEqual (_T_0, 0x02)) {}
+                                ElseIf (LEqual (_T_0, 0x03)) {}
+                                ElseIf (LEqual (_T_0, 0x04))
                                 {
                                     If (CondRefOf (\_SB.SLPB))
                                     {
@@ -23561,6 +23667,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
 
+                                Break
                             }
                         }
 
@@ -23568,9 +23675,10 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     }
                     ElseIf (LEqual (Arg0, ToUUID ("7574eb17-d1a2-4cc2-9929-4a08fcc29107")))
                     {
-                        Switch (ToInteger (Arg2))
+                        While (One)
                         {
-                            Case (Zero)
+                            Store (ToInteger (Arg2), _T_1)
+                            If (LEqual (_T_1, Zero))
                             {
                                 If (LEqual (Arg1, Zero))
                                 {
@@ -23587,15 +23695,15 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     })
                                 }
                             }
-                            Case (One)
+                            ElseIf (LEqual (_T_1, One))
                             {
                                 Return (WHIT ())
                             }
-                            Case (0x02)
+                            ElseIf (LEqual (_T_1, 0x02))
                             {
                                 Return (SELF ())
                             }
-                            Default
+                            Else
                             {
                                 Return (Buffer (One)
                                 {
@@ -23603,6 +23711,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 })
                             }
 
+                            Break
                         }
                     }
                     Else
@@ -23751,75 +23860,78 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WIST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x095A8086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x095A8086))
                     {
                         Return (One)
                     }
-                    Case (0x095B8086)
+                    ElseIf (LEqual (_T_0, 0x095B8086))
                     {
                         Return (One)
                     }
-                    Case (0x31658086)
+                    ElseIf (LEqual (_T_0, 0x31658086))
                     {
                         Return (One)
                     }
-                    Case (0x31668086)
+                    ElseIf (LEqual (_T_0, 0x31668086))
                     {
                         Return (One)
                     }
-                    Case (0x08B18086)
+                    ElseIf (LEqual (_T_0, 0x08B18086))
                     {
                         Return (One)
                     }
-                    Case (0x08B28086)
+                    ElseIf (LEqual (_T_0, 0x08B28086))
                     {
                         Return (One)
                     }
-                    Case (0x08B38086)
+                    ElseIf (LEqual (_T_0, 0x08B38086))
                     {
                         Return (One)
                     }
-                    Case (0x08B48086)
+                    ElseIf (LEqual (_T_0, 0x08B48086))
                     {
                         Return (One)
                     }
-                    Case (0x24F38086)
+                    ElseIf (LEqual (_T_0, 0x24F38086))
                     {
                         Return (One)
                     }
-                    Case (0x24F48086)
+                    ElseIf (LEqual (_T_0, 0x24F48086))
                     {
                         Return (One)
                     }
-                    Case (0x24F58086)
+                    ElseIf (LEqual (_T_0, 0x24F58086))
                     {
                         Return (One)
                     }
-                    Case (0x24F68086)
+                    ElseIf (LEqual (_T_0, 0x24F68086))
                     {
                         Return (One)
                     }
-                    Case (0x24FD8086)
+                    ElseIf (LEqual (_T_0, 0x24FD8086))
                     {
                         Return (One)
                     }
-                    Case (0x24FB8086)
+                    ElseIf (LEqual (_T_0, 0x24FB8086))
                     {
                         Return (One)
                     }
-                    Case (0x25268086)
+                    ElseIf (LEqual (_T_0, 0x25268086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -23830,23 +23942,26 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WGST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x093C8086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x093C8086))
                     {
                         Return (One)
                     }
-                    Case (0x097C8086)
+                    ElseIf (LEqual (_T_0, 0x097C8086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -23857,19 +23972,22 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WWST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x73608086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x73608086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -24240,6 +24358,8 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
+                Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler
+                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If (PCIC (Arg0))
                 {
                     Return (PCID (Arg0, Arg1, Arg2, Arg3))
@@ -24267,25 +24387,20 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                     If (LEqual (Arg2, One))
                     {
-                        Switch (ToInteger (DerefOf (Index (Arg3, Zero))))
+                        While (One)
                         {
-                            Case (Zero)
-                            {
-                            }
-                            Case (One)
+                            Store (ToInteger (DerefOf (Index (Arg3, Zero))), _T_0)
+                            If (LEqual (_T_0, Zero)) {}
+                            ElseIf (LEqual (_T_0, One))
                             {
                                 If (CondRefOf (\_SB.SLPB))
                                 {
                                     Notify (SLPB, 0x80)
                                 }
                             }
-                            Case (0x02)
-                            {
-                            }
-                            Case (0x03)
-                            {
-                            }
-                            Case (0x04)
+                            ElseIf (LEqual (_T_0, 0x02)) {}
+                            ElseIf (LEqual (_T_0, 0x03)) {}
+                            ElseIf (LEqual (_T_0, 0x04))
                             {
                                 If (CondRefOf (\_SB.SLPB))
                                 {
@@ -24293,6 +24408,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 }
                             }
 
+                            Break
                         }
                     }
 
@@ -24300,9 +24416,10 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 }
                 ElseIf (LEqual (Arg0, ToUUID ("7574eb17-d1a2-4cc2-9929-4a08fcc29107")))
                 {
-                    Switch (ToInteger (Arg2))
+                    While (One)
                     {
-                        Case (Zero)
+                        Store (ToInteger (Arg2), _T_1)
+                        If (LEqual (_T_1, Zero))
                         {
                             If (LEqual (Arg1, Zero))
                             {
@@ -24319,15 +24436,15 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 })
                             }
                         }
-                        Case (One)
+                        ElseIf (LEqual (_T_1, One))
                         {
                             Return (WHIT ())
                         }
-                        Case (0x02)
+                        ElseIf (LEqual (_T_1, 0x02))
                         {
                             Return (SELF ())
                         }
-                        Default
+                        Else
                         {
                             Return (Buffer (One)
                             {
@@ -24335,6 +24452,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                             })
                         }
 
+                        Break
                     }
                 }
                 Else
@@ -24482,75 +24600,78 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WIST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x095A8086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x095A8086))
                     {
                         Return (One)
                     }
-                    Case (0x095B8086)
+                    ElseIf (LEqual (_T_0, 0x095B8086))
                     {
                         Return (One)
                     }
-                    Case (0x31658086)
+                    ElseIf (LEqual (_T_0, 0x31658086))
                     {
                         Return (One)
                     }
-                    Case (0x31668086)
+                    ElseIf (LEqual (_T_0, 0x31668086))
                     {
                         Return (One)
                     }
-                    Case (0x08B18086)
+                    ElseIf (LEqual (_T_0, 0x08B18086))
                     {
                         Return (One)
                     }
-                    Case (0x08B28086)
+                    ElseIf (LEqual (_T_0, 0x08B28086))
                     {
                         Return (One)
                     }
-                    Case (0x08B38086)
+                    ElseIf (LEqual (_T_0, 0x08B38086))
                     {
                         Return (One)
                     }
-                    Case (0x08B48086)
+                    ElseIf (LEqual (_T_0, 0x08B48086))
                     {
                         Return (One)
                     }
-                    Case (0x24F38086)
+                    ElseIf (LEqual (_T_0, 0x24F38086))
                     {
                         Return (One)
                     }
-                    Case (0x24F48086)
+                    ElseIf (LEqual (_T_0, 0x24F48086))
                     {
                         Return (One)
                     }
-                    Case (0x24F58086)
+                    ElseIf (LEqual (_T_0, 0x24F58086))
                     {
                         Return (One)
                     }
-                    Case (0x24F68086)
+                    ElseIf (LEqual (_T_0, 0x24F68086))
                     {
                         Return (One)
                     }
-                    Case (0x24FD8086)
+                    ElseIf (LEqual (_T_0, 0x24FD8086))
                     {
                         Return (One)
                     }
-                    Case (0x24FB8086)
+                    ElseIf (LEqual (_T_0, 0x24FB8086))
                     {
                         Return (One)
                     }
-                    Case (0x25268086)
+                    ElseIf (LEqual (_T_0, 0x25268086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -24561,23 +24682,26 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WGST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x093C8086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x093C8086))
                     {
                         Return (One)
                     }
-                    Case (0x097C8086)
+                    ElseIf (LEqual (_T_0, 0x097C8086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -24588,19 +24712,22 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WWST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x73608086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x73608086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -24971,6 +25098,8 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
+                Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler
+                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If (PCIC (Arg0))
                 {
                     Return (PCID (Arg0, Arg1, Arg2, Arg3))
@@ -24998,25 +25127,20 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                     If (LEqual (Arg2, One))
                     {
-                        Switch (ToInteger (DerefOf (Index (Arg3, Zero))))
+                        While (One)
                         {
-                            Case (Zero)
-                            {
-                            }
-                            Case (One)
+                            Store (ToInteger (DerefOf (Index (Arg3, Zero))), _T_0)
+                            If (LEqual (_T_0, Zero)) {}
+                            ElseIf (LEqual (_T_0, One))
                             {
                                 If (CondRefOf (\_SB.SLPB))
                                 {
                                     Notify (SLPB, 0x80)
                                 }
                             }
-                            Case (0x02)
-                            {
-                            }
-                            Case (0x03)
-                            {
-                            }
-                            Case (0x04)
+                            ElseIf (LEqual (_T_0, 0x02)) {}
+                            ElseIf (LEqual (_T_0, 0x03)) {}
+                            ElseIf (LEqual (_T_0, 0x04))
                             {
                                 If (CondRefOf (\_SB.SLPB))
                                 {
@@ -25024,6 +25148,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 }
                             }
 
+                            Break
                         }
                     }
 
@@ -25031,9 +25156,10 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 }
                 ElseIf (LEqual (Arg0, ToUUID ("7574eb17-d1a2-4cc2-9929-4a08fcc29107")))
                 {
-                    Switch (ToInteger (Arg2))
+                    While (One)
                     {
-                        Case (Zero)
+                        Store (ToInteger (Arg2), _T_1)
+                        If (LEqual (_T_1, Zero))
                         {
                             If (LEqual (Arg1, Zero))
                             {
@@ -25050,15 +25176,15 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 })
                             }
                         }
-                        Case (One)
+                        ElseIf (LEqual (_T_1, One))
                         {
                             Return (WHIT ())
                         }
-                        Case (0x02)
+                        ElseIf (LEqual (_T_1, 0x02))
                         {
                             Return (SELF ())
                         }
-                        Default
+                        Else
                         {
                             Return (Buffer (One)
                             {
@@ -25066,6 +25192,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                             })
                         }
 
+                        Break
                     }
                 }
                 Else
@@ -25213,75 +25340,78 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WIST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x095A8086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x095A8086))
                     {
                         Return (One)
                     }
-                    Case (0x095B8086)
+                    ElseIf (LEqual (_T_0, 0x095B8086))
                     {
                         Return (One)
                     }
-                    Case (0x31658086)
+                    ElseIf (LEqual (_T_0, 0x31658086))
                     {
                         Return (One)
                     }
-                    Case (0x31668086)
+                    ElseIf (LEqual (_T_0, 0x31668086))
                     {
                         Return (One)
                     }
-                    Case (0x08B18086)
+                    ElseIf (LEqual (_T_0, 0x08B18086))
                     {
                         Return (One)
                     }
-                    Case (0x08B28086)
+                    ElseIf (LEqual (_T_0, 0x08B28086))
                     {
                         Return (One)
                     }
-                    Case (0x08B38086)
+                    ElseIf (LEqual (_T_0, 0x08B38086))
                     {
                         Return (One)
                     }
-                    Case (0x08B48086)
+                    ElseIf (LEqual (_T_0, 0x08B48086))
                     {
                         Return (One)
                     }
-                    Case (0x24F38086)
+                    ElseIf (LEqual (_T_0, 0x24F38086))
                     {
                         Return (One)
                     }
-                    Case (0x24F48086)
+                    ElseIf (LEqual (_T_0, 0x24F48086))
                     {
                         Return (One)
                     }
-                    Case (0x24F58086)
+                    ElseIf (LEqual (_T_0, 0x24F58086))
                     {
                         Return (One)
                     }
-                    Case (0x24F68086)
+                    ElseIf (LEqual (_T_0, 0x24F68086))
                     {
                         Return (One)
                     }
-                    Case (0x24FD8086)
+                    ElseIf (LEqual (_T_0, 0x24FD8086))
                     {
                         Return (One)
                     }
-                    Case (0x24FB8086)
+                    ElseIf (LEqual (_T_0, 0x24FB8086))
                     {
                         Return (One)
                     }
-                    Case (0x25268086)
+                    ElseIf (LEqual (_T_0, 0x25268086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -25292,23 +25422,26 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WGST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x093C8086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x093C8086))
                     {
                         Return (One)
                     }
-                    Case (0x097C8086)
+                    ElseIf (LEqual (_T_0, 0x097C8086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -25319,19 +25452,22 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WWST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x73608086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x73608086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -25702,6 +25838,8 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
+                Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler
+                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If (PCIC (Arg0))
                 {
                     Return (PCID (Arg0, Arg1, Arg2, Arg3))
@@ -25729,25 +25867,20 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                     If (LEqual (Arg2, One))
                     {
-                        Switch (ToInteger (DerefOf (Index (Arg3, Zero))))
+                        While (One)
                         {
-                            Case (Zero)
-                            {
-                            }
-                            Case (One)
+                            Store (ToInteger (DerefOf (Index (Arg3, Zero))), _T_0)
+                            If (LEqual (_T_0, Zero)) {}
+                            ElseIf (LEqual (_T_0, One))
                             {
                                 If (CondRefOf (\_SB.SLPB))
                                 {
                                     Notify (SLPB, 0x80)
                                 }
                             }
-                            Case (0x02)
-                            {
-                            }
-                            Case (0x03)
-                            {
-                            }
-                            Case (0x04)
+                            ElseIf (LEqual (_T_0, 0x02)) {}
+                            ElseIf (LEqual (_T_0, 0x03)) {}
+                            ElseIf (LEqual (_T_0, 0x04))
                             {
                                 If (CondRefOf (\_SB.SLPB))
                                 {
@@ -25755,6 +25888,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 }
                             }
 
+                            Break
                         }
                     }
 
@@ -25762,9 +25896,10 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 }
                 ElseIf (LEqual (Arg0, ToUUID ("7574eb17-d1a2-4cc2-9929-4a08fcc29107")))
                 {
-                    Switch (ToInteger (Arg2))
+                    While (One)
                     {
-                        Case (Zero)
+                        Store (ToInteger (Arg2), _T_1)
+                        If (LEqual (_T_1, Zero))
                         {
                             If (LEqual (Arg1, Zero))
                             {
@@ -25781,15 +25916,15 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 })
                             }
                         }
-                        Case (One)
+                        ElseIf (LEqual (_T_1, One))
                         {
                             Return (WHIT ())
                         }
-                        Case (0x02)
+                        ElseIf (LEqual (_T_1, 0x02))
                         {
                             Return (SELF ())
                         }
-                        Default
+                        Else
                         {
                             Return (Buffer (One)
                             {
@@ -25797,6 +25932,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                             })
                         }
 
+                        Break
                     }
                 }
                 Else
@@ -25946,75 +26082,78 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
             Method (WIST, 0, Serialized)
             {
+                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If (CondRefOf (VDID))
                 {
-                    Switch (ToInteger (VDID))
+                    While (One)
                     {
-                        Case (0x095A8086)
+                        Store (ToInteger (VDID), _T_0)
+                        If (LEqual (_T_0, 0x095A8086))
                         {
                             Return (One)
                         }
-                        Case (0x095B8086)
+                        ElseIf (LEqual (_T_0, 0x095B8086))
                         {
                             Return (One)
                         }
-                        Case (0x31658086)
+                        ElseIf (LEqual (_T_0, 0x31658086))
                         {
                             Return (One)
                         }
-                        Case (0x31668086)
+                        ElseIf (LEqual (_T_0, 0x31668086))
                         {
                             Return (One)
                         }
-                        Case (0x08B18086)
+                        ElseIf (LEqual (_T_0, 0x08B18086))
                         {
                             Return (One)
                         }
-                        Case (0x08B28086)
+                        ElseIf (LEqual (_T_0, 0x08B28086))
                         {
                             Return (One)
                         }
-                        Case (0x08B38086)
+                        ElseIf (LEqual (_T_0, 0x08B38086))
                         {
                             Return (One)
                         }
-                        Case (0x08B48086)
+                        ElseIf (LEqual (_T_0, 0x08B48086))
                         {
                             Return (One)
                         }
-                        Case (0x24F38086)
+                        ElseIf (LEqual (_T_0, 0x24F38086))
                         {
                             Return (One)
                         }
-                        Case (0x24F48086)
+                        ElseIf (LEqual (_T_0, 0x24F48086))
                         {
                             Return (One)
                         }
-                        Case (0x24F58086)
+                        ElseIf (LEqual (_T_0, 0x24F58086))
                         {
                             Return (One)
                         }
-                        Case (0x24F68086)
+                        ElseIf (LEqual (_T_0, 0x24F68086))
                         {
                             Return (One)
                         }
-                        Case (0x24FD8086)
+                        ElseIf (LEqual (_T_0, 0x24FD8086))
                         {
                             Return (One)
                         }
-                        Case (0x24FB8086)
+                        ElseIf (LEqual (_T_0, 0x24FB8086))
                         {
                             Return (One)
                         }
-                        Case (0x25268086)
+                        ElseIf (LEqual (_T_0, 0x25268086))
                         {
                             Return (One)
                         }
-                        Default
+                        Else
                         {
                             Return (Zero)
                         }
 
+                        Break
                     }
                 }
                 Else
@@ -26025,23 +26164,26 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
             Method (WGST, 0, Serialized)
             {
+                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If (CondRefOf (VDID))
                 {
-                    Switch (ToInteger (VDID))
+                    While (One)
                     {
-                        Case (0x093C8086)
+                        Store (ToInteger (VDID), _T_0)
+                        If (LEqual (_T_0, 0x093C8086))
                         {
                             Return (One)
                         }
-                        Case (0x097C8086)
+                        ElseIf (LEqual (_T_0, 0x097C8086))
                         {
                             Return (One)
                         }
-                        Default
+                        Else
                         {
                             Return (Zero)
                         }
 
+                        Break
                     }
                 }
                 Else
@@ -26052,19 +26194,22 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
             Method (WWST, 0, Serialized)
             {
+                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If (CondRefOf (VDID))
                 {
-                    Switch (ToInteger (VDID))
+                    While (One)
                     {
-                        Case (0x73608086)
+                        Store (ToInteger (VDID), _T_0)
+                        If (LEqual (_T_0, 0x73608086))
                         {
                             Return (One)
                         }
-                        Default
+                        Else
                         {
                             Return (Zero)
                         }
 
+                        Break
                     }
                 }
                 Else
@@ -26435,6 +26580,8 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                 Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
                 {
+                    Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler
+                    Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                     If (PCIC (Arg0))
                     {
                         Return (PCID (Arg0, Arg1, Arg2, Arg3))
@@ -26462,25 +26609,20 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                         If (LEqual (Arg2, One))
                         {
-                            Switch (ToInteger (DerefOf (Index (Arg3, Zero))))
+                            While (One)
                             {
-                                Case (Zero)
-                                {
-                                }
-                                Case (One)
+                                Store (ToInteger (DerefOf (Index (Arg3, Zero))), _T_0)
+                                If (LEqual (_T_0, Zero)) {}
+                                ElseIf (LEqual (_T_0, One))
                                 {
                                     If (CondRefOf (\_SB.SLPB))
                                     {
                                         Notify (SLPB, 0x80)
                                     }
                                 }
-                                Case (0x02)
-                                {
-                                }
-                                Case (0x03)
-                                {
-                                }
-                                Case (0x04)
+                                ElseIf (LEqual (_T_0, 0x02)) {}
+                                ElseIf (LEqual (_T_0, 0x03)) {}
+                                ElseIf (LEqual (_T_0, 0x04))
                                 {
                                     If (CondRefOf (\_SB.SLPB))
                                     {
@@ -26488,6 +26630,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
 
+                                Break
                             }
                         }
 
@@ -26495,9 +26638,10 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     }
                     ElseIf (LEqual (Arg0, ToUUID ("7574eb17-d1a2-4cc2-9929-4a08fcc29107")))
                     {
-                        Switch (ToInteger (Arg2))
+                        While (One)
                         {
-                            Case (Zero)
+                            Store (ToInteger (Arg2), _T_1)
+                            If (LEqual (_T_1, Zero))
                             {
                                 If (LEqual (Arg1, Zero))
                                 {
@@ -26514,15 +26658,15 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     })
                                 }
                             }
-                            Case (One)
+                            ElseIf (LEqual (_T_1, One))
                             {
                                 Return (WHIT ())
                             }
-                            Case (0x02)
+                            ElseIf (LEqual (_T_1, 0x02))
                             {
                                 Return (SELF ())
                             }
-                            Default
+                            Else
                             {
                                 Return (Buffer (One)
                                 {
@@ -26530,6 +26674,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 })
                             }
 
+                            Break
                         }
                     }
                     Else
@@ -26678,75 +26823,78 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WIST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x095A8086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x095A8086))
                     {
                         Return (One)
                     }
-                    Case (0x095B8086)
+                    ElseIf (LEqual (_T_0, 0x095B8086))
                     {
                         Return (One)
                     }
-                    Case (0x31658086)
+                    ElseIf (LEqual (_T_0, 0x31658086))
                     {
                         Return (One)
                     }
-                    Case (0x31668086)
+                    ElseIf (LEqual (_T_0, 0x31668086))
                     {
                         Return (One)
                     }
-                    Case (0x08B18086)
+                    ElseIf (LEqual (_T_0, 0x08B18086))
                     {
                         Return (One)
                     }
-                    Case (0x08B28086)
+                    ElseIf (LEqual (_T_0, 0x08B28086))
                     {
                         Return (One)
                     }
-                    Case (0x08B38086)
+                    ElseIf (LEqual (_T_0, 0x08B38086))
                     {
                         Return (One)
                     }
-                    Case (0x08B48086)
+                    ElseIf (LEqual (_T_0, 0x08B48086))
                     {
                         Return (One)
                     }
-                    Case (0x24F38086)
+                    ElseIf (LEqual (_T_0, 0x24F38086))
                     {
                         Return (One)
                     }
-                    Case (0x24F48086)
+                    ElseIf (LEqual (_T_0, 0x24F48086))
                     {
                         Return (One)
                     }
-                    Case (0x24F58086)
+                    ElseIf (LEqual (_T_0, 0x24F58086))
                     {
                         Return (One)
                     }
-                    Case (0x24F68086)
+                    ElseIf (LEqual (_T_0, 0x24F68086))
                     {
                         Return (One)
                     }
-                    Case (0x24FD8086)
+                    ElseIf (LEqual (_T_0, 0x24FD8086))
                     {
                         Return (One)
                     }
-                    Case (0x24FB8086)
+                    ElseIf (LEqual (_T_0, 0x24FB8086))
                     {
                         Return (One)
                     }
-                    Case (0x25268086)
+                    ElseIf (LEqual (_T_0, 0x25268086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -26757,23 +26905,26 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WGST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x093C8086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x093C8086))
                     {
                         Return (One)
                     }
-                    Case (0x097C8086)
+                    ElseIf (LEqual (_T_0, 0x097C8086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -26784,19 +26935,22 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WWST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x73608086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x73608086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -27167,6 +27321,8 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
+                Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler
+                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If (PCIC (Arg0))
                 {
                     Return (PCID (Arg0, Arg1, Arg2, Arg3))
@@ -27194,25 +27350,20 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                     If (LEqual (Arg2, One))
                     {
-                        Switch (ToInteger (DerefOf (Index (Arg3, Zero))))
+                        While (One)
                         {
-                            Case (Zero)
-                            {
-                            }
-                            Case (One)
+                            Store (ToInteger (DerefOf (Index (Arg3, Zero))), _T_0)
+                            If (LEqual (_T_0, Zero)) {}
+                            ElseIf (LEqual (_T_0, One))
                             {
                                 If (CondRefOf (\_SB.SLPB))
                                 {
                                     Notify (SLPB, 0x80)
                                 }
                             }
-                            Case (0x02)
-                            {
-                            }
-                            Case (0x03)
-                            {
-                            }
-                            Case (0x04)
+                            ElseIf (LEqual (_T_0, 0x02)) {}
+                            ElseIf (LEqual (_T_0, 0x03)) {}
+                            ElseIf (LEqual (_T_0, 0x04))
                             {
                                 If (CondRefOf (\_SB.SLPB))
                                 {
@@ -27220,6 +27371,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 }
                             }
 
+                            Break
                         }
                     }
 
@@ -27227,9 +27379,10 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 }
                 ElseIf (LEqual (Arg0, ToUUID ("7574eb17-d1a2-4cc2-9929-4a08fcc29107")))
                 {
-                    Switch (ToInteger (Arg2))
+                    While (One)
                     {
-                        Case (Zero)
+                        Store (ToInteger (Arg2), _T_1)
+                        If (LEqual (_T_1, Zero))
                         {
                             If (LEqual (Arg1, Zero))
                             {
@@ -27246,15 +27399,15 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 })
                             }
                         }
-                        Case (One)
+                        ElseIf (LEqual (_T_1, One))
                         {
                             Return (WHIT ())
                         }
-                        Case (0x02)
+                        ElseIf (LEqual (_T_1, 0x02))
                         {
                             Return (SELF ())
                         }
-                        Default
+                        Else
                         {
                             Return (Buffer (One)
                             {
@@ -27262,6 +27415,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                             })
                         }
 
+                        Break
                     }
                 }
                 Else
@@ -27409,75 +27563,78 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WIST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x095A8086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x095A8086))
                     {
                         Return (One)
                     }
-                    Case (0x095B8086)
+                    ElseIf (LEqual (_T_0, 0x095B8086))
                     {
                         Return (One)
                     }
-                    Case (0x31658086)
+                    ElseIf (LEqual (_T_0, 0x31658086))
                     {
                         Return (One)
                     }
-                    Case (0x31668086)
+                    ElseIf (LEqual (_T_0, 0x31668086))
                     {
                         Return (One)
                     }
-                    Case (0x08B18086)
+                    ElseIf (LEqual (_T_0, 0x08B18086))
                     {
                         Return (One)
                     }
-                    Case (0x08B28086)
+                    ElseIf (LEqual (_T_0, 0x08B28086))
                     {
                         Return (One)
                     }
-                    Case (0x08B38086)
+                    ElseIf (LEqual (_T_0, 0x08B38086))
                     {
                         Return (One)
                     }
-                    Case (0x08B48086)
+                    ElseIf (LEqual (_T_0, 0x08B48086))
                     {
                         Return (One)
                     }
-                    Case (0x24F38086)
+                    ElseIf (LEqual (_T_0, 0x24F38086))
                     {
                         Return (One)
                     }
-                    Case (0x24F48086)
+                    ElseIf (LEqual (_T_0, 0x24F48086))
                     {
                         Return (One)
                     }
-                    Case (0x24F58086)
+                    ElseIf (LEqual (_T_0, 0x24F58086))
                     {
                         Return (One)
                     }
-                    Case (0x24F68086)
+                    ElseIf (LEqual (_T_0, 0x24F68086))
                     {
                         Return (One)
                     }
-                    Case (0x24FD8086)
+                    ElseIf (LEqual (_T_0, 0x24FD8086))
                     {
                         Return (One)
                     }
-                    Case (0x24FB8086)
+                    ElseIf (LEqual (_T_0, 0x24FB8086))
                     {
                         Return (One)
                     }
-                    Case (0x25268086)
+                    ElseIf (LEqual (_T_0, 0x25268086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -27488,23 +27645,26 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WGST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x093C8086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x093C8086))
                     {
                         Return (One)
                     }
-                    Case (0x097C8086)
+                    ElseIf (LEqual (_T_0, 0x097C8086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -27515,19 +27675,22 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WWST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x73608086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x73608086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -27898,6 +28061,8 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
+                Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler
+                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If (PCIC (Arg0))
                 {
                     Return (PCID (Arg0, Arg1, Arg2, Arg3))
@@ -27925,25 +28090,20 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                     If (LEqual (Arg2, One))
                     {
-                        Switch (ToInteger (DerefOf (Index (Arg3, Zero))))
+                        While (One)
                         {
-                            Case (Zero)
-                            {
-                            }
-                            Case (One)
+                            Store (ToInteger (DerefOf (Index (Arg3, Zero))), _T_0)
+                            If (LEqual (_T_0, Zero)) {}
+                            ElseIf (LEqual (_T_0, One))
                             {
                                 If (CondRefOf (\_SB.SLPB))
                                 {
                                     Notify (SLPB, 0x80)
                                 }
                             }
-                            Case (0x02)
-                            {
-                            }
-                            Case (0x03)
-                            {
-                            }
-                            Case (0x04)
+                            ElseIf (LEqual (_T_0, 0x02)) {}
+                            ElseIf (LEqual (_T_0, 0x03)) {}
+                            ElseIf (LEqual (_T_0, 0x04))
                             {
                                 If (CondRefOf (\_SB.SLPB))
                                 {
@@ -27951,6 +28111,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 }
                             }
 
+                            Break
                         }
                     }
 
@@ -27958,9 +28119,10 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 }
                 ElseIf (LEqual (Arg0, ToUUID ("7574eb17-d1a2-4cc2-9929-4a08fcc29107")))
                 {
-                    Switch (ToInteger (Arg2))
+                    While (One)
                     {
-                        Case (Zero)
+                        Store (ToInteger (Arg2), _T_1)
+                        If (LEqual (_T_1, Zero))
                         {
                             If (LEqual (Arg1, Zero))
                             {
@@ -27977,15 +28139,15 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 })
                             }
                         }
-                        Case (One)
+                        ElseIf (LEqual (_T_1, One))
                         {
                             Return (WHIT ())
                         }
-                        Case (0x02)
+                        ElseIf (LEqual (_T_1, 0x02))
                         {
                             Return (SELF ())
                         }
-                        Default
+                        Else
                         {
                             Return (Buffer (One)
                             {
@@ -27993,6 +28155,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                             })
                         }
 
+                        Break
                     }
                 }
                 Else
@@ -28140,75 +28303,78 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WIST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x095A8086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x095A8086))
                     {
                         Return (One)
                     }
-                    Case (0x095B8086)
+                    ElseIf (LEqual (_T_0, 0x095B8086))
                     {
                         Return (One)
                     }
-                    Case (0x31658086)
+                    ElseIf (LEqual (_T_0, 0x31658086))
                     {
                         Return (One)
                     }
-                    Case (0x31668086)
+                    ElseIf (LEqual (_T_0, 0x31668086))
                     {
                         Return (One)
                     }
-                    Case (0x08B18086)
+                    ElseIf (LEqual (_T_0, 0x08B18086))
                     {
                         Return (One)
                     }
-                    Case (0x08B28086)
+                    ElseIf (LEqual (_T_0, 0x08B28086))
                     {
                         Return (One)
                     }
-                    Case (0x08B38086)
+                    ElseIf (LEqual (_T_0, 0x08B38086))
                     {
                         Return (One)
                     }
-                    Case (0x08B48086)
+                    ElseIf (LEqual (_T_0, 0x08B48086))
                     {
                         Return (One)
                     }
-                    Case (0x24F38086)
+                    ElseIf (LEqual (_T_0, 0x24F38086))
                     {
                         Return (One)
                     }
-                    Case (0x24F48086)
+                    ElseIf (LEqual (_T_0, 0x24F48086))
                     {
                         Return (One)
                     }
-                    Case (0x24F58086)
+                    ElseIf (LEqual (_T_0, 0x24F58086))
                     {
                         Return (One)
                     }
-                    Case (0x24F68086)
+                    ElseIf (LEqual (_T_0, 0x24F68086))
                     {
                         Return (One)
                     }
-                    Case (0x24FD8086)
+                    ElseIf (LEqual (_T_0, 0x24FD8086))
                     {
                         Return (One)
                     }
-                    Case (0x24FB8086)
+                    ElseIf (LEqual (_T_0, 0x24FB8086))
                     {
                         Return (One)
                     }
-                    Case (0x25268086)
+                    ElseIf (LEqual (_T_0, 0x25268086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -28219,23 +28385,26 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WGST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x093C8086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x093C8086))
                     {
                         Return (One)
                     }
-                    Case (0x097C8086)
+                    ElseIf (LEqual (_T_0, 0x097C8086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -28246,19 +28415,22 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WWST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x73608086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x73608086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -28629,6 +28801,8 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
+                Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler
+                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If (PCIC (Arg0))
                 {
                     Return (PCID (Arg0, Arg1, Arg2, Arg3))
@@ -28656,25 +28830,20 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                     If (LEqual (Arg2, One))
                     {
-                        Switch (ToInteger (DerefOf (Index (Arg3, Zero))))
+                        While (One)
                         {
-                            Case (Zero)
-                            {
-                            }
-                            Case (One)
+                            Store (ToInteger (DerefOf (Index (Arg3, Zero))), _T_0)
+                            If (LEqual (_T_0, Zero)) {}
+                            ElseIf (LEqual (_T_0, One))
                             {
                                 If (CondRefOf (\_SB.SLPB))
                                 {
                                     Notify (SLPB, 0x80)
                                 }
                             }
-                            Case (0x02)
-                            {
-                            }
-                            Case (0x03)
-                            {
-                            }
-                            Case (0x04)
+                            ElseIf (LEqual (_T_0, 0x02)) {}
+                            ElseIf (LEqual (_T_0, 0x03)) {}
+                            ElseIf (LEqual (_T_0, 0x04))
                             {
                                 If (CondRefOf (\_SB.SLPB))
                                 {
@@ -28682,6 +28851,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 }
                             }
 
+                            Break
                         }
                     }
 
@@ -28689,9 +28859,10 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 }
                 ElseIf (LEqual (Arg0, ToUUID ("7574eb17-d1a2-4cc2-9929-4a08fcc29107")))
                 {
-                    Switch (ToInteger (Arg2))
+                    While (One)
                     {
-                        Case (Zero)
+                        Store (ToInteger (Arg2), _T_1)
+                        If (LEqual (_T_1, Zero))
                         {
                             If (LEqual (Arg1, Zero))
                             {
@@ -28708,15 +28879,15 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 })
                             }
                         }
-                        Case (One)
+                        ElseIf (LEqual (_T_1, One))
                         {
                             Return (WHIT ())
                         }
-                        Case (0x02)
+                        ElseIf (LEqual (_T_1, 0x02))
                         {
                             Return (SELF ())
                         }
-                        Default
+                        Else
                         {
                             Return (Buffer (One)
                             {
@@ -28724,6 +28895,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                             })
                         }
 
+                        Break
                     }
                 }
                 Else
@@ -28873,75 +29045,78 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
             Method (WIST, 0, Serialized)
             {
+                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If (CondRefOf (VDID))
                 {
-                    Switch (ToInteger (VDID))
+                    While (One)
                     {
-                        Case (0x095A8086)
+                        Store (ToInteger (VDID), _T_0)
+                        If (LEqual (_T_0, 0x095A8086))
                         {
                             Return (One)
                         }
-                        Case (0x095B8086)
+                        ElseIf (LEqual (_T_0, 0x095B8086))
                         {
                             Return (One)
                         }
-                        Case (0x31658086)
+                        ElseIf (LEqual (_T_0, 0x31658086))
                         {
                             Return (One)
                         }
-                        Case (0x31668086)
+                        ElseIf (LEqual (_T_0, 0x31668086))
                         {
                             Return (One)
                         }
-                        Case (0x08B18086)
+                        ElseIf (LEqual (_T_0, 0x08B18086))
                         {
                             Return (One)
                         }
-                        Case (0x08B28086)
+                        ElseIf (LEqual (_T_0, 0x08B28086))
                         {
                             Return (One)
                         }
-                        Case (0x08B38086)
+                        ElseIf (LEqual (_T_0, 0x08B38086))
                         {
                             Return (One)
                         }
-                        Case (0x08B48086)
+                        ElseIf (LEqual (_T_0, 0x08B48086))
                         {
                             Return (One)
                         }
-                        Case (0x24F38086)
+                        ElseIf (LEqual (_T_0, 0x24F38086))
                         {
                             Return (One)
                         }
-                        Case (0x24F48086)
+                        ElseIf (LEqual (_T_0, 0x24F48086))
                         {
                             Return (One)
                         }
-                        Case (0x24F58086)
+                        ElseIf (LEqual (_T_0, 0x24F58086))
                         {
                             Return (One)
                         }
-                        Case (0x24F68086)
+                        ElseIf (LEqual (_T_0, 0x24F68086))
                         {
                             Return (One)
                         }
-                        Case (0x24FD8086)
+                        ElseIf (LEqual (_T_0, 0x24FD8086))
                         {
                             Return (One)
                         }
-                        Case (0x24FB8086)
+                        ElseIf (LEqual (_T_0, 0x24FB8086))
                         {
                             Return (One)
                         }
-                        Case (0x25268086)
+                        ElseIf (LEqual (_T_0, 0x25268086))
                         {
                             Return (One)
                         }
-                        Default
+                        Else
                         {
                             Return (Zero)
                         }
 
+                        Break
                     }
                 }
                 Else
@@ -28952,23 +29127,26 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
             Method (WGST, 0, Serialized)
             {
+                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If (CondRefOf (VDID))
                 {
-                    Switch (ToInteger (VDID))
+                    While (One)
                     {
-                        Case (0x093C8086)
+                        Store (ToInteger (VDID), _T_0)
+                        If (LEqual (_T_0, 0x093C8086))
                         {
                             Return (One)
                         }
-                        Case (0x097C8086)
+                        ElseIf (LEqual (_T_0, 0x097C8086))
                         {
                             Return (One)
                         }
-                        Default
+                        Else
                         {
                             Return (Zero)
                         }
 
+                        Break
                     }
                 }
                 Else
@@ -28979,19 +29157,22 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
             Method (WWST, 0, Serialized)
             {
+                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If (CondRefOf (VDID))
                 {
-                    Switch (ToInteger (VDID))
+                    While (One)
                     {
-                        Case (0x73608086)
+                        Store (ToInteger (VDID), _T_0)
+                        If (LEqual (_T_0, 0x73608086))
                         {
                             Return (One)
                         }
-                        Default
+                        Else
                         {
                             Return (Zero)
                         }
 
+                        Break
                     }
                 }
                 Else
@@ -29362,6 +29543,8 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                 Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
                 {
+                    Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler
+                    Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                     If (PCIC (Arg0))
                     {
                         Return (PCID (Arg0, Arg1, Arg2, Arg3))
@@ -29389,25 +29572,20 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                         If (LEqual (Arg2, One))
                         {
-                            Switch (ToInteger (DerefOf (Index (Arg3, Zero))))
+                            While (One)
                             {
-                                Case (Zero)
-                                {
-                                }
-                                Case (One)
+                                Store (ToInteger (DerefOf (Index (Arg3, Zero))), _T_0)
+                                If (LEqual (_T_0, Zero)) {}
+                                ElseIf (LEqual (_T_0, One))
                                 {
                                     If (CondRefOf (\_SB.SLPB))
                                     {
                                         Notify (SLPB, 0x80)
                                     }
                                 }
-                                Case (0x02)
-                                {
-                                }
-                                Case (0x03)
-                                {
-                                }
-                                Case (0x04)
+                                ElseIf (LEqual (_T_0, 0x02)) {}
+                                ElseIf (LEqual (_T_0, 0x03)) {}
+                                ElseIf (LEqual (_T_0, 0x04))
                                 {
                                     If (CondRefOf (\_SB.SLPB))
                                     {
@@ -29415,6 +29593,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
 
+                                Break
                             }
                         }
 
@@ -29422,9 +29601,10 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     }
                     ElseIf (LEqual (Arg0, ToUUID ("7574eb17-d1a2-4cc2-9929-4a08fcc29107")))
                     {
-                        Switch (ToInteger (Arg2))
+                        While (One)
                         {
-                            Case (Zero)
+                            Store (ToInteger (Arg2), _T_1)
+                            If (LEqual (_T_1, Zero))
                             {
                                 If (LEqual (Arg1, Zero))
                                 {
@@ -29441,15 +29621,15 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     })
                                 }
                             }
-                            Case (One)
+                            ElseIf (LEqual (_T_1, One))
                             {
                                 Return (WHIT ())
                             }
-                            Case (0x02)
+                            ElseIf (LEqual (_T_1, 0x02))
                             {
                                 Return (SELF ())
                             }
-                            Default
+                            Else
                             {
                                 Return (Buffer (One)
                                 {
@@ -29457,6 +29637,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 })
                             }
 
+                            Break
                         }
                     }
                     Else
@@ -29605,75 +29786,78 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WIST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x095A8086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x095A8086))
                     {
                         Return (One)
                     }
-                    Case (0x095B8086)
+                    ElseIf (LEqual (_T_0, 0x095B8086))
                     {
                         Return (One)
                     }
-                    Case (0x31658086)
+                    ElseIf (LEqual (_T_0, 0x31658086))
                     {
                         Return (One)
                     }
-                    Case (0x31668086)
+                    ElseIf (LEqual (_T_0, 0x31668086))
                     {
                         Return (One)
                     }
-                    Case (0x08B18086)
+                    ElseIf (LEqual (_T_0, 0x08B18086))
                     {
                         Return (One)
                     }
-                    Case (0x08B28086)
+                    ElseIf (LEqual (_T_0, 0x08B28086))
                     {
                         Return (One)
                     }
-                    Case (0x08B38086)
+                    ElseIf (LEqual (_T_0, 0x08B38086))
                     {
                         Return (One)
                     }
-                    Case (0x08B48086)
+                    ElseIf (LEqual (_T_0, 0x08B48086))
                     {
                         Return (One)
                     }
-                    Case (0x24F38086)
+                    ElseIf (LEqual (_T_0, 0x24F38086))
                     {
                         Return (One)
                     }
-                    Case (0x24F48086)
+                    ElseIf (LEqual (_T_0, 0x24F48086))
                     {
                         Return (One)
                     }
-                    Case (0x24F58086)
+                    ElseIf (LEqual (_T_0, 0x24F58086))
                     {
                         Return (One)
                     }
-                    Case (0x24F68086)
+                    ElseIf (LEqual (_T_0, 0x24F68086))
                     {
                         Return (One)
                     }
-                    Case (0x24FD8086)
+                    ElseIf (LEqual (_T_0, 0x24FD8086))
                     {
                         Return (One)
                     }
-                    Case (0x24FB8086)
+                    ElseIf (LEqual (_T_0, 0x24FB8086))
                     {
                         Return (One)
                     }
-                    Case (0x25268086)
+                    ElseIf (LEqual (_T_0, 0x25268086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -29684,23 +29868,26 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WGST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x093C8086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x093C8086))
                     {
                         Return (One)
                     }
-                    Case (0x097C8086)
+                    ElseIf (LEqual (_T_0, 0x097C8086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -29711,19 +29898,22 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WWST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x73608086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x73608086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -30094,6 +30284,8 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
+                Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler
+                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If (PCIC (Arg0))
                 {
                     Return (PCID (Arg0, Arg1, Arg2, Arg3))
@@ -30121,25 +30313,20 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                     If (LEqual (Arg2, One))
                     {
-                        Switch (ToInteger (DerefOf (Index (Arg3, Zero))))
+                        While (One)
                         {
-                            Case (Zero)
-                            {
-                            }
-                            Case (One)
+                            Store (ToInteger (DerefOf (Index (Arg3, Zero))), _T_0)
+                            If (LEqual (_T_0, Zero)) {}
+                            ElseIf (LEqual (_T_0, One))
                             {
                                 If (CondRefOf (\_SB.SLPB))
                                 {
                                     Notify (SLPB, 0x80)
                                 }
                             }
-                            Case (0x02)
-                            {
-                            }
-                            Case (0x03)
-                            {
-                            }
-                            Case (0x04)
+                            ElseIf (LEqual (_T_0, 0x02)) {}
+                            ElseIf (LEqual (_T_0, 0x03)) {}
+                            ElseIf (LEqual (_T_0, 0x04))
                             {
                                 If (CondRefOf (\_SB.SLPB))
                                 {
@@ -30147,6 +30334,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 }
                             }
 
+                            Break
                         }
                     }
 
@@ -30154,9 +30342,10 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 }
                 ElseIf (LEqual (Arg0, ToUUID ("7574eb17-d1a2-4cc2-9929-4a08fcc29107")))
                 {
-                    Switch (ToInteger (Arg2))
+                    While (One)
                     {
-                        Case (Zero)
+                        Store (ToInteger (Arg2), _T_1)
+                        If (LEqual (_T_1, Zero))
                         {
                             If (LEqual (Arg1, Zero))
                             {
@@ -30173,15 +30362,15 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 })
                             }
                         }
-                        Case (One)
+                        ElseIf (LEqual (_T_1, One))
                         {
                             Return (WHIT ())
                         }
-                        Case (0x02)
+                        ElseIf (LEqual (_T_1, 0x02))
                         {
                             Return (SELF ())
                         }
-                        Default
+                        Else
                         {
                             Return (Buffer (One)
                             {
@@ -30189,6 +30378,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                             })
                         }
 
+                        Break
                     }
                 }
                 Else
@@ -30336,75 +30526,78 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WIST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x095A8086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x095A8086))
                     {
                         Return (One)
                     }
-                    Case (0x095B8086)
+                    ElseIf (LEqual (_T_0, 0x095B8086))
                     {
                         Return (One)
                     }
-                    Case (0x31658086)
+                    ElseIf (LEqual (_T_0, 0x31658086))
                     {
                         Return (One)
                     }
-                    Case (0x31668086)
+                    ElseIf (LEqual (_T_0, 0x31668086))
                     {
                         Return (One)
                     }
-                    Case (0x08B18086)
+                    ElseIf (LEqual (_T_0, 0x08B18086))
                     {
                         Return (One)
                     }
-                    Case (0x08B28086)
+                    ElseIf (LEqual (_T_0, 0x08B28086))
                     {
                         Return (One)
                     }
-                    Case (0x08B38086)
+                    ElseIf (LEqual (_T_0, 0x08B38086))
                     {
                         Return (One)
                     }
-                    Case (0x08B48086)
+                    ElseIf (LEqual (_T_0, 0x08B48086))
                     {
                         Return (One)
                     }
-                    Case (0x24F38086)
+                    ElseIf (LEqual (_T_0, 0x24F38086))
                     {
                         Return (One)
                     }
-                    Case (0x24F48086)
+                    ElseIf (LEqual (_T_0, 0x24F48086))
                     {
                         Return (One)
                     }
-                    Case (0x24F58086)
+                    ElseIf (LEqual (_T_0, 0x24F58086))
                     {
                         Return (One)
                     }
-                    Case (0x24F68086)
+                    ElseIf (LEqual (_T_0, 0x24F68086))
                     {
                         Return (One)
                     }
-                    Case (0x24FD8086)
+                    ElseIf (LEqual (_T_0, 0x24FD8086))
                     {
                         Return (One)
                     }
-                    Case (0x24FB8086)
+                    ElseIf (LEqual (_T_0, 0x24FB8086))
                     {
                         Return (One)
                     }
-                    Case (0x25268086)
+                    ElseIf (LEqual (_T_0, 0x25268086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -30415,23 +30608,26 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WGST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x093C8086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x093C8086))
                     {
                         Return (One)
                     }
-                    Case (0x097C8086)
+                    ElseIf (LEqual (_T_0, 0x097C8086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -30442,19 +30638,22 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WWST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x73608086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x73608086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -30825,6 +31024,8 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
+                Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler
+                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If (PCIC (Arg0))
                 {
                     Return (PCID (Arg0, Arg1, Arg2, Arg3))
@@ -30852,25 +31053,20 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                     If (LEqual (Arg2, One))
                     {
-                        Switch (ToInteger (DerefOf (Index (Arg3, Zero))))
+                        While (One)
                         {
-                            Case (Zero)
-                            {
-                            }
-                            Case (One)
+                            Store (ToInteger (DerefOf (Index (Arg3, Zero))), _T_0)
+                            If (LEqual (_T_0, Zero)) {}
+                            ElseIf (LEqual (_T_0, One))
                             {
                                 If (CondRefOf (\_SB.SLPB))
                                 {
                                     Notify (SLPB, 0x80)
                                 }
                             }
-                            Case (0x02)
-                            {
-                            }
-                            Case (0x03)
-                            {
-                            }
-                            Case (0x04)
+                            ElseIf (LEqual (_T_0, 0x02)) {}
+                            ElseIf (LEqual (_T_0, 0x03)) {}
+                            ElseIf (LEqual (_T_0, 0x04))
                             {
                                 If (CondRefOf (\_SB.SLPB))
                                 {
@@ -30878,6 +31074,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 }
                             }
 
+                            Break
                         }
                     }
 
@@ -30885,9 +31082,10 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 }
                 ElseIf (LEqual (Arg0, ToUUID ("7574eb17-d1a2-4cc2-9929-4a08fcc29107")))
                 {
-                    Switch (ToInteger (Arg2))
+                    While (One)
                     {
-                        Case (Zero)
+                        Store (ToInteger (Arg2), _T_1)
+                        If (LEqual (_T_1, Zero))
                         {
                             If (LEqual (Arg1, Zero))
                             {
@@ -30904,15 +31102,15 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 })
                             }
                         }
-                        Case (One)
+                        ElseIf (LEqual (_T_1, One))
                         {
                             Return (WHIT ())
                         }
-                        Case (0x02)
+                        ElseIf (LEqual (_T_1, 0x02))
                         {
                             Return (SELF ())
                         }
-                        Default
+                        Else
                         {
                             Return (Buffer (One)
                             {
@@ -30920,6 +31118,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                             })
                         }
 
+                        Break
                     }
                 }
                 Else
@@ -31067,75 +31266,78 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WIST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x095A8086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x095A8086))
                     {
                         Return (One)
                     }
-                    Case (0x095B8086)
+                    ElseIf (LEqual (_T_0, 0x095B8086))
                     {
                         Return (One)
                     }
-                    Case (0x31658086)
+                    ElseIf (LEqual (_T_0, 0x31658086))
                     {
                         Return (One)
                     }
-                    Case (0x31668086)
+                    ElseIf (LEqual (_T_0, 0x31668086))
                     {
                         Return (One)
                     }
-                    Case (0x08B18086)
+                    ElseIf (LEqual (_T_0, 0x08B18086))
                     {
                         Return (One)
                     }
-                    Case (0x08B28086)
+                    ElseIf (LEqual (_T_0, 0x08B28086))
                     {
                         Return (One)
                     }
-                    Case (0x08B38086)
+                    ElseIf (LEqual (_T_0, 0x08B38086))
                     {
                         Return (One)
                     }
-                    Case (0x08B48086)
+                    ElseIf (LEqual (_T_0, 0x08B48086))
                     {
                         Return (One)
                     }
-                    Case (0x24F38086)
+                    ElseIf (LEqual (_T_0, 0x24F38086))
                     {
                         Return (One)
                     }
-                    Case (0x24F48086)
+                    ElseIf (LEqual (_T_0, 0x24F48086))
                     {
                         Return (One)
                     }
-                    Case (0x24F58086)
+                    ElseIf (LEqual (_T_0, 0x24F58086))
                     {
                         Return (One)
                     }
-                    Case (0x24F68086)
+                    ElseIf (LEqual (_T_0, 0x24F68086))
                     {
                         Return (One)
                     }
-                    Case (0x24FD8086)
+                    ElseIf (LEqual (_T_0, 0x24FD8086))
                     {
                         Return (One)
                     }
-                    Case (0x24FB8086)
+                    ElseIf (LEqual (_T_0, 0x24FB8086))
                     {
                         Return (One)
                     }
-                    Case (0x25268086)
+                    ElseIf (LEqual (_T_0, 0x25268086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -31146,23 +31348,26 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WGST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x093C8086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x093C8086))
                     {
                         Return (One)
                     }
-                    Case (0x097C8086)
+                    ElseIf (LEqual (_T_0, 0x097C8086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -31173,19 +31378,22 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WWST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x73608086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x73608086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -31556,6 +31764,8 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
+                Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler
+                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If (PCIC (Arg0))
                 {
                     Return (PCID (Arg0, Arg1, Arg2, Arg3))
@@ -31583,25 +31793,20 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                     If (LEqual (Arg2, One))
                     {
-                        Switch (ToInteger (DerefOf (Index (Arg3, Zero))))
+                        While (One)
                         {
-                            Case (Zero)
-                            {
-                            }
-                            Case (One)
+                            Store (ToInteger (DerefOf (Index (Arg3, Zero))), _T_0)
+                            If (LEqual (_T_0, Zero)) {}
+                            ElseIf (LEqual (_T_0, One))
                             {
                                 If (CondRefOf (\_SB.SLPB))
                                 {
                                     Notify (SLPB, 0x80)
                                 }
                             }
-                            Case (0x02)
-                            {
-                            }
-                            Case (0x03)
-                            {
-                            }
-                            Case (0x04)
+                            ElseIf (LEqual (_T_0, 0x02)) {}
+                            ElseIf (LEqual (_T_0, 0x03)) {}
+                            ElseIf (LEqual (_T_0, 0x04))
                             {
                                 If (CondRefOf (\_SB.SLPB))
                                 {
@@ -31609,6 +31814,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 }
                             }
 
+                            Break
                         }
                     }
 
@@ -31616,9 +31822,10 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 }
                 ElseIf (LEqual (Arg0, ToUUID ("7574eb17-d1a2-4cc2-9929-4a08fcc29107")))
                 {
-                    Switch (ToInteger (Arg2))
+                    While (One)
                     {
-                        Case (Zero)
+                        Store (ToInteger (Arg2), _T_1)
+                        If (LEqual (_T_1, Zero))
                         {
                             If (LEqual (Arg1, Zero))
                             {
@@ -31635,15 +31842,15 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 })
                             }
                         }
-                        Case (One)
+                        ElseIf (LEqual (_T_1, One))
                         {
                             Return (WHIT ())
                         }
-                        Case (0x02)
+                        ElseIf (LEqual (_T_1, 0x02))
                         {
                             Return (SELF ())
                         }
-                        Default
+                        Else
                         {
                             Return (Buffer (One)
                             {
@@ -31651,6 +31858,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                             })
                         }
 
+                        Break
                     }
                 }
                 Else
@@ -31800,75 +32008,78 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
             Method (WIST, 0, Serialized)
             {
+                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If (CondRefOf (VDID))
                 {
-                    Switch (ToInteger (VDID))
+                    While (One)
                     {
-                        Case (0x095A8086)
+                        Store (ToInteger (VDID), _T_0)
+                        If (LEqual (_T_0, 0x095A8086))
                         {
                             Return (One)
                         }
-                        Case (0x095B8086)
+                        ElseIf (LEqual (_T_0, 0x095B8086))
                         {
                             Return (One)
                         }
-                        Case (0x31658086)
+                        ElseIf (LEqual (_T_0, 0x31658086))
                         {
                             Return (One)
                         }
-                        Case (0x31668086)
+                        ElseIf (LEqual (_T_0, 0x31668086))
                         {
                             Return (One)
                         }
-                        Case (0x08B18086)
+                        ElseIf (LEqual (_T_0, 0x08B18086))
                         {
                             Return (One)
                         }
-                        Case (0x08B28086)
+                        ElseIf (LEqual (_T_0, 0x08B28086))
                         {
                             Return (One)
                         }
-                        Case (0x08B38086)
+                        ElseIf (LEqual (_T_0, 0x08B38086))
                         {
                             Return (One)
                         }
-                        Case (0x08B48086)
+                        ElseIf (LEqual (_T_0, 0x08B48086))
                         {
                             Return (One)
                         }
-                        Case (0x24F38086)
+                        ElseIf (LEqual (_T_0, 0x24F38086))
                         {
                             Return (One)
                         }
-                        Case (0x24F48086)
+                        ElseIf (LEqual (_T_0, 0x24F48086))
                         {
                             Return (One)
                         }
-                        Case (0x24F58086)
+                        ElseIf (LEqual (_T_0, 0x24F58086))
                         {
                             Return (One)
                         }
-                        Case (0x24F68086)
+                        ElseIf (LEqual (_T_0, 0x24F68086))
                         {
                             Return (One)
                         }
-                        Case (0x24FD8086)
+                        ElseIf (LEqual (_T_0, 0x24FD8086))
                         {
                             Return (One)
                         }
-                        Case (0x24FB8086)
+                        ElseIf (LEqual (_T_0, 0x24FB8086))
                         {
                             Return (One)
                         }
-                        Case (0x25268086)
+                        ElseIf (LEqual (_T_0, 0x25268086))
                         {
                             Return (One)
                         }
-                        Default
+                        Else
                         {
                             Return (Zero)
                         }
 
+                        Break
                     }
                 }
                 Else
@@ -31879,23 +32090,26 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
             Method (WGST, 0, Serialized)
             {
+                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If (CondRefOf (VDID))
                 {
-                    Switch (ToInteger (VDID))
+                    While (One)
                     {
-                        Case (0x093C8086)
+                        Store (ToInteger (VDID), _T_0)
+                        If (LEqual (_T_0, 0x093C8086))
                         {
                             Return (One)
                         }
-                        Case (0x097C8086)
+                        ElseIf (LEqual (_T_0, 0x097C8086))
                         {
                             Return (One)
                         }
-                        Default
+                        Else
                         {
                             Return (Zero)
                         }
 
+                        Break
                     }
                 }
                 Else
@@ -31906,19 +32120,22 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
             Method (WWST, 0, Serialized)
             {
+                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If (CondRefOf (VDID))
                 {
-                    Switch (ToInteger (VDID))
+                    While (One)
                     {
-                        Case (0x73608086)
+                        Store (ToInteger (VDID), _T_0)
+                        If (LEqual (_T_0, 0x73608086))
                         {
                             Return (One)
                         }
-                        Default
+                        Else
                         {
                             Return (Zero)
                         }
 
+                        Break
                     }
                 }
                 Else
@@ -32289,6 +32506,8 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                 Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
                 {
+                    Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler
+                    Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                     If (PCIC (Arg0))
                     {
                         Return (PCID (Arg0, Arg1, Arg2, Arg3))
@@ -32316,25 +32535,20 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                         If (LEqual (Arg2, One))
                         {
-                            Switch (ToInteger (DerefOf (Index (Arg3, Zero))))
+                            While (One)
                             {
-                                Case (Zero)
-                                {
-                                }
-                                Case (One)
+                                Store (ToInteger (DerefOf (Index (Arg3, Zero))), _T_0)
+                                If (LEqual (_T_0, Zero)) {}
+                                ElseIf (LEqual (_T_0, One))
                                 {
                                     If (CondRefOf (\_SB.SLPB))
                                     {
                                         Notify (SLPB, 0x80)
                                     }
                                 }
-                                Case (0x02)
-                                {
-                                }
-                                Case (0x03)
-                                {
-                                }
-                                Case (0x04)
+                                ElseIf (LEqual (_T_0, 0x02)) {}
+                                ElseIf (LEqual (_T_0, 0x03)) {}
+                                ElseIf (LEqual (_T_0, 0x04))
                                 {
                                     If (CondRefOf (\_SB.SLPB))
                                     {
@@ -32342,6 +32556,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     }
                                 }
 
+                                Break
                             }
                         }
 
@@ -32349,9 +32564,10 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     }
                     ElseIf (LEqual (Arg0, ToUUID ("7574eb17-d1a2-4cc2-9929-4a08fcc29107")))
                     {
-                        Switch (ToInteger (Arg2))
+                        While (One)
                         {
-                            Case (Zero)
+                            Store (ToInteger (Arg2), _T_1)
+                            If (LEqual (_T_1, Zero))
                             {
                                 If (LEqual (Arg1, Zero))
                                 {
@@ -32368,15 +32584,15 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                     })
                                 }
                             }
-                            Case (One)
+                            ElseIf (LEqual (_T_1, One))
                             {
                                 Return (WHIT ())
                             }
-                            Case (0x02)
+                            ElseIf (LEqual (_T_1, 0x02))
                             {
                                 Return (SELF ())
                             }
-                            Default
+                            Else
                             {
                                 Return (Buffer (One)
                                 {
@@ -32384,6 +32600,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 })
                             }
 
+                            Break
                         }
                     }
                     Else
@@ -32532,75 +32749,78 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WIST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x095A8086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x095A8086))
                     {
                         Return (One)
                     }
-                    Case (0x095B8086)
+                    ElseIf (LEqual (_T_0, 0x095B8086))
                     {
                         Return (One)
                     }
-                    Case (0x31658086)
+                    ElseIf (LEqual (_T_0, 0x31658086))
                     {
                         Return (One)
                     }
-                    Case (0x31668086)
+                    ElseIf (LEqual (_T_0, 0x31668086))
                     {
                         Return (One)
                     }
-                    Case (0x08B18086)
+                    ElseIf (LEqual (_T_0, 0x08B18086))
                     {
                         Return (One)
                     }
-                    Case (0x08B28086)
+                    ElseIf (LEqual (_T_0, 0x08B28086))
                     {
                         Return (One)
                     }
-                    Case (0x08B38086)
+                    ElseIf (LEqual (_T_0, 0x08B38086))
                     {
                         Return (One)
                     }
-                    Case (0x08B48086)
+                    ElseIf (LEqual (_T_0, 0x08B48086))
                     {
                         Return (One)
                     }
-                    Case (0x24F38086)
+                    ElseIf (LEqual (_T_0, 0x24F38086))
                     {
                         Return (One)
                     }
-                    Case (0x24F48086)
+                    ElseIf (LEqual (_T_0, 0x24F48086))
                     {
                         Return (One)
                     }
-                    Case (0x24F58086)
+                    ElseIf (LEqual (_T_0, 0x24F58086))
                     {
                         Return (One)
                     }
-                    Case (0x24F68086)
+                    ElseIf (LEqual (_T_0, 0x24F68086))
                     {
                         Return (One)
                     }
-                    Case (0x24FD8086)
+                    ElseIf (LEqual (_T_0, 0x24FD8086))
                     {
                         Return (One)
                     }
-                    Case (0x24FB8086)
+                    ElseIf (LEqual (_T_0, 0x24FB8086))
                     {
                         Return (One)
                     }
-                    Case (0x25268086)
+                    ElseIf (LEqual (_T_0, 0x25268086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -32611,23 +32831,26 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WGST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x093C8086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x093C8086))
                     {
                         Return (One)
                     }
-                    Case (0x097C8086)
+                    ElseIf (LEqual (_T_0, 0x097C8086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -32638,19 +32861,22 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WWST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x73608086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x73608086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -33021,6 +33247,8 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
+                Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler
+                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If (PCIC (Arg0))
                 {
                     Return (PCID (Arg0, Arg1, Arg2, Arg3))
@@ -33048,25 +33276,20 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                     If (LEqual (Arg2, One))
                     {
-                        Switch (ToInteger (DerefOf (Index (Arg3, Zero))))
+                        While (One)
                         {
-                            Case (Zero)
-                            {
-                            }
-                            Case (One)
+                            Store (ToInteger (DerefOf (Index (Arg3, Zero))), _T_0)
+                            If (LEqual (_T_0, Zero)) {}
+                            ElseIf (LEqual (_T_0, One))
                             {
                                 If (CondRefOf (\_SB.SLPB))
                                 {
                                     Notify (SLPB, 0x80)
                                 }
                             }
-                            Case (0x02)
-                            {
-                            }
-                            Case (0x03)
-                            {
-                            }
-                            Case (0x04)
+                            ElseIf (LEqual (_T_0, 0x02)) {}
+                            ElseIf (LEqual (_T_0, 0x03)) {}
+                            ElseIf (LEqual (_T_0, 0x04))
                             {
                                 If (CondRefOf (\_SB.SLPB))
                                 {
@@ -33074,6 +33297,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 }
                             }
 
+                            Break
                         }
                     }
 
@@ -33081,9 +33305,10 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 }
                 ElseIf (LEqual (Arg0, ToUUID ("7574eb17-d1a2-4cc2-9929-4a08fcc29107")))
                 {
-                    Switch (ToInteger (Arg2))
+                    While (One)
                     {
-                        Case (Zero)
+                        Store (ToInteger (Arg2), _T_1)
+                        If (LEqual (_T_1, Zero))
                         {
                             If (LEqual (Arg1, Zero))
                             {
@@ -33100,15 +33325,15 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 })
                             }
                         }
-                        Case (One)
+                        ElseIf (LEqual (_T_1, One))
                         {
                             Return (WHIT ())
                         }
-                        Case (0x02)
+                        ElseIf (LEqual (_T_1, 0x02))
                         {
                             Return (SELF ())
                         }
-                        Default
+                        Else
                         {
                             Return (Buffer (One)
                             {
@@ -33116,6 +33341,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                             })
                         }
 
+                        Break
                     }
                 }
                 Else
@@ -33263,75 +33489,78 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WIST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x095A8086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x095A8086))
                     {
                         Return (One)
                     }
-                    Case (0x095B8086)
+                    ElseIf (LEqual (_T_0, 0x095B8086))
                     {
                         Return (One)
                     }
-                    Case (0x31658086)
+                    ElseIf (LEqual (_T_0, 0x31658086))
                     {
                         Return (One)
                     }
-                    Case (0x31668086)
+                    ElseIf (LEqual (_T_0, 0x31668086))
                     {
                         Return (One)
                     }
-                    Case (0x08B18086)
+                    ElseIf (LEqual (_T_0, 0x08B18086))
                     {
                         Return (One)
                     }
-                    Case (0x08B28086)
+                    ElseIf (LEqual (_T_0, 0x08B28086))
                     {
                         Return (One)
                     }
-                    Case (0x08B38086)
+                    ElseIf (LEqual (_T_0, 0x08B38086))
                     {
                         Return (One)
                     }
-                    Case (0x08B48086)
+                    ElseIf (LEqual (_T_0, 0x08B48086))
                     {
                         Return (One)
                     }
-                    Case (0x24F38086)
+                    ElseIf (LEqual (_T_0, 0x24F38086))
                     {
                         Return (One)
                     }
-                    Case (0x24F48086)
+                    ElseIf (LEqual (_T_0, 0x24F48086))
                     {
                         Return (One)
                     }
-                    Case (0x24F58086)
+                    ElseIf (LEqual (_T_0, 0x24F58086))
                     {
                         Return (One)
                     }
-                    Case (0x24F68086)
+                    ElseIf (LEqual (_T_0, 0x24F68086))
                     {
                         Return (One)
                     }
-                    Case (0x24FD8086)
+                    ElseIf (LEqual (_T_0, 0x24FD8086))
                     {
                         Return (One)
                     }
-                    Case (0x24FB8086)
+                    ElseIf (LEqual (_T_0, 0x24FB8086))
                     {
                         Return (One)
                     }
-                    Case (0x25268086)
+                    ElseIf (LEqual (_T_0, 0x25268086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -33342,23 +33571,26 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WGST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x093C8086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x093C8086))
                     {
                         Return (One)
                     }
-                    Case (0x097C8086)
+                    ElseIf (LEqual (_T_0, 0x097C8086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -33369,19 +33601,22 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WWST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x73608086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x73608086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -33752,6 +33987,8 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
+                Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler
+                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If (PCIC (Arg0))
                 {
                     Return (PCID (Arg0, Arg1, Arg2, Arg3))
@@ -33779,25 +34016,20 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                     If (LEqual (Arg2, One))
                     {
-                        Switch (ToInteger (DerefOf (Index (Arg3, Zero))))
+                        While (One)
                         {
-                            Case (Zero)
-                            {
-                            }
-                            Case (One)
+                            Store (ToInteger (DerefOf (Index (Arg3, Zero))), _T_0)
+                            If (LEqual (_T_0, Zero)) {}
+                            ElseIf (LEqual (_T_0, One))
                             {
                                 If (CondRefOf (\_SB.SLPB))
                                 {
                                     Notify (SLPB, 0x80)
                                 }
                             }
-                            Case (0x02)
-                            {
-                            }
-                            Case (0x03)
-                            {
-                            }
-                            Case (0x04)
+                            ElseIf (LEqual (_T_0, 0x02)) {}
+                            ElseIf (LEqual (_T_0, 0x03)) {}
+                            ElseIf (LEqual (_T_0, 0x04))
                             {
                                 If (CondRefOf (\_SB.SLPB))
                                 {
@@ -33805,6 +34037,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 }
                             }
 
+                            Break
                         }
                     }
 
@@ -33812,9 +34045,10 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 }
                 ElseIf (LEqual (Arg0, ToUUID ("7574eb17-d1a2-4cc2-9929-4a08fcc29107")))
                 {
-                    Switch (ToInteger (Arg2))
+                    While (One)
                     {
-                        Case (Zero)
+                        Store (ToInteger (Arg2), _T_1)
+                        If (LEqual (_T_1, Zero))
                         {
                             If (LEqual (Arg1, Zero))
                             {
@@ -33831,15 +34065,15 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 })
                             }
                         }
-                        Case (One)
+                        ElseIf (LEqual (_T_1, One))
                         {
                             Return (WHIT ())
                         }
-                        Case (0x02)
+                        ElseIf (LEqual (_T_1, 0x02))
                         {
                             Return (SELF ())
                         }
-                        Default
+                        Else
                         {
                             Return (Buffer (One)
                             {
@@ -33847,6 +34081,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                             })
                         }
 
+                        Break
                     }
                 }
                 Else
@@ -33994,75 +34229,78 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WIST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x095A8086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x095A8086))
                     {
                         Return (One)
                     }
-                    Case (0x095B8086)
+                    ElseIf (LEqual (_T_0, 0x095B8086))
                     {
                         Return (One)
                     }
-                    Case (0x31658086)
+                    ElseIf (LEqual (_T_0, 0x31658086))
                     {
                         Return (One)
                     }
-                    Case (0x31668086)
+                    ElseIf (LEqual (_T_0, 0x31668086))
                     {
                         Return (One)
                     }
-                    Case (0x08B18086)
+                    ElseIf (LEqual (_T_0, 0x08B18086))
                     {
                         Return (One)
                     }
-                    Case (0x08B28086)
+                    ElseIf (LEqual (_T_0, 0x08B28086))
                     {
                         Return (One)
                     }
-                    Case (0x08B38086)
+                    ElseIf (LEqual (_T_0, 0x08B38086))
                     {
                         Return (One)
                     }
-                    Case (0x08B48086)
+                    ElseIf (LEqual (_T_0, 0x08B48086))
                     {
                         Return (One)
                     }
-                    Case (0x24F38086)
+                    ElseIf (LEqual (_T_0, 0x24F38086))
                     {
                         Return (One)
                     }
-                    Case (0x24F48086)
+                    ElseIf (LEqual (_T_0, 0x24F48086))
                     {
                         Return (One)
                     }
-                    Case (0x24F58086)
+                    ElseIf (LEqual (_T_0, 0x24F58086))
                     {
                         Return (One)
                     }
-                    Case (0x24F68086)
+                    ElseIf (LEqual (_T_0, 0x24F68086))
                     {
                         Return (One)
                     }
-                    Case (0x24FD8086)
+                    ElseIf (LEqual (_T_0, 0x24FD8086))
                     {
                         Return (One)
                     }
-                    Case (0x24FB8086)
+                    ElseIf (LEqual (_T_0, 0x24FB8086))
                     {
                         Return (One)
                     }
-                    Case (0x25268086)
+                    ElseIf (LEqual (_T_0, 0x25268086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -34073,23 +34311,26 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WGST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x093C8086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x093C8086))
                     {
                         Return (One)
                     }
-                    Case (0x097C8086)
+                    ElseIf (LEqual (_T_0, 0x097C8086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -34100,19 +34341,22 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WWST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x73608086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x73608086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -34483,6 +34727,8 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
+                Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler
+                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If (PCIC (Arg0))
                 {
                     Return (PCID (Arg0, Arg1, Arg2, Arg3))
@@ -34510,25 +34756,20 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                     If (LEqual (Arg2, One))
                     {
-                        Switch (ToInteger (DerefOf (Index (Arg3, Zero))))
+                        While (One)
                         {
-                            Case (Zero)
-                            {
-                            }
-                            Case (One)
+                            Store (ToInteger (DerefOf (Index (Arg3, Zero))), _T_0)
+                            If (LEqual (_T_0, Zero)) {}
+                            ElseIf (LEqual (_T_0, One))
                             {
                                 If (CondRefOf (\_SB.SLPB))
                                 {
                                     Notify (SLPB, 0x80)
                                 }
                             }
-                            Case (0x02)
-                            {
-                            }
-                            Case (0x03)
-                            {
-                            }
-                            Case (0x04)
+                            ElseIf (LEqual (_T_0, 0x02)) {}
+                            ElseIf (LEqual (_T_0, 0x03)) {}
+                            ElseIf (LEqual (_T_0, 0x04))
                             {
                                 If (CondRefOf (\_SB.SLPB))
                                 {
@@ -34536,6 +34777,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 }
                             }
 
+                            Break
                         }
                     }
 
@@ -34543,9 +34785,10 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 }
                 ElseIf (LEqual (Arg0, ToUUID ("7574eb17-d1a2-4cc2-9929-4a08fcc29107")))
                 {
-                    Switch (ToInteger (Arg2))
+                    While (One)
                     {
-                        Case (Zero)
+                        Store (ToInteger (Arg2), _T_1)
+                        If (LEqual (_T_1, Zero))
                         {
                             If (LEqual (Arg1, Zero))
                             {
@@ -34562,15 +34805,15 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 })
                             }
                         }
-                        Case (One)
+                        ElseIf (LEqual (_T_1, One))
                         {
                             Return (WHIT ())
                         }
-                        Case (0x02)
+                        ElseIf (LEqual (_T_1, 0x02))
                         {
                             Return (SELF ())
                         }
-                        Default
+                        Else
                         {
                             Return (Buffer (One)
                             {
@@ -34578,6 +34821,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                             })
                         }
 
+                        Break
                     }
                 }
                 Else
@@ -34725,75 +34969,78 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WIST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x095A8086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x095A8086))
                     {
                         Return (One)
                     }
-                    Case (0x095B8086)
+                    ElseIf (LEqual (_T_0, 0x095B8086))
                     {
                         Return (One)
                     }
-                    Case (0x31658086)
+                    ElseIf (LEqual (_T_0, 0x31658086))
                     {
                         Return (One)
                     }
-                    Case (0x31668086)
+                    ElseIf (LEqual (_T_0, 0x31668086))
                     {
                         Return (One)
                     }
-                    Case (0x08B18086)
+                    ElseIf (LEqual (_T_0, 0x08B18086))
                     {
                         Return (One)
                     }
-                    Case (0x08B28086)
+                    ElseIf (LEqual (_T_0, 0x08B28086))
                     {
                         Return (One)
                     }
-                    Case (0x08B38086)
+                    ElseIf (LEqual (_T_0, 0x08B38086))
                     {
                         Return (One)
                     }
-                    Case (0x08B48086)
+                    ElseIf (LEqual (_T_0, 0x08B48086))
                     {
                         Return (One)
                     }
-                    Case (0x24F38086)
+                    ElseIf (LEqual (_T_0, 0x24F38086))
                     {
                         Return (One)
                     }
-                    Case (0x24F48086)
+                    ElseIf (LEqual (_T_0, 0x24F48086))
                     {
                         Return (One)
                     }
-                    Case (0x24F58086)
+                    ElseIf (LEqual (_T_0, 0x24F58086))
                     {
                         Return (One)
                     }
-                    Case (0x24F68086)
+                    ElseIf (LEqual (_T_0, 0x24F68086))
                     {
                         Return (One)
                     }
-                    Case (0x24FD8086)
+                    ElseIf (LEqual (_T_0, 0x24FD8086))
                     {
                         Return (One)
                     }
-                    Case (0x24FB8086)
+                    ElseIf (LEqual (_T_0, 0x24FB8086))
                     {
                         Return (One)
                     }
-                    Case (0x25268086)
+                    ElseIf (LEqual (_T_0, 0x25268086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -34804,23 +35051,26 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WGST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x093C8086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x093C8086))
                     {
                         Return (One)
                     }
-                    Case (0x097C8086)
+                    ElseIf (LEqual (_T_0, 0x097C8086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -34831,19 +35081,22 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WWST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x73608086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x73608086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -35214,6 +35467,8 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
+                Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler
+                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If (PCIC (Arg0))
                 {
                     Return (PCID (Arg0, Arg1, Arg2, Arg3))
@@ -35241,25 +35496,20 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                     If (LEqual (Arg2, One))
                     {
-                        Switch (ToInteger (DerefOf (Index (Arg3, Zero))))
+                        While (One)
                         {
-                            Case (Zero)
-                            {
-                            }
-                            Case (One)
+                            Store (ToInteger (DerefOf (Index (Arg3, Zero))), _T_0)
+                            If (LEqual (_T_0, Zero)) {}
+                            ElseIf (LEqual (_T_0, One))
                             {
                                 If (CondRefOf (\_SB.SLPB))
                                 {
                                     Notify (SLPB, 0x80)
                                 }
                             }
-                            Case (0x02)
-                            {
-                            }
-                            Case (0x03)
-                            {
-                            }
-                            Case (0x04)
+                            ElseIf (LEqual (_T_0, 0x02)) {}
+                            ElseIf (LEqual (_T_0, 0x03)) {}
+                            ElseIf (LEqual (_T_0, 0x04))
                             {
                                 If (CondRefOf (\_SB.SLPB))
                                 {
@@ -35267,6 +35517,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 }
                             }
 
+                            Break
                         }
                     }
 
@@ -35274,9 +35525,10 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 }
                 ElseIf (LEqual (Arg0, ToUUID ("7574eb17-d1a2-4cc2-9929-4a08fcc29107")))
                 {
-                    Switch (ToInteger (Arg2))
+                    While (One)
                     {
-                        Case (Zero)
+                        Store (ToInteger (Arg2), _T_1)
+                        If (LEqual (_T_1, Zero))
                         {
                             If (LEqual (Arg1, Zero))
                             {
@@ -35293,15 +35545,15 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 })
                             }
                         }
-                        Case (One)
+                        ElseIf (LEqual (_T_1, One))
                         {
                             Return (WHIT ())
                         }
-                        Case (0x02)
+                        ElseIf (LEqual (_T_1, 0x02))
                         {
                             Return (SELF ())
                         }
-                        Default
+                        Else
                         {
                             Return (Buffer (One)
                             {
@@ -35309,6 +35561,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                             })
                         }
 
+                        Break
                     }
                 }
                 Else
@@ -35456,75 +35709,78 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WIST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x095A8086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x095A8086))
                     {
                         Return (One)
                     }
-                    Case (0x095B8086)
+                    ElseIf (LEqual (_T_0, 0x095B8086))
                     {
                         Return (One)
                     }
-                    Case (0x31658086)
+                    ElseIf (LEqual (_T_0, 0x31658086))
                     {
                         Return (One)
                     }
-                    Case (0x31668086)
+                    ElseIf (LEqual (_T_0, 0x31668086))
                     {
                         Return (One)
                     }
-                    Case (0x08B18086)
+                    ElseIf (LEqual (_T_0, 0x08B18086))
                     {
                         Return (One)
                     }
-                    Case (0x08B28086)
+                    ElseIf (LEqual (_T_0, 0x08B28086))
                     {
                         Return (One)
                     }
-                    Case (0x08B38086)
+                    ElseIf (LEqual (_T_0, 0x08B38086))
                     {
                         Return (One)
                     }
-                    Case (0x08B48086)
+                    ElseIf (LEqual (_T_0, 0x08B48086))
                     {
                         Return (One)
                     }
-                    Case (0x24F38086)
+                    ElseIf (LEqual (_T_0, 0x24F38086))
                     {
                         Return (One)
                     }
-                    Case (0x24F48086)
+                    ElseIf (LEqual (_T_0, 0x24F48086))
                     {
                         Return (One)
                     }
-                    Case (0x24F58086)
+                    ElseIf (LEqual (_T_0, 0x24F58086))
                     {
                         Return (One)
                     }
-                    Case (0x24F68086)
+                    ElseIf (LEqual (_T_0, 0x24F68086))
                     {
                         Return (One)
                     }
-                    Case (0x24FD8086)
+                    ElseIf (LEqual (_T_0, 0x24FD8086))
                     {
                         Return (One)
                     }
-                    Case (0x24FB8086)
+                    ElseIf (LEqual (_T_0, 0x24FB8086))
                     {
                         Return (One)
                     }
-                    Case (0x25268086)
+                    ElseIf (LEqual (_T_0, 0x25268086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -35535,23 +35791,26 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WGST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x093C8086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x093C8086))
                     {
                         Return (One)
                     }
-                    Case (0x097C8086)
+                    ElseIf (LEqual (_T_0, 0x097C8086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -35562,19 +35821,22 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WWST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x73608086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x73608086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -35945,6 +36207,8 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
+                Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler
+                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If (PCIC (Arg0))
                 {
                     Return (PCID (Arg0, Arg1, Arg2, Arg3))
@@ -35972,25 +36236,20 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                     If (LEqual (Arg2, One))
                     {
-                        Switch (ToInteger (DerefOf (Index (Arg3, Zero))))
+                        While (One)
                         {
-                            Case (Zero)
-                            {
-                            }
-                            Case (One)
+                            Store (ToInteger (DerefOf (Index (Arg3, Zero))), _T_0)
+                            If (LEqual (_T_0, Zero)) {}
+                            ElseIf (LEqual (_T_0, One))
                             {
                                 If (CondRefOf (\_SB.SLPB))
                                 {
                                     Notify (SLPB, 0x80)
                                 }
                             }
-                            Case (0x02)
-                            {
-                            }
-                            Case (0x03)
-                            {
-                            }
-                            Case (0x04)
+                            ElseIf (LEqual (_T_0, 0x02)) {}
+                            ElseIf (LEqual (_T_0, 0x03)) {}
+                            ElseIf (LEqual (_T_0, 0x04))
                             {
                                 If (CondRefOf (\_SB.SLPB))
                                 {
@@ -35998,6 +36257,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 }
                             }
 
+                            Break
                         }
                     }
 
@@ -36005,9 +36265,10 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 }
                 ElseIf (LEqual (Arg0, ToUUID ("7574eb17-d1a2-4cc2-9929-4a08fcc29107")))
                 {
-                    Switch (ToInteger (Arg2))
+                    While (One)
                     {
-                        Case (Zero)
+                        Store (ToInteger (Arg2), _T_1)
+                        If (LEqual (_T_1, Zero))
                         {
                             If (LEqual (Arg1, Zero))
                             {
@@ -36024,15 +36285,15 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 })
                             }
                         }
-                        Case (One)
+                        ElseIf (LEqual (_T_1, One))
                         {
                             Return (WHIT ())
                         }
-                        Case (0x02)
+                        ElseIf (LEqual (_T_1, 0x02))
                         {
                             Return (SELF ())
                         }
-                        Default
+                        Else
                         {
                             Return (Buffer (One)
                             {
@@ -36040,6 +36301,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                             })
                         }
 
+                        Break
                     }
                 }
                 Else
@@ -36187,75 +36449,78 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WIST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x095A8086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x095A8086))
                     {
                         Return (One)
                     }
-                    Case (0x095B8086)
+                    ElseIf (LEqual (_T_0, 0x095B8086))
                     {
                         Return (One)
                     }
-                    Case (0x31658086)
+                    ElseIf (LEqual (_T_0, 0x31658086))
                     {
                         Return (One)
                     }
-                    Case (0x31668086)
+                    ElseIf (LEqual (_T_0, 0x31668086))
                     {
                         Return (One)
                     }
-                    Case (0x08B18086)
+                    ElseIf (LEqual (_T_0, 0x08B18086))
                     {
                         Return (One)
                     }
-                    Case (0x08B28086)
+                    ElseIf (LEqual (_T_0, 0x08B28086))
                     {
                         Return (One)
                     }
-                    Case (0x08B38086)
+                    ElseIf (LEqual (_T_0, 0x08B38086))
                     {
                         Return (One)
                     }
-                    Case (0x08B48086)
+                    ElseIf (LEqual (_T_0, 0x08B48086))
                     {
                         Return (One)
                     }
-                    Case (0x24F38086)
+                    ElseIf (LEqual (_T_0, 0x24F38086))
                     {
                         Return (One)
                     }
-                    Case (0x24F48086)
+                    ElseIf (LEqual (_T_0, 0x24F48086))
                     {
                         Return (One)
                     }
-                    Case (0x24F58086)
+                    ElseIf (LEqual (_T_0, 0x24F58086))
                     {
                         Return (One)
                     }
-                    Case (0x24F68086)
+                    ElseIf (LEqual (_T_0, 0x24F68086))
                     {
                         Return (One)
                     }
-                    Case (0x24FD8086)
+                    ElseIf (LEqual (_T_0, 0x24FD8086))
                     {
                         Return (One)
                     }
-                    Case (0x24FB8086)
+                    ElseIf (LEqual (_T_0, 0x24FB8086))
                     {
                         Return (One)
                     }
-                    Case (0x25268086)
+                    ElseIf (LEqual (_T_0, 0x25268086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -36266,23 +36531,26 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WGST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x093C8086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x093C8086))
                     {
                         Return (One)
                     }
-                    Case (0x097C8086)
+                    ElseIf (LEqual (_T_0, 0x097C8086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -36293,19 +36561,22 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WWST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x73608086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x73608086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -36676,6 +36947,8 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
+                Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler
+                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If (PCIC (Arg0))
                 {
                     Return (PCID (Arg0, Arg1, Arg2, Arg3))
@@ -36703,25 +36976,20 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                     If (LEqual (Arg2, One))
                     {
-                        Switch (ToInteger (DerefOf (Index (Arg3, Zero))))
+                        While (One)
                         {
-                            Case (Zero)
-                            {
-                            }
-                            Case (One)
+                            Store (ToInteger (DerefOf (Index (Arg3, Zero))), _T_0)
+                            If (LEqual (_T_0, Zero)) {}
+                            ElseIf (LEqual (_T_0, One))
                             {
                                 If (CondRefOf (\_SB.SLPB))
                                 {
                                     Notify (SLPB, 0x80)
                                 }
                             }
-                            Case (0x02)
-                            {
-                            }
-                            Case (0x03)
-                            {
-                            }
-                            Case (0x04)
+                            ElseIf (LEqual (_T_0, 0x02)) {}
+                            ElseIf (LEqual (_T_0, 0x03)) {}
+                            ElseIf (LEqual (_T_0, 0x04))
                             {
                                 If (CondRefOf (\_SB.SLPB))
                                 {
@@ -36729,6 +36997,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 }
                             }
 
+                            Break
                         }
                     }
 
@@ -36736,9 +37005,10 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 }
                 ElseIf (LEqual (Arg0, ToUUID ("7574eb17-d1a2-4cc2-9929-4a08fcc29107")))
                 {
-                    Switch (ToInteger (Arg2))
+                    While (One)
                     {
-                        Case (Zero)
+                        Store (ToInteger (Arg2), _T_1)
+                        If (LEqual (_T_1, Zero))
                         {
                             If (LEqual (Arg1, Zero))
                             {
@@ -36755,15 +37025,15 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 })
                             }
                         }
-                        Case (One)
+                        ElseIf (LEqual (_T_1, One))
                         {
                             Return (WHIT ())
                         }
-                        Case (0x02)
+                        ElseIf (LEqual (_T_1, 0x02))
                         {
                             Return (SELF ())
                         }
-                        Default
+                        Else
                         {
                             Return (Buffer (One)
                             {
@@ -36771,6 +37041,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                             })
                         }
 
+                        Break
                     }
                 }
                 Else
@@ -36918,75 +37189,78 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WIST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x095A8086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x095A8086))
                     {
                         Return (One)
                     }
-                    Case (0x095B8086)
+                    ElseIf (LEqual (_T_0, 0x095B8086))
                     {
                         Return (One)
                     }
-                    Case (0x31658086)
+                    ElseIf (LEqual (_T_0, 0x31658086))
                     {
                         Return (One)
                     }
-                    Case (0x31668086)
+                    ElseIf (LEqual (_T_0, 0x31668086))
                     {
                         Return (One)
                     }
-                    Case (0x08B18086)
+                    ElseIf (LEqual (_T_0, 0x08B18086))
                     {
                         Return (One)
                     }
-                    Case (0x08B28086)
+                    ElseIf (LEqual (_T_0, 0x08B28086))
                     {
                         Return (One)
                     }
-                    Case (0x08B38086)
+                    ElseIf (LEqual (_T_0, 0x08B38086))
                     {
                         Return (One)
                     }
-                    Case (0x08B48086)
+                    ElseIf (LEqual (_T_0, 0x08B48086))
                     {
                         Return (One)
                     }
-                    Case (0x24F38086)
+                    ElseIf (LEqual (_T_0, 0x24F38086))
                     {
                         Return (One)
                     }
-                    Case (0x24F48086)
+                    ElseIf (LEqual (_T_0, 0x24F48086))
                     {
                         Return (One)
                     }
-                    Case (0x24F58086)
+                    ElseIf (LEqual (_T_0, 0x24F58086))
                     {
                         Return (One)
                     }
-                    Case (0x24F68086)
+                    ElseIf (LEqual (_T_0, 0x24F68086))
                     {
                         Return (One)
                     }
-                    Case (0x24FD8086)
+                    ElseIf (LEqual (_T_0, 0x24FD8086))
                     {
                         Return (One)
                     }
-                    Case (0x24FB8086)
+                    ElseIf (LEqual (_T_0, 0x24FB8086))
                     {
                         Return (One)
                     }
-                    Case (0x25268086)
+                    ElseIf (LEqual (_T_0, 0x25268086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -36997,23 +37271,26 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WGST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x093C8086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x093C8086))
                     {
                         Return (One)
                     }
-                    Case (0x097C8086)
+                    ElseIf (LEqual (_T_0, 0x097C8086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -37024,19 +37301,22 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (WWST, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (VDID))
             {
-                Switch (ToInteger (VDID))
+                While (One)
                 {
-                    Case (0x73608086)
+                    Store (ToInteger (VDID), _T_0)
+                    If (LEqual (_T_0, 0x73608086))
                     {
                         Return (One)
                     }
-                    Default
+                    Else
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
             }
             Else
@@ -37407,6 +37687,8 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
+                Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler
+                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If (PCIC (Arg0))
                 {
                     Return (PCID (Arg0, Arg1, Arg2, Arg3))
@@ -37434,25 +37716,20 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                     If (LEqual (Arg2, One))
                     {
-                        Switch (ToInteger (DerefOf (Index (Arg3, Zero))))
+                        While (One)
                         {
-                            Case (Zero)
-                            {
-                            }
-                            Case (One)
+                            Store (ToInteger (DerefOf (Index (Arg3, Zero))), _T_0)
+                            If (LEqual (_T_0, Zero)) {}
+                            ElseIf (LEqual (_T_0, One))
                             {
                                 If (CondRefOf (\_SB.SLPB))
                                 {
                                     Notify (SLPB, 0x80)
                                 }
                             }
-                            Case (0x02)
-                            {
-                            }
-                            Case (0x03)
-                            {
-                            }
-                            Case (0x04)
+                            ElseIf (LEqual (_T_0, 0x02)) {}
+                            ElseIf (LEqual (_T_0, 0x03)) {}
+                            ElseIf (LEqual (_T_0, 0x04))
                             {
                                 If (CondRefOf (\_SB.SLPB))
                                 {
@@ -37460,6 +37737,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 }
                             }
 
+                            Break
                         }
                     }
 
@@ -37467,9 +37745,10 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 }
                 ElseIf (LEqual (Arg0, ToUUID ("7574eb17-d1a2-4cc2-9929-4a08fcc29107")))
                 {
-                    Switch (ToInteger (Arg2))
+                    While (One)
                     {
-                        Case (Zero)
+                        Store (ToInteger (Arg2), _T_1)
+                        If (LEqual (_T_1, Zero))
                         {
                             If (LEqual (Arg1, Zero))
                             {
@@ -37486,15 +37765,15 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 })
                             }
                         }
-                        Case (One)
+                        ElseIf (LEqual (_T_1, One))
                         {
                             Return (WHIT ())
                         }
-                        Case (0x02)
+                        ElseIf (LEqual (_T_1, 0x02))
                         {
                             Return (SELF ())
                         }
-                        Default
+                        Else
                         {
                             Return (Buffer (One)
                             {
@@ -37502,6 +37781,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                             })
                         }
 
+                        Break
                     }
                 }
                 Else
@@ -37680,7 +37960,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 {
                     Return (PDAT)
                 }
-                Return (Zero)
             }
 
             Method (_WED, 1, NotSerialized)  // _Wxx: Wake Event
@@ -37854,7 +38133,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     Notify (WFDE, 0xD0)
                     Return (PDAT)
                 }
-                Return (Zero)
             }
 
             Name (WQCC, Buffer (0x02F1)
@@ -37981,7 +38259,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             }
             Else
             {
-                Return (Package (0x00){})
+                Return (Package (0x00) {})
             }
         }
     }
@@ -37999,7 +38277,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             }
             Else
             {
-                Return (Package (0x00){})
+                Return (Package (0x00) {})
             }
         }
     }
@@ -38017,7 +38295,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             }
             Else
             {
-                Return (Package (0x00){})
+                Return (Package (0x00) {})
             }
         }
     }
@@ -38153,7 +38431,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             }
             Else
             {
-                Return (Package (0x00){})
+                Return (Package (0x00) {})
             }
         }
     }
@@ -38171,7 +38449,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             }
             Else
             {
-                Return (Package (0x00){})
+                Return (Package (0x00) {})
             }
         }
     }
@@ -38204,7 +38482,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     }
                 }
 
-                Return (Package (0x00){})
+                Return (Package (0x00) {})
             }
 
             OperationRegion (PCCX, PCI_Config, 0x09, 0x04)
@@ -38275,7 +38553,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 }
             }
 
-            Return (Package (0x00){})
+            Return (Package (0x00) {})
         }
 
         OperationRegion (PCCX, PCI_Config, 0x09, 0x04)
@@ -38345,7 +38623,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 }
             }
 
-            Return (Package (0x00){})
+            Return (Package (0x00) {})
         }
 
         OperationRegion (PCCX, PCI_Config, 0x09, 0x04)
@@ -38415,7 +38693,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 }
             }
 
-            Return (Package (0x00){})
+            Return (Package (0x00) {})
         }
 
         OperationRegion (PCCX, PCI_Config, 0x09, 0x04)
@@ -38487,7 +38765,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     }
                 }
 
-                Return (Package (0x00){})
+                Return (Package (0x00) {})
             }
 
             OperationRegion (PCCX, PCI_Config, 0x09, 0x04)
@@ -38558,7 +38836,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 }
             }
 
-            Return (Package (0x00){})
+            Return (Package (0x00) {})
         }
 
         OperationRegion (PCCX, PCI_Config, 0x09, 0x04)
@@ -38628,7 +38906,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 }
             }
 
-            Return (Package (0x00){})
+            Return (Package (0x00) {})
         }
 
         OperationRegion (PCCX, PCI_Config, 0x09, 0x04)
@@ -38698,7 +38976,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 }
             }
 
-            Return (Package (0x00){})
+            Return (Package (0x00) {})
         }
 
         OperationRegion (PCCX, PCI_Config, 0x09, 0x04)
@@ -38770,7 +39048,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     }
                 }
 
-                Return (Package (0x00){})
+                Return (Package (0x00) {})
             }
 
             OperationRegion (PCCX, PCI_Config, 0x09, 0x04)
@@ -38841,7 +39119,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 }
             }
 
-            Return (Package (0x00){})
+            Return (Package (0x00) {})
         }
 
         OperationRegion (PCCX, PCI_Config, 0x09, 0x04)
@@ -38911,7 +39189,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 }
             }
 
-            Return (Package (0x00){})
+            Return (Package (0x00) {})
         }
 
         OperationRegion (PCCX, PCI_Config, 0x09, 0x04)
@@ -38981,7 +39259,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 }
             }
 
-            Return (Package (0x00){})
+            Return (Package (0x00) {})
         }
 
         OperationRegion (PCCX, PCI_Config, 0x09, 0x04)
@@ -39051,7 +39329,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 }
             }
 
-            Return (Package (0x00){})
+            Return (Package (0x00) {})
         }
 
         OperationRegion (PCCX, PCI_Config, 0x09, 0x04)
@@ -39121,7 +39399,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 }
             }
 
-            Return (Package (0x00){})
+            Return (Package (0x00) {})
         }
 
         OperationRegion (PCCX, PCI_Config, 0x09, 0x04)
@@ -39191,7 +39469,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 }
             }
 
-            Return (Package (0x00){})
+            Return (Package (0x00) {})
         }
 
         OperationRegion (PCCX, PCI_Config, 0x09, 0x04)
@@ -39261,7 +39539,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 }
             }
 
-            Return (Package (0x00){})
+            Return (Package (0x00) {})
         }
 
         OperationRegion (PCCX, PCI_Config, 0x09, 0x04)
@@ -39331,7 +39609,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 }
             }
 
-            Return (Package (0x00){})
+            Return (Package (0x00) {})
         }
 
         OperationRegion (PCCX, PCI_Config, 0x09, 0x04)
@@ -39401,7 +39679,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 }
             }
 
-            Return (Package (0x00){})
+            Return (Package (0x00) {})
         }
 
         OperationRegion (PCCX, PCI_Config, 0x09, 0x04)
@@ -39471,7 +39749,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 }
             }
 
-            Return (Package (0x00){})
+            Return (Package (0x00) {})
         }
 
         OperationRegion (PCCX, PCI_Config, 0x09, 0x04)
@@ -39541,7 +39819,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 }
             }
 
-            Return (Package (0x00){})
+            Return (Package (0x00) {})
         }
 
         OperationRegion (PCCX, PCI_Config, 0x09, 0x04)
@@ -39601,7 +39879,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             Else
             {
                 ADBG ("PR00 DEP NULL")
-                Return (Package (0x00){})
+                Return (Package (0x00) {})
             }
         }
     }
@@ -39622,7 +39900,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             Else
             {
                 ADBG ("PR01 DEP NULL")
-                Return (Package (0x00){})
+                Return (Package (0x00) {})
             }
         }
     }
@@ -39643,7 +39921,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             Else
             {
                 ADBG ("PR02 DEP NULL")
-                Return (Package (0x00){})
+                Return (Package (0x00) {})
             }
         }
     }
@@ -39664,7 +39942,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             Else
             {
                 ADBG ("PR03 DEP NULL")
-                Return (Package (0x00){})
+                Return (Package (0x00) {})
             }
         }
     }
@@ -39685,7 +39963,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             Else
             {
                 ADBG ("PR04 DEP NULL")
-                Return (Package (0x00){})
+                Return (Package (0x00) {})
             }
         }
     }
@@ -39706,7 +39984,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             Else
             {
                 ADBG ("PR05 DEP NULL")
-                Return (Package (0x00){})
+                Return (Package (0x00) {})
             }
         }
     }
@@ -39727,7 +40005,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             Else
             {
                 ADBG ("PR06 DEP NULL")
-                Return (Package (0x00){})
+                Return (Package (0x00) {})
             }
         }
     }
@@ -39748,7 +40026,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             Else
             {
                 ADBG ("PR07 DEP NULL")
-                Return (Package (0x00){})
+                Return (Package (0x00) {})
             }
         }
     }
@@ -39769,7 +40047,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             Else
             {
                 ADBG ("PR08 DEP NULL")
-                Return (Package (0x00){})
+                Return (Package (0x00) {})
             }
         }
     }
@@ -39790,7 +40068,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             Else
             {
                 ADBG ("PR09 DEP NULL")
-                Return (Package (0x00){})
+                Return (Package (0x00) {})
             }
         }
     }
@@ -39811,7 +40089,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             Else
             {
                 ADBG ("PR10 DEP NULL")
-                Return (Package (0x00){})
+                Return (Package (0x00) {})
             }
         }
     }
@@ -39832,7 +40110,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             Else
             {
                 ADBG ("PR11 DEP NULL")
-                Return (Package (0x00){})
+                Return (Package (0x00) {})
             }
         }
     }
@@ -39853,7 +40131,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             Else
             {
                 ADBG ("PR12 DEP NULL")
-                Return (Package (0x00){})
+                Return (Package (0x00) {})
             }
         }
     }
@@ -39874,7 +40152,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             Else
             {
                 ADBG ("PR13 DEP NULL")
-                Return (Package (0x00){})
+                Return (Package (0x00) {})
             }
         }
     }
@@ -39895,7 +40173,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             Else
             {
                 ADBG ("PR14 DEP NULL")
-                Return (Package (0x00){})
+                Return (Package (0x00) {})
             }
         }
     }
@@ -39916,7 +40194,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             Else
             {
                 ADBG ("PR15 DEP NULL")
-                Return (Package (0x00){})
+                Return (Package (0x00) {})
             }
         }
     }
@@ -41613,7 +41891,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     {
                         If (LEqual (S0ID, Zero))
                         {
-                            Return (Package (0x00){})
+                            Return (Package (0x00) {})
                         }
 
                         If (LEqual (And (PEPC, One), One))
@@ -41756,7 +42034,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                             Store (Zero, Index (DerefOf (Index (DEVY, 0x0B)), One))
                         }
 
-                        If (LEqual (And (PEPC, 0x10), Zero)){}
+                        If (LEqual (And (PEPC, 0x10), Zero)) {}
                         If (LEqual (And (PEPC, 0x20), Zero))
                         {
                             Store (Zero, Index (DerefOf (Index (DEVY, 0x0C)), One))
@@ -42930,10 +43208,12 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (GRID, 1, Serialized)
         {
-            Name (BUF, Buffer (0x09){})
-            Switch (ToInteger (Arg0))
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+            Name (BUF, Buffer (0x09) {})
+            While (One)
             {
-                Case (Zero)
+                Store (ToInteger (Arg0), _T_0)
+                If (LEqual (_T_0, Zero))
                 {
                     Store (L0H0, Index (BUF, Zero))
                     Store (L0H1, Index (BUF, One))
@@ -42945,7 +43225,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     Store (L0H7, Index (BUF, 0x07))
                     Store (L0H8, Index (BUF, 0x08))
                 }
-                Case (One)
+                ElseIf (LEqual (_T_0, One))
                 {
                     Store (L1H0, Index (BUF, Zero))
                     Store (L1H1, Index (BUF, One))
@@ -42957,7 +43237,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     Store (L1H7, Index (BUF, 0x07))
                     Store (L1H8, Index (BUF, 0x08))
                 }
-                Case (0x02)
+                ElseIf (LEqual (_T_0, 0x02))
                 {
                     Store (L2H0, Index (BUF, Zero))
                     Store (L2H1, Index (BUF, One))
@@ -42969,7 +43249,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     Store (L2H7, Index (BUF, 0x07))
                     Store (L2H8, Index (BUF, 0x08))
                 }
-                Default
+                Else
                 {
                     Store (L3H0, Index (BUF, Zero))
                     Store (L3H1, Index (BUF, One))
@@ -42982,6 +43262,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     Store (L3H8, Index (BUF, 0x08))
                 }
 
+                Break
             }
 
             Return (ToString (BUF, Ones))
@@ -42989,106 +43270,117 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (HCID, 1, Serialized)
         {
-            Switch (ToInteger (Arg0))
+            Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+            While (One)
             {
-                Case (Zero)
+                Store (ToInteger (Arg0), _T_0)
+                If (LEqual (_T_0, Zero))
                 {
                     Store (L0SM, Local0)
                 }
-                Case (One)
+                ElseIf (LEqual (_T_0, One))
                 {
                     Store (L1SM, Local0)
                 }
-                Case (0x02)
+                ElseIf (LEqual (_T_0, 0x02))
                 {
                     Store (L2SM, Local0)
                 }
-                Default
+                Else
                 {
                     Store (L3SM, Local0)
                 }
 
+                Break
             }
 
-            Switch (ToInteger (Local0))
+            While (One)
             {
-                Case (Zero)
+                Store (ToInteger (Local0), _T_1)
+                If (LEqual (_T_1, Zero))
                 {
                     Return ("INT3471")
                 }
-                Case (One)
+                ElseIf (LEqual (_T_1, One))
                 {
                     Return ("INT33BE")
                 }
-                Case (0x02)
+                ElseIf (LEqual (_T_1, 0x02))
                 {
                     Return ("INT3476")
                 }
-                Case (0x03)
+                ElseIf (LEqual (_T_1, 0x03))
                 {
                     Return ("INT3477")
                 }
-                Case (0x04)
+                ElseIf (LEqual (_T_1, 0x04))
                 {
                     Return ("INT3474")
                 }
-                Case (0x05)
+                ElseIf (LEqual (_T_1, 0x05))
                 {
                     Return ("INT3473")
                 }
-                Case (0x06)
+                ElseIf (LEqual (_T_1, 0x06))
                 {
                     Return ("INT3475")
                 }
-                Case (0x07)
+                ElseIf (LEqual (_T_1, 0x07))
                 {
                     Return ("INT3478")
                 }
-                Case (0x08)
+                ElseIf (LEqual (_T_1, 0x08))
                 {
                     Return ("INT3479")
                 }
-                Case (0x09)
+                ElseIf (LEqual (_T_1, 0x09))
                 {
                     Return ("INT347A")
                 }
-                Case (0x0A)
+                ElseIf (LEqual (_T_1, 0x0A))
                 {
                     Return ("INT347B")
                 }
-                Case (0x0B)
+                ElseIf (LEqual (_T_1, 0x0B))
                 {
                     Return ("OVTI2742")
                 }
-                Case (0x0C)
+                ElseIf (LEqual (_T_1, 0x0C))
                 {
                     Return ("OVTI9234")
                 }
-                Case (0x0D)
+                ElseIf (LEqual (_T_1, 0x0D))
                 {
                     Return ("OVTI8856")
                 }
-                Case (0x0E)
+                ElseIf (LEqual (_T_1, 0x0E))
                 {
                     Return ("OVTIF860")
                 }
-                Default
+                Else
                 {
                     Return (GRID (Arg0))
                 }
 
+                Break
             }
         }
 
         Method (CDEP, 1, Serialized)
         {
+            Name (_T_3, Zero)  // _T_x: Emitted by ASL Compiler
+            Name (_T_2, Zero)  // _T_x: Emitted by ASL Compiler
+            Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (LEqual (Arg0, Zero))
             {
                 If (LEqual (C0TP, One))
                 {
-                    Switch (ToInteger (L0BS))
+                    While (One)
                     {
-                        Case (Zero)
+                        Store (ToInteger (L0BS), _T_0)
+                        If (LEqual (_T_0, Zero))
                         {
                             Return (Package (0x02)
                             {
@@ -43096,7 +43388,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 I2C0
                             })
                         }
-                        Case (One)
+                        ElseIf (LEqual (_T_0, One))
                         {
                             Return (Package (0x02)
                             {
@@ -43104,7 +43396,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 I2C1
                             })
                         }
-                        Case (0x02)
+                        ElseIf (LEqual (_T_0, 0x02))
                         {
                             Return (Package (0x02)
                             {
@@ -43112,7 +43404,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 I2C2
                             })
                         }
-                        Case (0x03)
+                        ElseIf (LEqual (_T_0, 0x03))
                         {
                             Return (Package (0x02)
                             {
@@ -43120,7 +43412,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 I2C3
                             })
                         }
-                        Case (0x04)
+                        ElseIf (LEqual (_T_0, 0x04))
                         {
                             Return (Package (0x02)
                             {
@@ -43128,7 +43420,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 I2C4
                             })
                         }
-                        Case (0x05)
+                        ElseIf (LEqual (_T_0, 0x05))
                         {
                             Return (Package (0x02)
                             {
@@ -43136,7 +43428,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 I2C5
                             })
                         }
-                        Default
+                        Else
                         {
                             Return (Package (0x01)
                             {
@@ -43144,6 +43436,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                             })
                         }
 
+                        Break
                     }
                 }
 
@@ -43160,9 +43453,10 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             {
                 If (LEqual (C1TP, One))
                 {
-                    Switch (ToInteger (L1BS))
+                    While (One)
                     {
-                        Case (Zero)
+                        Store (ToInteger (L1BS), _T_1)
+                        If (LEqual (_T_1, Zero))
                         {
                             Return (Package (0x02)
                             {
@@ -43170,7 +43464,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 I2C0
                             })
                         }
-                        Case (One)
+                        ElseIf (LEqual (_T_1, One))
                         {
                             Return (Package (0x02)
                             {
@@ -43178,7 +43472,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 I2C1
                             })
                         }
-                        Case (0x02)
+                        ElseIf (LEqual (_T_1, 0x02))
                         {
                             Return (Package (0x02)
                             {
@@ -43186,7 +43480,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 I2C2
                             })
                         }
-                        Case (0x03)
+                        ElseIf (LEqual (_T_1, 0x03))
                         {
                             Return (Package (0x02)
                             {
@@ -43194,7 +43488,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 I2C3
                             })
                         }
-                        Case (0x04)
+                        ElseIf (LEqual (_T_1, 0x04))
                         {
                             Return (Package (0x02)
                             {
@@ -43202,7 +43496,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 I2C4
                             })
                         }
-                        Case (0x05)
+                        ElseIf (LEqual (_T_1, 0x05))
                         {
                             Return (Package (0x02)
                             {
@@ -43210,7 +43504,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 I2C5
                             })
                         }
-                        Default
+                        Else
                         {
                             Return (Package (0x01)
                             {
@@ -43218,6 +43512,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                             })
                         }
 
+                        Break
                     }
                 }
 
@@ -43234,9 +43529,10 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             {
                 If (LEqual (C2TP, One))
                 {
-                    Switch (ToInteger (L2BS))
+                    While (One)
                     {
-                        Case (Zero)
+                        Store (ToInteger (L2BS), _T_2)
+                        If (LEqual (_T_2, Zero))
                         {
                             Return (Package (0x02)
                             {
@@ -43244,7 +43540,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 I2C0
                             })
                         }
-                        Case (One)
+                        ElseIf (LEqual (_T_2, One))
                         {
                             Return (Package (0x02)
                             {
@@ -43252,7 +43548,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 I2C1
                             })
                         }
-                        Case (0x02)
+                        ElseIf (LEqual (_T_2, 0x02))
                         {
                             Return (Package (0x02)
                             {
@@ -43260,7 +43556,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 I2C2
                             })
                         }
-                        Case (0x03)
+                        ElseIf (LEqual (_T_2, 0x03))
                         {
                             Return (Package (0x02)
                             {
@@ -43268,7 +43564,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 I2C3
                             })
                         }
-                        Case (0x04)
+                        ElseIf (LEqual (_T_2, 0x04))
                         {
                             Return (Package (0x02)
                             {
@@ -43276,7 +43572,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 I2C4
                             })
                         }
-                        Case (0x05)
+                        ElseIf (LEqual (_T_2, 0x05))
                         {
                             Return (Package (0x02)
                             {
@@ -43284,7 +43580,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 I2C5
                             })
                         }
-                        Default
+                        Else
                         {
                             Return (Package (0x01)
                             {
@@ -43292,6 +43588,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                             })
                         }
 
+                        Break
                     }
                 }
 
@@ -43308,9 +43605,10 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             {
                 If (LEqual (C3TP, One))
                 {
-                    Switch (ToInteger (L3BS))
+                    While (One)
                     {
-                        Case (Zero)
+                        Store (ToInteger (L3BS), _T_3)
+                        If (LEqual (_T_3, Zero))
                         {
                             Return (Package (0x02)
                             {
@@ -43318,7 +43616,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 I2C0
                             })
                         }
-                        Case (One)
+                        ElseIf (LEqual (_T_3, One))
                         {
                             Return (Package (0x02)
                             {
@@ -43326,7 +43624,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 I2C1
                             })
                         }
-                        Case (0x02)
+                        ElseIf (LEqual (_T_3, 0x02))
                         {
                             Return (Package (0x02)
                             {
@@ -43334,7 +43632,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 I2C2
                             })
                         }
-                        Case (0x03)
+                        ElseIf (LEqual (_T_3, 0x03))
                         {
                             Return (Package (0x02)
                             {
@@ -43342,7 +43640,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 I2C3
                             })
                         }
-                        Case (0x04)
+                        ElseIf (LEqual (_T_3, 0x04))
                         {
                             Return (Package (0x02)
                             {
@@ -43350,7 +43648,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 I2C4
                             })
                         }
-                        Case (0x05)
+                        ElseIf (LEqual (_T_3, 0x05))
                         {
                             Return (Package (0x02)
                             {
@@ -43358,7 +43656,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                                 I2C5
                             })
                         }
-                        Default
+                        Else
                         {
                             Return (Package (0x01)
                             {
@@ -43366,6 +43664,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                             })
                         }
 
+                        Break
                     }
                 }
 
@@ -43386,45 +43685,48 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (CDEG, 1, Serialized)
         {
-            Switch (ToInteger (Arg0))
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+            While (One)
             {
-                Case (Zero)
+                Store (ToInteger (Arg0), _T_0)
+                If (LEqual (_T_0, Zero))
                 {
                     Return (Zero)
                 }
-                Case (One)
+                ElseIf (LEqual (_T_0, One))
                 {
                     Return (0x2D)
                 }
-                Case (0x02)
+                ElseIf (LEqual (_T_0, 0x02))
                 {
                     Return (0x5A)
                 }
-                Case (0x03)
+                ElseIf (LEqual (_T_0, 0x03))
                 {
                     Return (0x87)
                 }
-                Case (0x04)
+                ElseIf (LEqual (_T_0, 0x04))
                 {
                     Return (0xB4)
                 }
-                Case (0x05)
+                ElseIf (LEqual (_T_0, 0x05))
                 {
                     Return (0xE1)
                 }
-                Case (0x06)
+                ElseIf (LEqual (_T_0, 0x06))
                 {
                     Return (0x010E)
                 }
-                Case (0x07)
+                ElseIf (LEqual (_T_0, 0x07))
                 {
                     Return (0x013B)
                 }
-                Default
+                Else
                 {
                     Return (Zero)
                 }
 
+                Break
             }
         }
 
@@ -44212,7 +44514,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                     If (LEqual (Arg2, One))
                     {
-                        Name (DSMB, Buffer (0x34){})
+                        Name (DSMB, Buffer (0x34) {})
                         CreateDWordField (DSMB, Zero, I2CC)
                         CreateDWordField (DSMB, 0x04, DEV0)
                         Store (One, I2CC)
@@ -44380,7 +44682,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                     If (LEqual (Arg2, One))
                     {
-                        Name (DSMB, Buffer (0x34){})
+                        Name (DSMB, Buffer (0x34) {})
                         CreateDWordField (DSMB, Zero, I2CC)
                         CreateDWordField (DSMB, 0x04, DEV0)
                         Store (One, I2CC)
@@ -44548,7 +44850,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                     If (LEqual (Arg2, One))
                     {
-                        Name (DSMB, Buffer (0x34){})
+                        Name (DSMB, Buffer (0x34) {})
                         CreateDWordField (DSMB, Zero, I2CC)
                         CreateDWordField (DSMB, 0x04, DEV0)
                         Store (One, I2CC)
@@ -44716,7 +45018,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                     If (LEqual (Arg2, One))
                     {
-                        Name (DSMB, Buffer (0x34){})
+                        Name (DSMB, Buffer (0x34) {})
                         CreateDWordField (DSMB, Zero, I2CC)
                         CreateDWordField (DSMB, 0x04, DEV0)
                         Store (One, I2CC)
@@ -44775,7 +45077,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
             Method (_DDN, 0, NotSerialized)  // _DDN: DOS Device Name
             {
-                Name (BUF, Buffer (0x10){})
+                Name (BUF, Buffer (0x10) {})
                 Store (L0M0, Index (BUF, Zero))
                 Store (L0M1, Index (BUF, One))
                 Store (L0M2, Index (BUF, 0x02))
@@ -44967,7 +45269,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                     If (LEqual (Arg2, One))
                     {
-                        Name (BUF, Buffer (0x10){})
+                        Name (BUF, Buffer (0x10) {})
                         Store (L0M0, Index (BUF, Zero))
                         Store (L0M1, Index (BUF, One))
                         Store (L0M2, Index (BUF, 0x02))
@@ -45010,7 +45312,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                     If (LEqual (Arg2, One))
                     {
-                        Name (DSMB, Buffer (0x34){})
+                        Name (DSMB, Buffer (0x34) {})
                         CreateDWordField (DSMB, Zero, I2CC)
                         CreateDWordField (DSMB, 0x04, DEV0)
                         CreateDWordField (DSMB, 0x08, DEV1)
@@ -45256,7 +45558,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
             Method (_DDN, 0, NotSerialized)  // _DDN: DOS Device Name
             {
-                Name (BUF, Buffer (0x10){})
+                Name (BUF, Buffer (0x10) {})
                 Store (L1M0, Index (BUF, Zero))
                 Store (L1M1, Index (BUF, One))
                 Store (L1M2, Index (BUF, 0x02))
@@ -45448,7 +45750,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                     If (LEqual (Arg2, One))
                     {
-                        Name (BUF, Buffer (0x10){})
+                        Name (BUF, Buffer (0x10) {})
                         Store (L1M0, Index (BUF, Zero))
                         Store (L1M1, Index (BUF, One))
                         Store (L1M2, Index (BUF, 0x02))
@@ -45491,7 +45793,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                     If (LEqual (Arg2, One))
                     {
-                        Name (DSMB, Buffer (0x34){})
+                        Name (DSMB, Buffer (0x34) {})
                         CreateDWordField (DSMB, Zero, I2CC)
                         CreateDWordField (DSMB, 0x04, DEV0)
                         CreateDWordField (DSMB, 0x08, DEV1)
@@ -45737,7 +46039,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
             Method (_DDN, 0, NotSerialized)  // _DDN: DOS Device Name
             {
-                Name (BUF, Buffer (0x10){})
+                Name (BUF, Buffer (0x10) {})
                 Store (L2M0, Index (BUF, Zero))
                 Store (L2M1, Index (BUF, One))
                 Store (L2M2, Index (BUF, 0x02))
@@ -45929,7 +46231,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                     If (LEqual (Arg2, One))
                     {
-                        Name (BUF, Buffer (0x10){})
+                        Name (BUF, Buffer (0x10) {})
                         Store (L2M0, Index (BUF, Zero))
                         Store (L2M1, Index (BUF, One))
                         Store (L2M2, Index (BUF, 0x02))
@@ -45972,7 +46274,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                     If (LEqual (Arg2, One))
                     {
-                        Name (DSMB, Buffer (0x34){})
+                        Name (DSMB, Buffer (0x34) {})
                         CreateDWordField (DSMB, Zero, I2CC)
                         CreateDWordField (DSMB, 0x04, DEV0)
                         CreateDWordField (DSMB, 0x08, DEV1)
@@ -46218,7 +46520,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
             Method (_DDN, 0, NotSerialized)  // _DDN: DOS Device Name
             {
-                Name (BUF, Buffer (0x10){})
+                Name (BUF, Buffer (0x10) {})
                 Store (L3M0, Index (BUF, Zero))
                 Store (L3M1, Index (BUF, One))
                 Store (L3M2, Index (BUF, 0x02))
@@ -46410,7 +46712,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                     If (LEqual (Arg2, One))
                     {
-                        Name (BUF, Buffer (0x10){})
+                        Name (BUF, Buffer (0x10) {})
                         Store (L3M0, Index (BUF, Zero))
                         Store (L3M1, Index (BUF, One))
                         Store (L3M2, Index (BUF, 0x02))
@@ -46453,7 +46755,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                     If (LEqual (Arg2, One))
                     {
-                        Name (DSMB, Buffer (0x34){})
+                        Name (DSMB, Buffer (0x34) {})
                         CreateDWordField (DSMB, Zero, I2CC)
                         CreateDWordField (DSMB, 0x04, DEV0)
                         CreateDWordField (DSMB, 0x08, DEV1)
@@ -47659,7 +47961,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             Name (ECF0, Package (0x02)
             {
                 ToUUID ("daffd814-6eba-4d8c-8a91-bc9bbf4aa301") /* Device Properties for _DSD */, 
-                Package (0x00){}
+                Package (0x00) {}
             })
             Name (EPN0, Buffer (0x2F)
             {
@@ -47849,7 +48151,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             Name (ECF1, Package (0x02)
             {
                 ToUUID ("daffd814-6eba-4d8c-8a91-bc9bbf4aa301") /* Device Properties for _DSD */, 
-                Package (0x00){}
+                Package (0x00) {}
             })
             Name (EPN1, Buffer (0x2F)
             {
@@ -48506,7 +48808,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             Name (ECF0, Package (0x02)
             {
                 ToUUID ("daffd814-6eba-4d8c-8a91-bc9bbf4aa301") /* Device Properties for _DSD */, 
-                Package (0x00){}
+                Package (0x00) {}
             })
             Name (EPN0, Buffer (0x2F)
             {
@@ -48696,7 +48998,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             Name (ECF1, Package (0x02)
             {
                 ToUUID ("daffd814-6eba-4d8c-8a91-bc9bbf4aa301") /* Device Properties for _DSD */, 
-                Package (0x00){}
+                Package (0x00) {}
             })
             Name (EPN1, Buffer (0x2F)
             {
@@ -49353,7 +49655,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             Name (ECF0, Package (0x02)
             {
                 ToUUID ("daffd814-6eba-4d8c-8a91-bc9bbf4aa301") /* Device Properties for _DSD */, 
-                Package (0x00){}
+                Package (0x00) {}
             })
             Name (EPN0, Buffer (0x2F)
             {
@@ -49543,7 +49845,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             Name (ECF1, Package (0x02)
             {
                 ToUUID ("daffd814-6eba-4d8c-8a91-bc9bbf4aa301") /* Device Properties for _DSD */, 
-                Package (0x00){}
+                Package (0x00) {}
             })
             Name (EPN1, Buffer (0x2F)
             {
@@ -50200,7 +50502,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             Name (ECF0, Package (0x02)
             {
                 ToUUID ("daffd814-6eba-4d8c-8a91-bc9bbf4aa301") /* Device Properties for _DSD */, 
-                Package (0x00){}
+                Package (0x00) {}
             })
             Name (EPN0, Buffer (0x2F)
             {
@@ -50390,7 +50692,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             Name (ECF1, Package (0x02)
             {
                 ToUUID ("daffd814-6eba-4d8c-8a91-bc9bbf4aa301") /* Device Properties for _DSD */, 
-                Package (0x00){}
+                Package (0x00) {}
             })
             Name (EPN1, Buffer (0x2F)
             {
@@ -51047,7 +51349,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             Name (ECF0, Package (0x02)
             {
                 ToUUID ("daffd814-6eba-4d8c-8a91-bc9bbf4aa301") /* Device Properties for _DSD */, 
-                Package (0x00){}
+                Package (0x00) {}
             })
             Name (EPN0, Buffer (0x2F)
             {
@@ -51237,7 +51539,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             Name (ECF1, Package (0x02)
             {
                 ToUUID ("daffd814-6eba-4d8c-8a91-bc9bbf4aa301") /* Device Properties for _DSD */, 
-                Package (0x00){}
+                Package (0x00) {}
             })
             Name (EPN1, Buffer (0x2F)
             {
@@ -51894,7 +52196,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             Name (ECF0, Package (0x02)
             {
                 ToUUID ("daffd814-6eba-4d8c-8a91-bc9bbf4aa301") /* Device Properties for _DSD */, 
-                Package (0x00){}
+                Package (0x00) {}
             })
             Name (EPN0, Buffer (0x2F)
             {
@@ -52084,7 +52386,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             Name (ECF1, Package (0x02)
             {
                 ToUUID ("daffd814-6eba-4d8c-8a91-bc9bbf4aa301") /* Device Properties for _DSD */, 
-                Package (0x00){}
+                Package (0x00) {}
             })
             Name (EPN1, Buffer (0x2F)
             {
@@ -52741,7 +53043,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             Name (ECF0, Package (0x02)
             {
                 ToUUID ("daffd814-6eba-4d8c-8a91-bc9bbf4aa301") /* Device Properties for _DSD */, 
-                Package (0x00){}
+                Package (0x00) {}
             })
             Name (EPN0, Buffer (0x2F)
             {
@@ -52931,7 +53233,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             Name (ECF1, Package (0x02)
             {
                 ToUUID ("daffd814-6eba-4d8c-8a91-bc9bbf4aa301") /* Device Properties for _DSD */, 
-                Package (0x00){}
+                Package (0x00) {}
             })
             Name (EPN1, Buffer (0x2F)
             {
@@ -53588,7 +53890,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             Name (ECF0, Package (0x02)
             {
                 ToUUID ("daffd814-6eba-4d8c-8a91-bc9bbf4aa301") /* Device Properties for _DSD */, 
-                Package (0x00){}
+                Package (0x00) {}
             })
             Name (EPN0, Buffer (0x2F)
             {
@@ -53778,7 +54080,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             Name (ECF1, Package (0x02)
             {
                 ToUUID ("daffd814-6eba-4d8c-8a91-bc9bbf4aa301") /* Device Properties for _DSD */, 
-                Package (0x00){}
+                Package (0x00) {}
             })
             Name (EPN1, Buffer (0x2F)
             {
@@ -54079,7 +54381,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Store (0x1C, CADR)
                         Return (Zero)
                     }
-                    Return (Zero)
                 }
 
                 Method (_CRS, 0, NotSerialized)  // _CRS: Current Resource Settings
@@ -54135,7 +54436,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Store (0x1C, CADR)
                         Return (Zero)
                     }
-                    Return (Zero)
                 }
 
                 Method (_CRS, 0, NotSerialized)  // _CRS: Current Resource Settings
@@ -54191,7 +54491,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Store (0x1C, CADR)
                         Return (Zero)
                     }
-                    Return (Zero)
                 }
 
                 Method (_CRS, 0, NotSerialized)  // _CRS: Current Resource Settings
@@ -54247,7 +54546,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Store (0x1C, CADR)
                         Return (Zero)
                     }
-                    Return (Zero)
                 }
 
                 Method (_CRS, 0, NotSerialized)  // _CRS: Current Resource Settings
@@ -54303,7 +54601,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Store (0x1C, CADR)
                         Return (Zero)
                     }
-                    Return (Zero)
                 }
 
                 Method (_CRS, 0, NotSerialized)  // _CRS: Current Resource Settings
@@ -54359,7 +54656,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Store (0x1C, CADR)
                         Return (Zero)
                     }
-                    Return (Zero)
                 }
 
                 Method (_CRS, 0, NotSerialized)  // _CRS: Current Resource Settings
@@ -54429,7 +54725,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (ACCG, 2, NotSerialized)
         {
-            Name (GBUF, Buffer (0x10){})
+            Name (GBUF, Buffer (0x10) {})
             Concatenate (Arg0, Arg1, GBUF)
             Return (GBUF)
         }
@@ -54437,6 +54733,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
     Method (HIDW, 4, Serialized)
     {
+        Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
         If (LEqual (Arg0, ToUUID ("1730e71d-e5dd-4a34-be57-4d76b6a2fe37")))
         {
             If (LEqual (Arg2, Zero))
@@ -54456,16 +54753,17 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
             If (LEqual (Arg2, One))
             {
-                Switch (ToInteger (DerefOf (Index (Arg3, Zero))))
+                While (One)
                 {
-                    Case (Zero)
+                    Store (ToInteger (DerefOf (Index (Arg3, Zero))), _T_0)
+                    If (LEqual (_T_0, Zero))
                     {
                         If (CondRefOf (\_SB.HIDD.HPEM))
                         {
                             P8XH (Zero, 0x5C)
                         }
                     }
-                    Case (One)
+                    ElseIf (LEqual (_T_0, One))
                     {
                         If (CondRefOf (\_SB.SLPB))
                         {
@@ -54473,13 +54771,9 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                             P8XH (Zero, 0x5D)
                         }
                     }
-                    Case (0x02)
-                    {
-                    }
-                    Case (0x03)
-                    {
-                    }
-
+                    ElseIf (LEqual (_T_0, 0x02)) {}
+                    ElseIf (LEqual (_T_0, 0x03)) {}
+                    Break
                 }
 
                 Return (Zero)
@@ -54669,118 +54963,121 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             Name (PWRT, 0x79)
             Method (ECRD, 1, Serialized)
             {
+                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 Store (DerefOf (Arg0), Local0)
-                Switch (ToInteger (Local0))
+                While (One)
                 {
-                    Case (0x32)
+                    Store (ToInteger (Local0), _T_0)
+                    If (LEqual (_T_0, 0x32))
                     {
                         Return (Zero)
                     }
-                    Case (0x36)
+                    ElseIf (LEqual (_T_0, 0x36))
                     {
                         Return (Zero)
                     }
-                    Case (0x03)
+                    ElseIf (LEqual (_T_0, 0x03))
                     {
                         Return (Zero)
                     }
-                    Case (0x3A)
+                    ElseIf (LEqual (_T_0, 0x3A))
                     {
                         Return (Zero)
                     }
-                    Case (0x30)
+                    ElseIf (LEqual (_T_0, 0x30))
                     {
                         Return (Zero)
                     }
-                    Case (One)
+                    ElseIf (LEqual (_T_0, One))
                     {
                         Return (Zero)
                     }
-                    Case (0x83)
+                    ElseIf (LEqual (_T_0, 0x83))
                     {
                         Return (Zero)
                     }
-                    Case (0x82)
+                    ElseIf (LEqual (_T_0, 0x82))
                     {
                         Return (Zero)
                     }
-                    Case (0x44)
+                    ElseIf (LEqual (_T_0, 0x44))
                     {
                         Return (Zero)
                     }
-                    Case (0x43)
+                    ElseIf (LEqual (_T_0, 0x43))
                     {
                         Return (Zero)
                     }
-                    Case (0x42)
+                    ElseIf (LEqual (_T_0, 0x42))
                     {
                         Return (Zero)
                     }
-                    Case (0x41)
+                    ElseIf (LEqual (_T_0, 0x41))
                     {
                         Return (Zero)
                     }
-                    Case (0x45)
+                    ElseIf (LEqual (_T_0, 0x45))
                     {
                         Return (Zero)
                     }
-                    Case (0x03)
+                    ElseIf (LEqual (_T_0, 0x03))
                     {
                         Return (Zero)
                     }
-                    Case (0x03)
+                    ElseIf (LEqual (_T_0, 0x03))
                     {
                         Return (Zero)
                     }
-                    Case (0x30)
+                    ElseIf (LEqual (_T_0, 0x30))
                     {
                         Return (Zero)
                     }
-                    Case (0xC4)
+                    ElseIf (LEqual (_T_0, 0xC4))
                     {
                         Return (Zero)
                     }
-                    Case (0xC5)
+                    ElseIf (LEqual (_T_0, 0xC5))
                     {
                         Return (Zero)
                     }
-                    Case (0xC6)
+                    ElseIf (LEqual (_T_0, 0xC6))
                     {
                         Return (Zero)
                     }
-                    Case (0xC7)
+                    ElseIf (LEqual (_T_0, 0xC7))
                     {
                         Return (Zero)
                     }
-                    Case (0x78)
+                    ElseIf (LEqual (_T_0, 0x78))
                     {
                         Return (Zero)
                     }
-                    Case (0xC8)
+                    ElseIf (LEqual (_T_0, 0xC8))
                     {
                         Return (Zero)
                     }
-                    Case (0x78)
+                    ElseIf (LEqual (_T_0, 0x78))
                     {
                         Return (Zero)
                     }
-                    Case (0xA0)
+                    ElseIf (LEqual (_T_0, 0xA0))
                     {
                         Return (Zero)
                     }
-                    Case (0xA0)
+                    ElseIf (LEqual (_T_0, 0xA0))
                     {
                         Return (Zero)
                     }
-                    Case (0xE8)
+                    ElseIf (LEqual (_T_0, 0xE8))
                     {
                         Return (Zero)
                     }
-                    Case (0x79)
+                    ElseIf (LEqual (_T_0, 0x79))
                     {
                         Return (Zero)
                     }
 
+                    Break
                 }
 
                 Return (Zero)
@@ -54788,91 +55085,39 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
             Method (ECWT, 2, Serialized)
             {
+                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 Store (DerefOf (Arg0), Local0)
-                Switch (ToInteger (Local0))
+                While (One)
                 {
-                    Case (0x32)
-                    {
-                    }
-                    Case (0x36)
-                    {
-                    }
-                    Case (0x03)
-                    {
-                    }
-                    Case (0x3A)
-                    {
-                    }
-                    Case (0x30)
-                    {
-                    }
-                    Case (One)
-                    {
-                    }
-                    Case (0x83)
-                    {
-                    }
-                    Case (0x82)
-                    {
-                    }
-                    Case (0x44)
-                    {
-                    }
-                    Case (0x43)
-                    {
-                    }
-                    Case (0x42)
-                    {
-                    }
-                    Case (0x41)
-                    {
-                    }
-                    Case (0x45)
-                    {
-                    }
-                    Case (0x03)
-                    {
-                    }
-                    Case (0x03)
-                    {
-                    }
-                    Case (0x30)
-                    {
-                    }
-                    Case (0xC4)
-                    {
-                    }
-                    Case (0xC5)
-                    {
-                    }
-                    Case (0xC6)
-                    {
-                    }
-                    Case (0xC7)
-                    {
-                    }
-                    Case (0x78)
-                    {
-                    }
-                    Case (0xC8)
-                    {
-                    }
-                    Case (0x78)
-                    {
-                    }
-                    Case (0xA0)
-                    {
-                    }
-                    Case (0xA0)
-                    {
-                    }
-                    Case (0xE8)
-                    {
-                    }
-                    Case (0x79)
-                    {
-                    }
-
+                    Store (ToInteger (Local0), _T_0)
+                    If (LEqual (_T_0, 0x32)) {}
+                    ElseIf (LEqual (_T_0, 0x36)) {}
+                    ElseIf (LEqual (_T_0, 0x03)) {}
+                    ElseIf (LEqual (_T_0, 0x3A)) {}
+                    ElseIf (LEqual (_T_0, 0x30)) {}
+                    ElseIf (LEqual (_T_0, One)) {}
+                    ElseIf (LEqual (_T_0, 0x83)) {}
+                    ElseIf (LEqual (_T_0, 0x82)) {}
+                    ElseIf (LEqual (_T_0, 0x44)) {}
+                    ElseIf (LEqual (_T_0, 0x43)) {}
+                    ElseIf (LEqual (_T_0, 0x42)) {}
+                    ElseIf (LEqual (_T_0, 0x41)) {}
+                    ElseIf (LEqual (_T_0, 0x45)) {}
+                    ElseIf (LEqual (_T_0, 0x03)) {}
+                    ElseIf (LEqual (_T_0, 0x03)) {}
+                    ElseIf (LEqual (_T_0, 0x30)) {}
+                    ElseIf (LEqual (_T_0, 0xC4)) {}
+                    ElseIf (LEqual (_T_0, 0xC5)) {}
+                    ElseIf (LEqual (_T_0, 0xC6)) {}
+                    ElseIf (LEqual (_T_0, 0xC7)) {}
+                    ElseIf (LEqual (_T_0, 0x78)) {}
+                    ElseIf (LEqual (_T_0, 0xC8)) {}
+                    ElseIf (LEqual (_T_0, 0x78)) {}
+                    ElseIf (LEqual (_T_0, 0xA0)) {}
+                    ElseIf (LEqual (_T_0, 0xA0)) {}
+                    ElseIf (LEqual (_T_0, 0xE8)) {}
+                    ElseIf (LEqual (_T_0, 0x79)) {}
+                    Break
                 }
             }
 
@@ -55175,6 +55420,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (STRT, 3, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             OperationRegion (TPMR, SystemMemory, FTPM, 0x1000)
             Field (TPMR, AnyAcc, NoLock, Preserve)
             {
@@ -55185,17 +55431,18 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             }
 
             Name (TIMR, Zero)
-            If (LNotEqual (ToInteger (Arg0), Zero)){}
-            Switch (ToInteger (Arg1))
+            If (LNotEqual (ToInteger (Arg0), Zero)) {}
+            While (One)
             {
-                Case (Zero)
+                Store (ToInteger (Arg1), _T_0)
+                If (LEqual (_T_0, Zero))
                 {
                     Return (Buffer (One)
                     {
                          0x03                                           
                     })
                 }
-                Case (One)
+                ElseIf (LEqual (_T_0, One))
                 {
                     Store (Zero, TIMR)
                     If (LEqual (AMDT, One))
@@ -55222,6 +55469,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     Return (Zero)
                 }
 
+                Break
             }
 
             Return (One)
@@ -55229,17 +55477,19 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (CRYF, 3, Serialized)
         {
-            If (LNotEqual (ToInteger (Arg0), One)){}
-            Switch (ToInteger (Arg1))
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+            If (LNotEqual (ToInteger (Arg0), One)) {}
+            While (One)
             {
-                Case (Zero)
+                Store (ToInteger (Arg1), _T_0)
+                If (LEqual (_T_0, Zero))
                 {
                     Return (Buffer (One)
                     {
                          0x03                                           
                     })
                 }
-                Case (One)
+                ElseIf (LEqual (_T_0, One))
                 {
                     Name (TPMV, Package (0x02)
                     {
@@ -55261,6 +55511,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     Return (TPMV)
                 }
 
+                Break
             }
 
             Return (Buffer (One)
@@ -55292,18 +55543,21 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
         {
+            Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (LEqual (Arg0, ToUUID ("3dddfaa6-361b-4eb4-a424-8d10089d1653") /* Physical Presence Interface */))
             {
-                Switch (ToInteger (Arg2))
+                While (One)
                 {
-                    Case (Zero)
+                    Store (ToInteger (Arg2), _T_0)
+                    If (LEqual (_T_0, Zero))
                     {
                         Return (Buffer (0x02)
                         {
                              0xFF, 0x01                                     
                         })
                     }
-                    Case (One)
+                    ElseIf (LEqual (_T_0, One))
                     {
                         If (LEqual (PPIV, Zero))
                         {
@@ -55314,7 +55568,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                             Return ("1.3")
                         }
                     }
-                    Case (0x02)
+                    ElseIf (LEqual (_T_0, 0x02))
                     {
                         Store (DerefOf (Index (Arg3, Zero)), RQST)
                         Store (Zero, SRSP)
@@ -55324,7 +55578,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Store (TMF1, SMI)
                         Return (SRSP)
                     }
-                    Case (0x03)
+                    ElseIf (LEqual (_T_0, 0x03))
                     {
                         Name (PPI1, Package (0x02)
                         {
@@ -55334,11 +55588,11 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Store (RQST, Index (PPI1, One))
                         Return (PPI1)
                     }
-                    Case (0x04)
+                    ElseIf (LEqual (_T_0, 0x04))
                     {
                         Return (TRST)
                     }
-                    Case (0x05)
+                    ElseIf (LEqual (_T_0, 0x05))
                     {
                         Name (PPI2, Package (0x03)
                         {
@@ -55353,11 +55607,11 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Store (ERRO, Index (PPI2, 0x02))
                         Return (PPI2)
                     }
-                    Case (0x06)
+                    ElseIf (LEqual (_T_0, 0x06))
                     {
                         Return (0x03)
                     }
-                    Case (0x07)
+                    ElseIf (LEqual (_T_0, 0x07))
                     {
                         Store (DerefOf (Index (Arg3, Zero)), RQST)
                         Store (0x07, FLAG)
@@ -55372,7 +55626,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Store (TMF1, SMI)
                         Return (SRSP)
                     }
-                    Case (0x08)
+                    ElseIf (LEqual (_T_0, 0x08))
                     {
                         Store (DerefOf (Index (Arg3, Zero)), RQST)
                         Store (0x08, FLAG)
@@ -55381,24 +55635,26 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Store (TMF1, SMI)
                         Return (SRSP)
                     }
-                    Default
+                    Else
                     {
                     }
 
+                    Break
                 }
             }
             ElseIf (LEqual (Arg0, ToUUID ("376054ed-cc13-4675-901c-4756d7f2d45d")))
             {
-                Switch (ToInteger (Arg2))
+                While (One)
                 {
-                    Case (Zero)
+                    Store (ToInteger (Arg2), _T_1)
+                    If (LEqual (_T_1, Zero))
                     {
                         Return (Buffer (One)
                         {
                              0x03                                           
                         })
                     }
-                    Case (One)
+                    ElseIf (LEqual (_T_1, One))
                     {
                         Store (DerefOf (Index (Arg3, Zero)), RQST)
                         Store (0x09, FLAG)
@@ -55407,10 +55663,11 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         Store (TMF1, SMI)
                         Return (SRSP)
                     }
-                    Default
+                    Else
                     {
                     }
 
+                    Break
                 }
             }
 
@@ -55432,16 +55689,18 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (TPTS, 1, Serialized)
         {
-            Switch (ToInteger (Arg0))
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+            While (One)
             {
-                Case (0x04)
+                Store (ToInteger (Arg0), _T_0)
+                If (LEqual (_T_0, 0x04))
                 {
                     Store (Zero, RQST)
                     Store (0x09, FLAG)
                     Store (Zero, SRSP)
                     Store (OFST, SMI)
                 }
-                Case (0x05)
+                ElseIf (LEqual (_T_0, 0x05))
                 {
                     Store (Zero, RQST)
                     Store (0x09, FLAG)
@@ -55449,13 +55708,14 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     Store (OFST, SMI)
                 }
 
+                Break
             }
         }
     }
 
     Scope (_SB)
     {
-        OperationRegion (RAMW, SystemMemory, 0x7ED5B000, 0x0100)
+        OperationRegion (RAMW, SystemMemory, 0x7ED5A000, 0x0100)
         Field (RAMW, AnyAcc, NoLock, Preserve)
         {
             AMLS,   32, 
@@ -55667,8 +55927,8 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             }
 
             Add (SizeOf (Arg0), One, Local0)
-            Name (BUF0, Buffer (Local0){})
-            Name (BUF1, Buffer (Local0){})
+            Name (BUF0, Buffer (Local0) {})
+            Name (BUF1, Buffer (Local0) {})
             Store (Arg0, BUF0)
             Store (Arg1, BUF1)
             While (Local0)
@@ -55853,7 +56113,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 {
                     SGOV (0x0303000E, Arg0)
                     XOr (Arg0, One, Arg0)
-                    If (LEqual (LAnd (WAPF, 0x05), Zero)){}
+                    If (LEqual (LAnd (WAPF, 0x05), Zero)) {}
                     Return (One)
                 }
 
@@ -56094,7 +56354,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                 If (LEqual (Local0, 0x4647574D))
                 {
-                    If (LEqual (IIA0, 0x00020013)){}
+                    If (LEqual (IIA0, 0x00020013)) {}
                     If (LEqual (IIA0, 0x00010016))
                     {
                         Store (OFBD (IIA1), Local0)
@@ -56426,8 +56686,8 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
                     If (LEqual (IIA0, 0x00100013))
                     {
-                        If (LEqual (IIA1, Zero)){}
-                        If (LEqual (IIA1, One)){}
+                        If (LEqual (IIA1, Zero)) {}
+                        If (LEqual (IIA1, One)) {}
                         If (LEqual (IIA1, 0x02))
                         {
                             If (^^PCI0.LPCB.EC0.ECAV ())
@@ -56720,7 +56980,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                         {
                             And (Local1, 0xFD, Local1)
                             And (Local1, 0x0F, Local2)
-                            And (Local2, Ones, Local2)
                             ^^PCI0.LPCB.EC0.STA9 (Zero, Local1)
                         }
 
@@ -57300,7 +57559,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 {
                     Return (Zero)
                 }
-                Return (Zero)
             }
 
             Method (SDSP, 1, NotSerialized)
@@ -57395,7 +57653,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 {
                     Return (One)
                 }
-                Return (Zero)
             }
 
             Method (_STA, 0, NotSerialized)  // _STA: Status
@@ -57674,7 +57931,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             DBGW (Arg0)
         }
 
-        Name (DBGZ, Buffer (0x50){})
+        Name (DBGZ, Buffer (0x50) {})
         Method (AMLI, 1, NotSerialized)
         {
             If (LEqual (ObjectType (Arg0), One))
@@ -59073,25 +59330,28 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (TACH, 1, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (ECAV ())
             {
-                Switch (ToInteger(Arg0))
+                While (One)
                 {
-                    Case (Zero)
+                    Store (Arg0, _T_0)
+                    If (LEqual (_T_0, Zero))
                     {
                         Store (RTAH (Zero), Local0)
                         Break
                     }
-                    Case (One)
+                    ElseIf (LEqual (_T_0, One))
                     {
                         Store (RTAH (One), Local0)
                         Break
                     }
-                    Default
+                    Else
                     {
                         Return (Ones)
                     }
 
+                    Break
                 }
 
                 Multiply (Local0, 0x02, Local0)
@@ -59229,7 +59489,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 Add (Local0, Local1, Local0)
                 Multiply (Local0, 0x03E8, Local1)
                 Divide (Local1, ALSA, Local2, Local3)
-                And (Local2, Ones, Local2)
                 Return (Local3)
             }
             Else
@@ -59459,7 +59718,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                 STB2 (0x99)
                 Return (Zero)
             }
-            Return (Zero)
         }
 
         Method (_Q12, 0, NotSerialized)  // _Qxx: EC Query
@@ -59881,7 +60139,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
                     Store (Local0, ^^^PEG0.PEGP.DSTA)
                 }
             }
-            Return (Zero)
         }
 
         Method (_QA8, 0, NotSerialized)  // _Qxx: EC Query
@@ -59910,7 +60167,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
             {
                 Store (0xD4, ^^^PEG0.PEGP.DSTA)
             }
-            Return (Zero)
         }
 
         Method (_QA9, 0, NotSerialized)  // _Qxx: EC Query
@@ -59977,7 +60233,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
         {
             Store (STCC (Zero, 0x14), Local0)
             Store (STCC (Zero, 0x27), Local1)
-            And (Local1, Ones, Local1)
             If (LIDF)
             {
                 If (^^^PEG0.PEGP.INIA)
@@ -60290,7 +60545,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)
 
         Method (BIF9, 0, NotSerialized)
         {
-            Name (BSTR, Buffer (0x20){})
+            Name (BSTR, Buffer (0x20) {})
             Name (DDDD, "ASUS Battery")
             Store (DDDD, BSTR)
             Return (BSTR)
@@ -61114,7 +61369,6 @@ Else
             {
                 Store (Local2, ^^^PEG0.PEGP.DSTA)
             }
-            Return (Zero)
         }
 
         Method (_QCC, 0, NotSerialized)  // _Qxx: EC Query
@@ -62290,7 +62544,6 @@ Else
                          0x00                                           
                     })
                 }
-                Return (Zero)
             }
 
             Method (_STA, 0, NotSerialized)  // _STA: Status
@@ -62490,7 +62743,6 @@ Else
                     Notify (PEGP, DSTA)
                 }
             }
-            Return (Zero)
         }
 
         Method (NVPW, 1, Serialized)

@@ -1,11 +1,11 @@
 /*
  * Intel ACPI Component Architecture
- * AML/ASL+ Disassembler version 20180427 (64-bit version)(RM)
- * Copyright (c) 2000 - 2018 Intel Corporation
+ * AML/ASL+ Disassembler version 20161210-64(RM)
+ * Copyright (c) 2000 - 2016 Intel Corporation
  * 
  * Disassembling to non-symbolic legacy ASL operators
  *
- * Disassembly of SSDT-1.aml, Sat Jul 21 02:40:31 2018
+ * Disassembly of SSDT-1.aml, Sat Jul 21 18:24:46 2018
  *
  * Original Table Header:
  *     Signature        "SSDT"
@@ -896,11 +896,13 @@ DefinitionBlock ("", "SSDT", 2, "DptfTa", "DptfTabl", 0x00001000)
         Name (XPCC, Zero)
         Method (PPCC, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (LAnd (LEqual (XPCC, Zero), CondRefOf (\_SB.CBMI)))
             {
-                Switch (ToInteger (\_SB.CBMI))
+                While (One)
                 {
-                    Case (Zero)
+                    Store (ToInteger (\_SB.CBMI), _T_0)
+                    If (LEqual (_T_0, Zero))
                     {
                         If (LAnd (LGreaterEqual (\_SB.CLVL, One), LLessEqual (\_SB.CLVL, 0x03)))
                         {
@@ -908,7 +910,7 @@ DefinitionBlock ("", "SSDT", 2, "DptfTa", "DptfTabl", 0x00001000)
                             Store (One, XPCC)
                         }
                     }
-                    Case (One)
+                    ElseIf (LEqual (_T_0, One))
                     {
                         If (LOr (LEqual (\_SB.CLVL, 0x02), LEqual (\_SB.CLVL, 0x03)))
                         {
@@ -916,7 +918,7 @@ DefinitionBlock ("", "SSDT", 2, "DptfTa", "DptfTabl", 0x00001000)
                             Store (One, XPCC)
                         }
                     }
-                    Case (0x02)
+                    ElseIf (LEqual (_T_0, 0x02))
                     {
                         If (LEqual (\_SB.CLVL, 0x03))
                         {
@@ -925,6 +927,7 @@ DefinitionBlock ("", "SSDT", 2, "DptfTa", "DptfTabl", 0x00001000)
                         }
                     }
 
+                    Break
                 }
             }
 
@@ -1038,14 +1041,16 @@ DefinitionBlock ("", "SSDT", 2, "DptfTa", "DptfTabl", 0x00001000)
         Name (_PPC, Zero)  // _PPC: Performance Present Capabilities
         Method (SPPC, 1, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (CondRefOf (\_SB.CPPC))
             {
                 Store (Arg0, \_SB.CPPC)
             }
 
-            Switch (ToInteger (\TCNT))
+            While (One)
             {
-                Case (0x10)
+                Store (ToInteger (\TCNT), _T_0)
+                If (LEqual (_T_0, 0x10))
                 {
                     Notify (\_SB.PR00, 0x80)
                     Notify (\_SB.PR01, 0x80)
@@ -1064,7 +1069,7 @@ DefinitionBlock ("", "SSDT", 2, "DptfTa", "DptfTabl", 0x00001000)
                     Notify (\_SB.PR14, 0x80)
                     Notify (\_SB.PR15, 0x80)
                 }
-                Case (0x0E)
+                ElseIf (LEqual (_T_0, 0x0E))
                 {
                     Notify (\_SB.PR00, 0x80)
                     Notify (\_SB.PR01, 0x80)
@@ -1081,7 +1086,7 @@ DefinitionBlock ("", "SSDT", 2, "DptfTa", "DptfTabl", 0x00001000)
                     Notify (\_SB.PR12, 0x80)
                     Notify (\_SB.PR13, 0x80)
                 }
-                Case (0x0C)
+                ElseIf (LEqual (_T_0, 0x0C))
                 {
                     Notify (\_SB.PR00, 0x80)
                     Notify (\_SB.PR01, 0x80)
@@ -1096,7 +1101,7 @@ DefinitionBlock ("", "SSDT", 2, "DptfTa", "DptfTabl", 0x00001000)
                     Notify (\_SB.PR10, 0x80)
                     Notify (\_SB.PR11, 0x80)
                 }
-                Case (0x0A)
+                ElseIf (LEqual (_T_0, 0x0A))
                 {
                     Notify (\_SB.PR00, 0x80)
                     Notify (\_SB.PR01, 0x80)
@@ -1109,7 +1114,7 @@ DefinitionBlock ("", "SSDT", 2, "DptfTa", "DptfTabl", 0x00001000)
                     Notify (\_SB.PR08, 0x80)
                     Notify (\_SB.PR09, 0x80)
                 }
-                Case (0x08)
+                ElseIf (LEqual (_T_0, 0x08))
                 {
                     Notify (\_SB.PR00, 0x80)
                     Notify (\_SB.PR01, 0x80)
@@ -1120,7 +1125,7 @@ DefinitionBlock ("", "SSDT", 2, "DptfTa", "DptfTabl", 0x00001000)
                     Notify (\_SB.PR06, 0x80)
                     Notify (\_SB.PR07, 0x80)
                 }
-                Case (0x07)
+                ElseIf (LEqual (_T_0, 0x07))
                 {
                     Notify (\_SB.PR00, 0x80)
                     Notify (\_SB.PR01, 0x80)
@@ -1130,7 +1135,7 @@ DefinitionBlock ("", "SSDT", 2, "DptfTa", "DptfTabl", 0x00001000)
                     Notify (\_SB.PR05, 0x80)
                     Notify (\_SB.PR06, 0x80)
                 }
-                Case (0x06)
+                ElseIf (LEqual (_T_0, 0x06))
                 {
                     Notify (\_SB.PR00, 0x80)
                     Notify (\_SB.PR01, 0x80)
@@ -1139,7 +1144,7 @@ DefinitionBlock ("", "SSDT", 2, "DptfTa", "DptfTabl", 0x00001000)
                     Notify (\_SB.PR04, 0x80)
                     Notify (\_SB.PR05, 0x80)
                 }
-                Case (0x05)
+                ElseIf (LEqual (_T_0, 0x05))
                 {
                     Notify (\_SB.PR00, 0x80)
                     Notify (\_SB.PR01, 0x80)
@@ -1147,29 +1152,30 @@ DefinitionBlock ("", "SSDT", 2, "DptfTa", "DptfTabl", 0x00001000)
                     Notify (\_SB.PR03, 0x80)
                     Notify (\_SB.PR04, 0x80)
                 }
-                Case (0x04)
+                ElseIf (LEqual (_T_0, 0x04))
                 {
                     Notify (\_SB.PR00, 0x80)
                     Notify (\_SB.PR01, 0x80)
                     Notify (\_SB.PR02, 0x80)
                     Notify (\_SB.PR03, 0x80)
                 }
-                Case (0x03)
+                ElseIf (LEqual (_T_0, 0x03))
                 {
                     Notify (\_SB.PR00, 0x80)
                     Notify (\_SB.PR01, 0x80)
                     Notify (\_SB.PR02, 0x80)
                 }
-                Case (0x02)
+                ElseIf (LEqual (_T_0, 0x02))
                 {
                     Notify (\_SB.PR00, 0x80)
                     Notify (\_SB.PR01, 0x80)
                 }
-                Default
+                Else
                 {
                     Notify (\_SB.PR00, 0x80)
                 }
 
+                Break
             }
         }
 
@@ -1238,45 +1244,48 @@ DefinitionBlock ("", "SSDT", 2, "DptfTa", "DptfTabl", 0x00001000)
         })
         Method (PCCC, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             Store (One, Index (PCCX, Zero))
-            Switch (ToInteger (CPNU (PTDP, Zero)))
+            While (One)
             {
-                Case (0x39)
+                Store (ToInteger (CPNU (PTDP, Zero)), _T_0)
+                If (LEqual (_T_0, 0x39))
                 {
                     Store (0xA7F8, Index (DerefOf (Index (PCCX, One)), Zero))
                     Store (0x00017318, Index (DerefOf (Index (PCCX, One)), One))
                 }
-                Case (0x2F)
+                ElseIf (LEqual (_T_0, 0x2F))
                 {
                     Store (0x9858, Index (DerefOf (Index (PCCX, One)), Zero))
                     Store (0x00014C08, Index (DerefOf (Index (PCCX, One)), One))
                 }
-                Case (0x25)
+                ElseIf (LEqual (_T_0, 0x25))
                 {
                     Store (0x7148, Index (DerefOf (Index (PCCX, One)), Zero))
                     Store (0xD6D8, Index (DerefOf (Index (PCCX, One)), One))
                 }
-                Case (0x19)
+                ElseIf (LEqual (_T_0, 0x19))
                 {
                     Store (0x3E80, Index (DerefOf (Index (PCCX, One)), Zero))
                     Store (0x7D00, Index (DerefOf (Index (PCCX, One)), One))
                 }
-                Case (0x0F)
+                ElseIf (LEqual (_T_0, 0x0F))
                 {
                     Store (0x36B0, Index (DerefOf (Index (PCCX, One)), Zero))
                     Store (0x7D00, Index (DerefOf (Index (PCCX, One)), One))
                 }
-                Case (0x0B)
+                ElseIf (LEqual (_T_0, 0x0B))
                 {
                     Store (0x36B0, Index (DerefOf (Index (PCCX, One)), Zero))
                     Store (0x61A8, Index (DerefOf (Index (PCCX, One)), One))
                 }
-                Default
+                Else
                 {
                     Store (0xFF, Index (DerefOf (Index (PCCX, One)), Zero))
                     Store (0xFF, Index (DerefOf (Index (PCCX, One)), One))
                 }
 
+                Break
             }
 
             Return (PCCX)
@@ -1872,6 +1881,7 @@ DefinitionBlock ("", "SSDT", 2, "DptfTa", "DptfTabl", 0x00001000)
     {
         Method (TDPL, 0, Serialized)
         {
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             Name (AAAA, Zero)
             Name (BBBB, Zero)
             Name (CCCC, Zero)
@@ -2084,9 +2094,10 @@ DefinitionBlock ("", "SSDT", 2, "DptfTa", "DptfTabl", 0x00001000)
 
             If (LEqual (Local0, One))
             {
-                Switch (ToInteger (\_SB.CBMI))
+                While (One)
                 {
-                    Case (Zero)
+                    Store (ToInteger (\_SB.CBMI), _T_0)
+                    If (LEqual (_T_0, Zero))
                     {
                         Store (Add (\_SB.TAR0, One), Local1)
                         Multiply (Local1, 0x64, Local2)
@@ -2099,7 +2110,7 @@ DefinitionBlock ("", "SSDT", 2, "DptfTa", "DptfTabl", 0x00001000)
                         Store (Zero, LEV1)
                         Store (Zero, LEV2)
                     }
-                    Case (One)
+                    ElseIf (LEqual (_T_0, One))
                     {
                         Store (Add (\_SB.TAR1, One), Local1)
                         Multiply (Local1, 0x64, Local2)
@@ -2112,7 +2123,7 @@ DefinitionBlock ("", "SSDT", 2, "DptfTa", "DptfTabl", 0x00001000)
                         Store (One, LEV1)
                         Store (One, LEV2)
                     }
-                    Case (0x02)
+                    ElseIf (LEqual (_T_0, 0x02))
                     {
                         Store (Add (\_SB.TAR2, One), Local1)
                         Multiply (Local1, 0x64, Local2)
@@ -2126,6 +2137,7 @@ DefinitionBlock ("", "SSDT", 2, "DptfTa", "DptfTabl", 0x00001000)
                         Store (0x02, LEV2)
                     }
 
+                    Break
                 }
 
                 Return (TMP1)
@@ -2145,43 +2157,49 @@ DefinitionBlock ("", "SSDT", 2, "DptfTa", "DptfTabl", 0x00001000)
         Name (LEV2, Zero)
         Method (STDP, 1, Serialized)
         {
+            Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler
+            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (LGreaterEqual (Arg0, \_SB.CLVL))
             {
                 Return (Zero)
             }
 
-            Switch (ToInteger (Arg0))
+            While (One)
             {
-                Case (Zero)
+                Store (ToInteger (Arg0), _T_0)
+                If (LEqual (_T_0, Zero))
                 {
                     Store (LEV0, Local0)
                 }
-                Case (One)
+                ElseIf (LEqual (_T_0, One))
                 {
                     Store (LEV1, Local0)
                 }
-                Case (0x02)
+                ElseIf (LEqual (_T_0, 0x02))
                 {
                     Store (LEV2, Local0)
                 }
 
+                Break
             }
 
-            Switch (ToInteger (Local0))
+            While (One)
             {
-                Case (Zero)
+                Store (ToInteger (Local0), _T_1)
+                If (LEqual (_T_1, Zero))
                 {
                     CPL0 ()
                 }
-                Case (One)
+                ElseIf (LEqual (_T_1, One))
                 {
                     CPL1 ()
                 }
-                Case (0x02)
+                ElseIf (LEqual (_T_1, 0x02))
                 {
                     CPL2 ()
                 }
 
+                Break
             }
 
             Notify (\_SB.PCI0.B0D4, 0x83)
@@ -2975,7 +2993,7 @@ DefinitionBlock ("", "SSDT", 2, "DptfTa", "DptfTabl", 0x00001000)
 
     Scope (\_SB.IETM)
     {
-        Name (TRT0, Package (0x00){})
+        Name (TRT0, Package (0x00) {})
         Method (TRTR, 0, NotSerialized)
         {
             Return (\TRTV)
