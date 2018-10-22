@@ -9,7 +9,7 @@ Current macOS: **macOS 10.13.6**
 **Hardware:**
 - i7 8750H
 - NVIDIA GTX 1080 8GB
-- Intel Wireless-AC 9560 / BT5 > will be replaced with BCM943602BAED, now dongle
+- Intel Wireless-AC 9560 / BT5 > BCM943602BAED
 - USB2.0 HD UVC WebCam
 - Realtek ALC295
 - Trackpad - ELAN 1404 / pci8086,a368 & pci8086,a369 / ELAN/SA473I-12A4
