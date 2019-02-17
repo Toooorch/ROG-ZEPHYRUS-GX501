@@ -1,0 +1,28 @@
+# By Ramalama, edited by Toooorch
+# https://github.com/Ramalama2/Clover-DSDT/blob/master/DSDT%20Patches/%5BALL%5D%20Audio%20HDAU%20HDMI%26DP.txt
+# Note: Use Same Layout ID as in HDEF!
+
+# rename all instances B0D4 -> HDAU
+into_all all code_regex B0D4\. replaceall_matched begin HDAU. end;
+into_all all code_regex \.B0D4 replaceall_matched begin .HDAU end;
+into_all all code_regex \sB0D4, replaceall_matched begin HDAU, end;
+into_all all code_regex \(B0D4 replaceall_matched begin (HDAU end;
+into_all all label B0D4 set_label begin HDAU end;
+into_all all label _SB.PCI0.B0D4 set_label begin _SB.PCI0.HDAU end;
+into_all all label \_SB.PCI0.B0D4 set_label begin \_SB.PCI0.HDAU end;
+into_all all label ^^B0D4 set_label begin ^^HDAU end;
+into_all all label ^B0D4 set_label begin ^HDAU end;
+
+into method label _DSM parent_label HDAU remove_entry;
+into device label HDAU insert
+begin
+Method (_DSM, 4, NotSerialized)\n
+{\n
+    If (LEqual (Arg2, Zero)) { Return (Buffer() { 0x03 } ) }\n
+    Return (Package()\n
+    {\n
+        "hda-gfx", Buffer() { "onboard-1" },\n
+        "layout-id", Buffer() { 3, 0x00, 0x00, 0x00 },\n
+    })\n
+}\n
+end;
