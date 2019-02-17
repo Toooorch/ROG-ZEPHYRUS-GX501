@@ -75,7 +75,7 @@
 				<key>AddPNLF</key>
 				<false/>
 				<key>DeleteUnused</key>
-				<false/>
+				<true/>
 				<key>FakeLPC</key>
 				<false/>
 				<key>FixACST</key>
@@ -95,21 +95,21 @@
 				<key>FixHDA</key>
 				<false/>
 				<key>FixHPET</key>
-				<false/>
+				<true/>
 				<key>FixIDE</key>
 				<false/>
 				<key>FixIPIC</key>
-				<false/>
+				<true/>
 				<key>FixIntelGfx</key>
 				<false/>
 				<key>FixLAN</key>
 				<false/>
 				<key>FixMutex</key>
-				<false/>
+				<true/>
 				<key>FixRTC</key>
-				<false/>
+				<true/>
 				<key>FixRegions</key>
-				<false/>
+				<true/>
 				<key>FixS3D</key>
 				<false/>
 				<key>FixSATA</key>
@@ -117,9 +117,9 @@
 				<key>FixSBUS</key>
 				<false/>
 				<key>FixShutdown</key>
-				<false/>
+				<true/>
 				<key>FixTMR</key>
-				<false/>
+				<true/>
 				<key>FixUSB</key>
 				<false/>
 				<key>FixWAK</key>
@@ -199,12 +199,26 @@
 					RUNfXw==
 					</data>
 				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>change GFX0 to IGPU</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>
+					R0ZYMA==
+					</data>
+					<key>Replace</key>
+					<data>
+					SUdQVQ==
+					</data>
+				</dict>
 			</array>
 			<key>ReuseFFFF</key>
 			<false/>
 		</dict>
 		<key>DisableASPM</key>
-		<true/>
+		<false/>
 		<key>DropTables</key>
 		<array>
 			<dict>
@@ -271,7 +285,7 @@
 				<true/>
 			</dict>
 			<key>NoDynamicExtract</key>
-			<false/>
+			<true/>
 			<key>NoOemTableId</key>
 			<true/>
 		</dict>
@@ -287,15 +301,13 @@
 		<key>#XMPDetection</key>
 		<string>-1</string>
 		<key>Arguments</key>
-		<string>dart=0 npci=0x3000 -alcbeta -v nvda_drv=1 keepsyms=1 -disablegfxfirmware</string>
+		<string>keepsyms=1 dart=0 debug=0x100 -no_compat_check -v</string>
 		<key>CustomLogo</key>
 		<false/>
 		<key>Debug</key>
 		<false/>
 		<key>DefaultLoader</key>
 		<string>boot.efi</string>
-		<key>DefaultVolume</key>
-		<string>LastBootedVolume</string>
 		<key>DisableCloverHotkeys</key>
 		<false/>
 		<key>Legacy</key>
@@ -313,7 +325,9 @@
 		<key>StrictHibernate</key>
 		<false/>
 		<key>Timeout</key>
-		<integer>1</integer>
+		<integer>-1</integer>
+		<key>XMPDetection</key>
+		<string>Yes</string>
 	</dict>
 	<key>BootGraphics</key>
 	<dict>
@@ -555,7 +569,9 @@
 			<key>#Inject</key>
 			<string>0x0887</string>
 			<key>AFGLowPowerState</key>
-			<false/>
+			<true/>
+			<key>Inject</key>
+			<integer>28</integer>
 			<key>ResetHDA</key>
 			<true/>
 		</dict>
@@ -568,7 +584,7 @@
 			<key>FixOwnership</key>
 			<true/>
 			<key>HighCurrent</key>
-			<false/>
+			<true/>
 			<key>Inject</key>
 			<true/>
 		</dict>
