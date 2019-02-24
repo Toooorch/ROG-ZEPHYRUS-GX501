@@ -7,19 +7,18 @@ Current macOS: **macOS 10.13.6**
 ------------------------------------------------
 
 **Hardware:**
-- i7 8750H
-- NVIDIA GTX 1080 8GB
-- Intel Wireless-AC 9560 / BT5 > BCM943602BAED
-- USB2.0 HD UVC WebCam
-- Realtek ALC295
-- Trackpad - ELAN 1404 / pci8086,a368 & pci8086,a369 / ELAN/SA473I-12A4
-- Full HD 144Hz display
+- i7 8750H - native support
+- NVIDIA GTX 1080 8GB - nVidia Web Drivers
+- Intel Wireless-AC 9560 / BT5 > Replaced with BCM943602BAED
+- USB2.0 HD UVC WebCam - native support
+- Realtek ALC295 - voodooHDA / AppleALC
+- Trackpad - ELAN 1404 / Controllers - pci8086,a368 & pci8086,a369 / ELAN/SA473I-12A4 - Voodoo I2C
+- Full HD 144Hz display - native support
 
 ------------------------------------------------
 
 **DSDT**
-- Battery
-- Audio Layout 3
+- Audio Layout 3/21/28
 - SMBUS
 - MCHC
 - B0D4 > HDAU
@@ -34,31 +33,25 @@ Current macOS: **macOS 10.13.6**
 
 **Audio**
 - AppleALC
-- Codec is ALC295
-- DSDT layout 3
+- Codec ALC295
+- DSDT layout 3/21/28
 - -alcbeta
 
 **Kexts**
-- AppleALC
-- ACPIBatteryManager
-- AHCI-300-Series
+- AppleALC / VoodooHDA
 - EFICheckDisabler
-- FakeSMC
+- VirtualSMC
+- AirportBrcmFixup
+- WhateverGreen
+- NoTouchID
+- SMCProcessor
+- SMCLightSensor
+- SMCBatteryManagement
 - Lilu
-- NvidiaGraphicsFixup
-- Shiki
 - USBInjectAll
 - XHCI-300-series-injector
+- AHCI-300-Series
 
 **Graphic**
 - Intel UHD630
 - nVidia WEB Drivers
-
-------------------------------------------------
-
-**Notes**
-What does not work now and it is possible to fix:
-- Brightness
-- Thunderbolt
-- ELAN trackpad > VoodooI2C does not support Coffee Lake era controllers now so we need to wait
-- Shutdown needs clover all rc scripts
